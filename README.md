@@ -19,4 +19,9 @@ Network Administration and System Administration, NTU CSIE.
 - [ ] Users can kill processes of VM1 and VM2 through the admin page of web server.
 - [ ] Zombie processes should be killed automatically and display what have been killed on the webpage.
 
+## Useful Links
+
+* [Setup SSH in Linux system](http://docs.oracle.com/cd/E18930_01/html/821-2426/gksja.html#gksrd)
+* [Python SSH tools](https://wiki.python.org/moin/SecureShell)
+* [Chilkat](https://www.chilkatsoft.com/python.asp)
 
