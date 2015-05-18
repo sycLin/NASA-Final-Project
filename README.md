@@ -12,7 +12,7 @@ Network Administration and System Administration, NTU CSIE.
 
 > 6/22 Final Project Presentation
 
-## Requirements (goals)
+## Goals
 
 - [ ] Construct two normal VMs, say VM1 and VM2.
 - [ ] Build a web server on another (the 3rd) VM to display all process info of VM1 and VM2.
@@ -24,4 +24,10 @@ Network Administration and System Administration, NTU CSIE.
 * [Setup SSH in Linux system](http://docs.oracle.com/cd/E18930_01/html/821-2426/gksja.html#gksrd)
 * [Python SSH tools](https://wiki.python.org/moin/SecureShell)
 * [Chilkat](https://www.chilkatsoft.com/python.asp)
+
+## Configuration
+
+* [Setup machines to be monitored](./config_monitored.md)
+* [Setup machines to monitoring](./config_monitoring.md)
+
 
