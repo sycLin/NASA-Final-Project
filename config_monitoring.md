@@ -39,5 +39,8 @@ $sudo apt-get install phpmyadmin
 (after restarting apache server by `$sudo service apache2 restart`, check out `http://localhost/phpmyadmin`)
 
 > If the browser shows "404 phpmyadmin not found", 
+
 > try this command: `sudo ln -s /usr/share/phpmyadmin /var/www/html/`
+
+
 
