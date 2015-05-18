@@ -19,7 +19,7 @@ $sudo apt-get install apache2
 $sudo apt-get install mysql-server
 ```
 
-**To install PHP*
+**To install PHP**
 ```sh
 $sudo apt-get install php5 libapache2
 ```
