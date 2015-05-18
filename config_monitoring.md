@@ -30,8 +30,12 @@ $sudo /etc/init.d/apache2 restart
 ```
 (you can now check `http://localhost/` to see if your apache server works!)
 
-## Step2: ......
+## Step2: Install PHPMyAdmin
 
+```sh
+$sudo apt-get install phpmyadmin
+```
 
+(after restarting apache server by `$sudo service apache2 restart`, check out `http://localhost/phpmyadmin`)
 
 
