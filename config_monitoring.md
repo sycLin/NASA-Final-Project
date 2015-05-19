@@ -42,5 +42,13 @@ $sudo apt-get install phpmyadmin
 
 > try this command: `sudo ln -s /usr/share/phpmyadmin /var/www/html/`
 
+## Step3: Install Python Package: Chilkat
+
+> Download through the official site: [Link Here!](https://www.chilkatsoft.com/python.asp)
+
+> Please download the proper version of Chilkat corresponding to your python version.
+
+> You can check your python version by: `$python --version`
+
 
 
