@@ -28,6 +28,6 @@ Network Administration and System Administration, NTU CSIE.
 ## Configuration
 
 * [Setup machines to be monitored](./config_monitored.md)
-* [Setup machines to monitoring](./config_monitoring.md)
+* [Setup machines to monitor](./config_monitoring.md)
 
 
