@@ -32,13 +32,15 @@ Network Administration and System Administration, NTU CSIE.
 
 ## Workload Distribution (TODO)
 
-|Job|Person In Charge|Done?|
+|Done?|Job|Who?|Description|
 |:-----------------|:--------|:---:|
-|Environment Setup|Steven|***YES***|
-|SSH Tunnel Connection|Steven|***NO***|
-|HTML templates|Brian|***NO***|
-|CSS styling|Brian|***NO***|
-|Zombie Problem|冠廷|***NO***|
+|***YES***|Environment Setup|Steven|intall packages and servers|
+|***NO***|SSH Tunnel Connection|Steven|establish ssh connection|
+|***NO***|PHP code|Steven|for rendering webpages based on templates|
+|***NO***|HTML templates|Brian|provide all webpage templates|
+|***NO***||CSS styling|Brian|css styling for webpages|
+|***NO***|Zombie Problem|冠廷|*no need to implement for now*|
+|***NO***|Other functionality|冠廷|If any?|
 
 
 
