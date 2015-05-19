@@ -30,4 +30,15 @@ Network Administration and System Administration, NTU CSIE.
 * [Setup machines to be monitored](./config_monitored.md)
 * [Setup machines to monitor](./config_monitoring.md)
 
+## Workload Distribution (TODO)
+
+|Job|Person In Charge|Done?|
+|:-----------------|:--------|:---:|
+|Environment Setup|Steven|***YES***|
+|SSH Tunnel Connection|Steven|***NO***|
+|HTML templates|Brian|***NO***|
+|CSS styling|Brian|***NO***|
+|Zombie Problem|冠廷|***NO***|
+
+
 
