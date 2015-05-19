@@ -33,7 +33,7 @@ Network Administration and System Administration, NTU CSIE.
 ## Workload Distribution (TODO)
 
 |Done?|Job|Who?|Description|
-|:-----------------|:--------|:---:|
+|:-----------------|:--------|:---:|:-------|
 |***YES***|Environment Setup|Steven|intall packages and servers|
 |***NO***|SSH Tunnel Connection|Steven|establish ssh connection|
 |***NO***|PHP code|Steven|for rendering webpages based on templates|
