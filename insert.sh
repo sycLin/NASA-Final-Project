@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# insert php files 
+# insert hypertext related files 
 sudo cp ./src/htdocs/* /var/www/html/webMS/
 
 # insert cgi-bin
