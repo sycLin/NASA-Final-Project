@@ -35,7 +35,7 @@ Network Administration and System Administration, NTU CSIE.
 |Done?|Job|Who?|Description|
 |:-----------------|:--------|:---:|:-------|
 |***YES***|Environment Setup|Steven|intall packages and servers|
-|***NO***|SSH Tunnel Connection|Steven|establish ssh connection|
+|***YES***|SSH Tunnel Connection|Steven|establish ssh connection|
 |***NO***|PHP code|Steven|for rendering webpages based on templates|
 |***NO***|HTML templates|Brian|provide all webpage templates|
 |***NO***|CSS styling|Brian|css styling for webpages|
