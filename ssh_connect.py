@@ -78,7 +78,7 @@ cmd5 = "ls"
 
 #  Request a directory listing on the remote server:
 #  If your server is Windows, change the string from "ls" to "dir";
-success = ssh.SendReqExec(channelNum,"ls")
+success = ssh.SendReqExec(channelNum,"top -n 1 -b")
 if (success != True):
     print(ssh.lastErrorText())
     sys.exit()
