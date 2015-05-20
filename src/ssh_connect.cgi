@@ -2,6 +2,10 @@
 import sys
 import chilkat
 
+# cgi script requirements
+print "Content-type:text/html\n\n"
+print "<html><head><title>Python CGI, YES!</title></head><body>"
+
 #  Important: It is helpful to send the contents of the
 #  ssh.LastErrorText property when requesting support.
 
@@ -103,3 +107,7 @@ print(cmdOutput)
 
 #  Disconnect
 ssh.Disconnect()
+
+# cgi script requirements
+print "</body></html>"
+
