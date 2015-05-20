@@ -50,7 +50,7 @@ $sudo apt-get install phpmyadmin
 
 > You can check your python version by: `$python --version`
 
-**Unpack the \*.tar.gz file ** (ex. chilkat-9.5.0-python-2.7-x86_64-linux.tar.gz)
+**Unpack the .tar.gz file ** (ex. chilkat-9.5.0-python-2.7-x86_64-linux.tar.gz)
 
 ```sh
 $tar zxvf chilkat-9.5.0-python-2.7-x86_64-linux.tar.gz
