@@ -1,10 +1,17 @@
 #!/usr/bin/python
 import sys
 import chilkat
+import cgi
+import cgitb
 
 # cgi script requirements
 print "Content-type:text/html\n\n"
 print "<html><head><title>Python CGI, YES!</title></head><body>"
+
+# get username and password from HTML form
+form = cgi.FieldStorage()
+Username = form.getvalue('id')
+Password = form.getvalue('password')
 
 #  Important: It is helpful to send the contents of the
 #  ssh.LastErrorText property when requesting support.
@@ -32,7 +39,7 @@ if (success != True):
 ssh.put_IdleTimeoutMs(5000)
 
 #  Authenticate using login/password:
-success = ssh.AuthenticatePw("b01902044", "@yourwill");
+success = ssh.AuthenticatePw(Username, Password);
 if (success != True):
     print(ssh.lastErrorText())
     sys.exit()
@@ -103,7 +110,23 @@ if (cmdOutput == None ):
     sys.exit()
 
 #  Display the remote shell's command output:
-print(cmdOutput)
+#  print(cmdOutput)
+# Don't print the whole thing out b/c it's html
+# We have to parse the response
+tmp = ""
+for i in range(len(cmdOutput)):
+	if cmdOutput[i] == '\n':
+		print tmp,
+		tmp = ""
+		print "<br />"
+	elif cmdOutput[i] == ' ':
+		print tmp,
+		tmp = ""
+	else:
+		tmp = tmp + cmdOutput[i]
+if tmp != "":
+	print tmp
+	tmp = ""
 
 #  Disconnect
 ssh.Disconnect()
