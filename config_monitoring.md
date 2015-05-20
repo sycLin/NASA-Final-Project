@@ -73,6 +73,11 @@ $sudo cp _chilkat.so chilkat.py /usr/lib/python2.7/dist-packages/
 
 > And then `>>>import site; site.getsitepackages()`
 
+## Step4: configure Apache server to run python scripts
 
+**Enable Apache cgi**
+```sh
+$sudo a2enmod cgi
+```
 
 
