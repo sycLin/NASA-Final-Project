@@ -84,8 +84,10 @@ $sudo a2enmod cgi
 $sudo vim /etc/apache2/sites-enabled/000-default.conf
 ```
 > Add the following line after `DocumentRoot /var/www/html`:
+
 ```
 ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
 ```
+
 > Now we can put our cgi codes inside /var/www/html/cgi-bin/
 
