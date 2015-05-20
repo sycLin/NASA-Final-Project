@@ -15,7 +15,7 @@ if (success != True):
 #  Connect to an SSH server:
 
 #  Hostname may be an IP address or hostname:
-hostname = "192.168.1.108"
+hostname = "140.112.30.32"
 port = 22
 
 success = ssh.Connect(hostname,port)
@@ -27,7 +27,7 @@ if (success != True):
 ssh.put_IdleTimeoutMs(5000)
 
 #  Authenticate using login/password:
-success = ssh.AuthenticatePw("myLogin","myPassword")
+success = ssh.AuthenticatePw("b01902044", "@yourwill");
 if (success != True):
     print(ssh.lastErrorText())
     sys.exit()
@@ -49,27 +49,32 @@ if (channelNum < 0):
 #  Here are some examples of command lines for <b>Windows SSH servers</b>:
 
 #  Get a directory listing:
-cmd1 = "dir"
+# cmd1 = "dir"
+cmd1 = "ls"
 
 #  Do a nameserver lookup:
-cmd2 = "nslookup chilkatsoft.com"
+# cmd2 = "nslookup chilkatsoft.com"
+cmd2 = "cd htdocs"
 
 #  List a specific directory.  Given that the shell is CMD.EXE, backslashes must
 #  be used:
-cmd3 = "dir \\temp"
+# cmd3 = "dir \\temp"
+cmd3 = "ls"
 
 #  Execute a sequence of commands.  The syntax for CMD.EXE may be found
 #  here: http://technet.microsoft.com/en-us/library/bb490880.aspx.  Notice how the commands
 #  are separated by "&&" and the entire command must be enclosed in quotes:
-cmd4 = "\"cd \\temp&&dir\""
+# cmd4 = "\"cd \\temp&&dir\""
+cmd4 = "cd print"
 
 #  Here are two examples of command lines for <b>Linux/UNIX SSH servers</b>:
 
 #  Get a directory listing:
-cmd5 = "ls -l /tmp"
+# cmd5 = "ls -l /tmp"
+cmd5 = "ls"
 
 #  Run a series of commands (syntax may depend on your default shell):
-cmd6 = "cd /etc; ls -la"
+# cmd6 = "cd /etc; ls -la"
 
 #  Request a directory listing on the remote server:
 #  If your server is Windows, change the string from "ls" to "dir";
