@@ -56,11 +56,23 @@ $sudo apt-get install phpmyadmin
 $tar zxvf chilkat-9.5.0-python-2.7-x86_64-linux.tar.gz
 ```
 
+**Get yourself into that directory**
+```sh
+$cd chilkat-9.5.0-python-2.7-x86_64-linux/
+```
+
 **Put some files under site_package directory of your python** (ex. /usr/lib/python2.7/dist-packages)
 
 ```sh
 $sudo cp _chilkat.so chilkat.py /usr/lib/python2.7/dist-packages/
 ```
+
+> How to find site_package directory of your python?
+
+> First, run python interactive command line in terminal by `$python`
+
+> And then `>>>import site; site.getsitepackages()`
+
 
 
 
