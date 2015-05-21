@@ -10,8 +10,22 @@ print "<html><head><title>Python CGI, YES!</title></head><body>"
 
 # get username and password from HTML form
 form = cgi.FieldStorage()
-Username = form.getvalue('id')
-Password = form.getvalue('password')
+Username = form.getvalue('Username')
+Password = form.getvalue('Password')
+SettingsMachine = form.getvalue('settings_machine')
+SettingsSortedBy = form.getvalue('settings_sortedby')
+SettingsCount =  form.getvalue('settings_count')
+
+# known hosts
+getHost = {'linux11':'140.112.30.42',
+'linux12':'140.112.30.43',
+'linux13':'140.112.30.44',
+'linux14':'140.112.30.45',
+'linux15':'140.112.30.46'}
+
+# get host
+SettingsHost = getHost[SettingsMachine] 
+SettingsPort = 22
 
 #  Important: It is helpful to send the contents of the
 #  ssh.LastErrorText property when requesting support.
@@ -30,7 +44,7 @@ if (success != True):
 hostname = "140.112.30.32"
 port = 22
 
-success = ssh.Connect(hostname,port)
+success = ssh.Connect(SettingsHost, SettingsPort)
 if (success != True):
     print(ssh.lastErrorText())
     sys.exit()
