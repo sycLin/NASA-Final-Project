@@ -120,7 +120,7 @@ else:
 # output according to SettingsCount
 if SettingsCount == "all":
 	SettingsCount = 500
-print "<table>"
+print "<table border=1>"
 print "<td>PID</td><td>User</td><td>State</td><td>CPU</td><td>MEM</td><td>TIME</td><td>Command</td>"
 print "<tr>"
 for i in range(int(SettingsCount)):
