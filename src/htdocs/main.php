@@ -15,7 +15,7 @@ $_SESSION['view'] = "status";
 $machine_list = array(); // this is gonna be a 2D array!
 $proc_type_list = array("all", "R", "S", "Z");
 $sortedby_list = array("cpu", "memory", "totaltime");
-$count_list = array("20", "50", "100", "200", "all");
+$count_list = array("10", "20", "50", "100", "200", "all");
 
 /* lets get machine information from DB */
 $query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."'";
