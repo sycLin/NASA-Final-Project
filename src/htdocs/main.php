@@ -2,6 +2,14 @@
 
 session_start();
 
+/* "VIEW" variable -> default to be "status". */
+/* status: display process information (default) */
+/* log: display the killed processes */
+/* settings: display settings */
+/* logout: the user wants to logout */
+$_SESSION['view'] = "status";
+
+
 /* set up some variables */
 $machine_list = array(); // this is gonna be a 2D array!
 $proc_type_list = array("all", "R", "S", "Z");
@@ -31,6 +39,8 @@ function print_body() {
 	echo "<h1>webMS</h1><hr>";
 	// echo "<p>Login Succeeded!</p>";
 	echo "<p>Hello, ".$_SESSION['Username']."<hr>";
+	print_menu();
+	echo "<hr>";
 	print_settings_form();
 	echo "<hr>";
 	global $machine_list;
@@ -41,6 +51,16 @@ function print_body() {
 		print_process();
 	}
 	echo "</body></html>";
+}
+
+/* VIEW: "status", "log", "settings", "logout" */
+function print_menu() {
+	echo "<form action='' method='get'>";
+	echo "<input type='submit' name='changeview' value='Status'>";
+	echo "<input type='submit' name='changeview' value='Log'>";
+	echo "<input type='submit' name='changeview' value='Settings'>";
+	echo "<input type='submit' name='changeview' value='Logout'>";
+	echo "</form>";
 }
 
 /* settings: which machines? process type? sortedby? count? */
@@ -113,13 +133,24 @@ function print_process() {
 
 /* when the settings are changed */
 if($_GET) {
-	// set up settings variables
-	$_SESSION['current_machine'] = $_GET['machine'];
-	$_SESSION['current_proc_type'] = $_GET['proc_type'];
-	$_SESSION['current_sortedby'] = $_GET['sortedby'];
-	$_SESSION['current_count'] = $_GET['count'];
-	print_header();
-	print_body();
+	if(isset($_GET['changeview'])) { // the user is changing view
+		if($_GET['changeview'] == "Status") { // display process information
+			;
+		} else if($_GET['changeview'] == "Log") { // display killed processes
+			;
+		} else if($_GET['changeview'] == "Settings") { // change account settings
+			;
+		} else { // the user wants to log out
+			;
+		}
+	} else if(isset($_GET['machine'])) { // the user is under the STATUS view and change the settings
+		$_SESSION['current_machine'] = $_GET['machine'];
+		$_SESSION['current_proc_type'] = $_GET['proc_type'];
+		$_SESSION['current_sortedby'] = $_GET['sortedby'];
+		$_SESSION['current_count'] = $_GET['count'];
+		print_header();
+		print_body();
+	}
 } else {
 	print_header();
 	print_body();
