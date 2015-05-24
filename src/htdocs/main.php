@@ -8,7 +8,7 @@ session_start();
 /* log: display the killed processes */
 /* settings: display settings */
 /* logout: the user wants to logout */
-$_SESSION['view'] = "status";
+$_SESSION['view'] = NULL;
 
 
 /* set up some variables */
@@ -42,7 +42,7 @@ function print_body() {
 	print_menu();
 	echo "<hr>";
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
-	if($_SESSION['view'] == "status") {
+	if(!isset($_SESSION['view']) || $_SESSION['view'] == "status") {
 		print_filter_form();
 		echo "<hr>";
 		global $machine_list;
@@ -55,10 +55,15 @@ function print_body() {
 	} else if($_SESSION['view'] == "log") {
 		echo "<p>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
-		echo "<p>A Ha! You're now viewing SETTINGS, but it's not allowed for now :P</p>";
-		print_profile_settings();
-		echo "<hr>";
-		print_machine_settings();
+		if(isset($_GET['change_password'])) { // user wants to change his/her password
+			echo "You want to change password?";
+		} else if(isset($_GET['edit_machine'])) { // user wants to update machines
+			echo "You want to change machines?";
+		} else { // user is under normal SETTINGS view
+			print_profile_settings();
+			echo "<hr>";
+			print_machine_settings();
+		}
 	} else if($_SESSION['view'] == "logout") {
 		session_destroy();
 		header("location: welcome.php");
@@ -184,7 +189,7 @@ function print_profile_settings() {
 	echo "<td>Email</td><td>".$em."</td><tr>";
 	echo "</table>";
 	// print button for changing password
-	echo "<form action='' method='get'><input type='submit' name='change_password' value='change_password'></form>";
+	echo "<form action='' method='get'><input type='submit' name='change_password' value='Change Password'></form>";
 }
 
 /* for "settings" VIEW */
@@ -238,12 +243,16 @@ if($_GET) {
 		$_SESSION['current_count'] = $_GET['count'];
 		print_header();
 		print_body();
-	} else if(isset($_GET[''])) { // the user is under the SETTINGS view and wanna update password
-		;
-	} else if(isset($_GET[''])) { // the user is under the SETTINGS view and wanna update machine
-		;
+	} else if(isset($_GET['change_password'])) { // the user is under the SETTINGS view and wanna update password
+		$_SESSION['view'] = "settings";
+		print_header();
+		print_body();
+	} else if(isset($_GET['edit_machine'])) { // the user is under the SETTINGS view and wanna update machine
+		$_SESSION['view'] = "settings";
+		print_header();
+		print_body();
 	}
-} else {
+} else { // default
 	print_header();
 	print_body();
 }
