@@ -15,7 +15,11 @@ function print_header() {
 function print_body($LRflag, $Errflag) {
 	echo "<body><h1>webMS</h1><hr>";
 	if($Errflag == 1) {
-		echo "<p>Invalid Username and/or Password!</p>";
+		if($LRflag == 0) { // login error
+			echo "<p>Invalid Username and/or Password!</p>";
+		} else { // registration error
+			echo "<p>This username is not available, please choose another one.</p>";
+		}
 	}
 	if($LRflag == 0) { // login page
 		print_login_form();
@@ -47,7 +51,7 @@ function print_register_form() {
 	echo "<form action='' method='GET'><input type='submit' name='entrance' value='LogIn Here'></form>";
 }
 
-// check login information, returns 1 on success; return 0 when fails.
+/* check login information, returns 1 on success; return 0 when fails. */
 function check_login_info($u, $p) {
 	global $db;
 	// escape the string: for DB security
@@ -69,13 +73,66 @@ function check_login_info($u, $p) {
 	}
 }
 
+/* return 0 if the username isn't in DB; return 1 if already exists. */
+function check_username_validity($u) {
+	global $db;
+	$username_to_check = mysqli_real_escape_string($db, $u);
+	$query = "SELECT * FROM acct WHERE username='$username_to_check'";
+	$result = mysqli_query($db, $query);
+	$count = mysqli_num_rows($result);
+	if($count == 0) {
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
+/* return a randomized string with length specified in the parameter. */
+function generateRandomString($length_you_want) {
+	$charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+	$random_sting = "";
+	for($i = 0; $i < $length_you_want; $i = $i + 1) {
+		$tmp = rand(0, strlen($charset));
+		$random_string .= $charset[$tmp];
+	}
+	return $random_string;
+}
+
+
 // handler for GET and POST
 if($_POST) {
 	// gotta handle DATABASE here
 	if(isset($_POST['email'])) { // it's REGISTER form
-		print_header();
+		/*
 		echo "<body><h1>it's register form</h1><hr>";
 		echo "<p>Sorry, registration not allowed currently.</p></body></html>";
+		*/
+		// Step 1): check username validity: username must be unique.
+		if(check_username_validity($_POST['username']) == 0) {
+			// this username is available
+			// Step 2): create randomized password for the user
+			$rand_str = generateRandomString(8);
+			// Step 3): insert to DB
+			$username = $_POST['username'];
+			$email = $_POST['email'];
+			$password = $rand_str;
+			$query = "INSERT into acct (username, password, email) values ('$username', '$password', '$email')";
+			$dummy = mysqli_query($db, $query);
+			// Step 4): send an email
+			$subject = "Welcome to webMS, $username";
+			$content = "Hello dear $username\nYour password is initialized as: ".$password."\n";
+			$content .= "You can always change your password on our website anytime :)\n";
+			$content .= "Thank you! Thanks for your interests in our services!\n";
+			mail("$email", "$subject", "$content");
+			// Step 5): notification and redirection.
+			print_header();
+			echo "<script language='javascript'>alert('Registration succeeded, and password is sent to your email.');</script>";
+			print_body(0, 0);
+		} else {
+			// this username is used, must choose another one.
+			print_header();
+			print_body(1, 1); // print error message and the register form again.
+		}
 	} else { // it's LOGIN form
 		/*
 		print_header();
