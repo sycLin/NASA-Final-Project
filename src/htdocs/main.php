@@ -56,6 +56,9 @@ function print_body() {
 		echo "<p>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
 		echo "<p>A Ha! You're now viewing SETTINGS, but it's not allowed for now :P</p>";
+		print_profile_settings();
+		echo "<hr>";
+		print_machine_settings();
 	} else if($_SESSION['view'] == "logout") {
 		session_destroy();
 		header("location: welcome.php");
@@ -161,6 +164,56 @@ function print_process() {
 	echo $data;
 }
 
+/* for "settings" VIEW */
+function print_profile_settings() {
+	// get profile from DB
+	global $db;
+	$query = "SELECT * FROM acct WHERE username='".$_SESSION['Username']."'";
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	if($row['username'] != $_SESSION['Username'])
+		echo "<script language='javascript'>alert('No! It's Wrong!');</script>";
+	$u = $row['username'];
+	$p = $row['password'];
+	$em = $row['email'];
+	// print profile: username, password, email.
+	echo "<h2>My Profile</h2>";
+	echo "<table border=1>";
+	echo "<td>Username</td><td>".$u."</td><tr>";
+	echo "<td>Password</td><td>you think I'm gonna display it here? you think I'm an idiot?</td><tr>";
+	echo "<td>Email</td><td>".$em."</td><tr>";
+	echo "</table>";
+	// print button for changing password
+	echo "<form action='' method='get'><input type='submit' name='change_password' value='change_password'></form>";
+}
+
+/* for "settings" VIEW */
+function print_machine_settings() {
+	// get machine information from DB
+	global $db;
+	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."'";
+	$result = mysqli_query($db, $query);
+	// print machine info: name, host, username, password, update-button.
+	echo "<h2>My Machines</h2>";
+	echo "<table border=1>";
+	echo "<td>Name</td><td>Host</td><td>Username</td><td>Password</td><td>Edit</td>";
+	echo "<tr>";
+	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+		$mn = $row['mname'];
+		$mh = $row['mhost'];
+		$mu = $row['musername'];
+		$mp = $row['mpassword'];
+		echo "<td>".$mn."</td><td>".$mh."</td><td>".$mu."</td><td>".$mp."</td>";
+		echo "<td><form action='' method='get'><input type='submit' name='edit_machine' value='Update $mn'></form>";
+		echo "<tr>";
+	}
+	echo "</table>";
+	// print button for adding machines
+	echo "<form action='' method='get'>";
+	echo "<input type='submit' name='edit_machine' value='Add Machine'>";
+	echo "</form>";
+}
+
 
 /* when the settings are changed */
 if($_GET) {
@@ -185,6 +238,10 @@ if($_GET) {
 		$_SESSION['current_count'] = $_GET['count'];
 		print_header();
 		print_body();
+	} else if(isset($_GET[''])) { // the user is under the SETTINGS view and wanna update password
+		;
+	} else if(isset($_GET[''])) { // the user is under the SETTINGS view and wanna update machine
+		;
 	}
 } else {
 	print_header();
