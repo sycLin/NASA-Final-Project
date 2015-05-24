@@ -4,27 +4,33 @@ import chilkat
 import cgi
 import cgitb
 
+class ProcInfo:
+	def __init__(self, init_list):
+		self.pid = int(init_list[0])
+		self.user = init_list[1]
+		self.priority = init_list[2]
+		self.nice = init_list[3] # NICE value
+		self.virtual = init_list[4] # virtual memory
+		self.resident = init_list[5] # physical memory
+		self.shared = init_list[6] # shared memory
+		self.state = init_list[7] # R(running), S(sleeping), Z(zombie)
+		self.cpu = float(init_list[8]) # percentage of cpu use
+		self.memory = float(init_list[9]) # percentage of memory use
+		self.time = init_list[10] # total active time
+		self.command = init_list[11]
+
 # cgi script requirements
 print "Content-type:text/html\n\n"
 print "<html><head><title>Python CGI, YES!</title></head><body>"
 
 # get username and password from HTML form
 form = cgi.FieldStorage()
+Host = form.getvalue('Host')
 Username = form.getvalue('Username')
 Password = form.getvalue('Password')
-SettingsMachine = form.getvalue('settings_machine')
+SettingsProcType = form.getvalue('settings_proc_type')
 SettingsSortedBy = form.getvalue('settings_sortedby')
 SettingsCount =  form.getvalue('settings_count')
-
-# known hosts
-getHost = {'linux11':'140.112.30.42',
-'linux12':'140.112.30.43',
-'linux13':'140.112.30.44',
-'linux14':'140.112.30.45',
-'linux15':'140.112.30.46'}
-
-# get host
-SettingsHost = getHost[SettingsMachine] 
 SettingsPort = 22
 
 #  Important: It is helpful to send the contents of the
@@ -41,10 +47,8 @@ if (success != True):
 #  Connect to an SSH server:
 
 #  Hostname may be an IP address or hostname:
-hostname = "140.112.30.32"
-port = 22
 
-success = ssh.Connect(SettingsHost, SettingsPort)
+success = ssh.Connect(Host, SettingsPort)
 if (success != True):
     print(ssh.lastErrorText())
     sys.exit()
@@ -72,38 +76,7 @@ if (channelNum < 0):
 #  On Windows systems it is CMD.EXE.  On UNIX/Linux
 #  systems the user's default shell is typically defined in /etc/password.
 
-#  Here are some examples of command lines for <b>Windows SSH servers</b>:
 
-#  Get a directory listing:
-# cmd1 = "dir"
-cmd1 = "ls"
-
-#  Do a nameserver lookup:
-# cmd2 = "nslookup chilkatsoft.com"
-cmd2 = "cd htdocs"
-
-#  List a specific directory.  Given that the shell is CMD.EXE, backslashes must
-#  be used:
-# cmd3 = "dir \\temp"
-cmd3 = "ls"
-
-#  Execute a sequence of commands.  The syntax for CMD.EXE may be found
-#  here: http://technet.microsoft.com/en-us/library/bb490880.aspx.  Notice how the commands
-#  are separated by "&&" and the entire command must be enclosed in quotes:
-# cmd4 = "\"cd \\temp&&dir\""
-cmd4 = "cd print"
-
-#  Here are two examples of command lines for <b>Linux/UNIX SSH servers</b>:
-
-#  Get a directory listing:
-# cmd5 = "ls -l /tmp"
-cmd5 = "ls"
-
-#  Run a series of commands (syntax may depend on your default shell):
-# cmd6 = "cd /etc; ls -la"
-
-#  Request a directory listing on the remote server:
-#  If your server is Windows, change the string from "ls" to "dir";
 success = ssh.SendReqExec(channelNum,"top -n 1 -b")
 if (success != True):
     print(ssh.lastErrorText())
@@ -125,8 +98,44 @@ if (cmdOutput == None ):
 
 #  Display the remote shell's command output:
 #  print(cmdOutput)
+
+# create ProcInfo objects
+proc_list = []
+lines = cmdOutput.splitlines()
+# discard the first 7 lines (including "PID USER....")
+for i in range(7):
+	lines.pop(0)
+for i in lines:
+	newProc = ProcInfo(i.split())
+	proc_list.append(newProc)
+# sort by the desired method
+if SettingsSortedBy == "cpu":
+	proc_list.sort(key = lambda x: x.cpu, reverse=True)
+elif SettingsSortedBy == "memory":
+	proc_list.sort(key = lambda x: x.memory, reverse=True)
+elif SettingsSortedBy == "totaltime":
+	proc_list.sort(key = lambda x: x.time, reverse=True)
+else:
+	print "no!! You shouldn't be here!!"
+# output according to SettingsCount
+if SettingsCount == "all":
+	SettingsCount = 500
+print "<table>"
+print "<td>PID</td><td>User</td><td>State</td><td>CPU</td><td>MEM</td><td>TIME</td><td>Command</td>"
+print "<tr>"
+for i in range(int(SettingsCount)):
+	print "<td>"+str(proc_list[i].pid)+"</td>",
+	print "<td>"+proc_list[i].user+"</td>",
+	print "<td>"+proc_list[i].state+"</td>",
+	print "<td>"+str(proc_list[i].cpu)+"</td>",
+	print "<td>"+str(proc_list[i].memory)+"</td>",
+	print "<td>"+str(proc_list[i].time)+"</td>",
+	print "<td>"+proc_list[i].command+"</td>",
+	print "<tr>"
+print "</table>"
 # Don't print the whole thing out b/c it's html
 # We have to parse the response
+"""
 tmp = ""
 for i in range(len(cmdOutput)):
 	if cmdOutput[i] == '\n':
@@ -141,7 +150,7 @@ for i in range(len(cmdOutput)):
 if tmp != "":
 	print tmp
 	tmp = ""
-
+"""
 #  Disconnect
 ssh.Disconnect()
 

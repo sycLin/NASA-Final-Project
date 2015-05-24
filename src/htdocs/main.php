@@ -1,5 +1,6 @@
 <?php
 
+include("config.php");
 session_start();
 
 /* "VIEW" variable -> default to be "status". */
@@ -17,11 +18,10 @@ $sortedby_list = array("cpu", "memory", "totaltime");
 $count_list = array("20", "50", "100", "200", "all");
 
 /* lets get machine information from DB */
-$query = "SELECT * FROM machines WHERE username=".$_SESSION['Username'];
+$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."'";
 $result = mysqli_query($db, $query);
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-	$tmp = array($row['mname'], $row['mhost'], $row['musername'], $row['mpassword']);
-	array_push($machine_list, $tmp);
+	array_push($machine_list, $row['mname']);
 }
 
 /* set up some variables for settings */
@@ -38,12 +38,12 @@ function print_body() {
 	echo "<body>";
 	echo "<h1>webMS</h1><hr>";
 	// echo "<p>Login Succeeded!</p>";
-	echo "<p>Hello, ".$_SESSION['Username']."<hr>";
+	echo "<p>Hello, ".$_SESSION['Username']."</p><hr>";
 	print_menu();
 	echo "<hr>";
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
 	if($_SESSION['view'] == "status") {
-		print_settings_form();
+		print_filter_form();
 		echo "<hr>";
 		global $machine_list;
 		if(count($machine_list) == 0) { // this user has no machines that are setup.
@@ -76,7 +76,7 @@ function print_menu() {
 }
 
 /* settings: which machines? process type? sortedby? count? */
-function print_settings_form() {
+function print_filter_form() {
 	echo "<p>Filter Settings</p>";
 	echo "<form action='' method='get' id='settings'>";
 	// ----- print machine options ----- //
@@ -139,7 +139,26 @@ function print_settings_form() {
 /* print process info according to the settings */
 function print_process() {
 	// lets test the variables
-	echo "hello ".$_SESSION['current_machine']." ".$_SESSION['current_proc_type']." ".$_SESSION['current_sortedby']." ".$_SESSION['current_count'];
+	echo "hello current => ".$_SESSION['current_machine']." ".$_SESSION['current_proc_type']." ".$_SESSION['current_sortedby']." ".$_SESSION['current_count'];
+	// get machine information from DB
+	global $db;
+	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."' and mname='".$_SESSION['current_machine']."'";
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// get machine: host, u, p
+	$mh = $row['mhost'];
+	$mu = $row['musername'];
+	$mp = $row['mpassword'];
+	// form the CGI request
+	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_connect.cgi?";
+	$cgi_request .= "Host=".$mh;
+	$cgi_request .= "&&Username=".$mu;
+	$cgi_request .= "&&Password=".$mp;
+	$cgi_request .= "&&settings_proc_type=".$_SESSION['current_proc_type'];
+	$cgi_request .= "&&settings_sortedby=".$_SESSION['current_sortedby'];
+	$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	$data = file_get_contents($cgi_request, 0);
+	echo $data;
 }
 
 
