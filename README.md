@@ -15,7 +15,7 @@ Network Administration and System Administration, NTU CSIE.
 ## Goals
 
 - [x] Construct two normal VMs, say VM1 and VM2.
-- [ ] Build a web server on another (the 3rd) VM to display all process info of VM1 and VM2.
+- [x] Build a web server on another (the 3rd) VM to display all process info of VM1 and VM2.
 - [ ] Users can kill processes of VM1 and VM2 through the admin page of web server.
 - [ ] Zombie processes should be killed automatically and display what have been killed on the webpage.
 
@@ -36,8 +36,8 @@ Network Administration and System Administration, NTU CSIE.
 |:-----------------|:--------|:---:|:-------|
 |***YES***|Environment Setup|Steven|intall packages and servers|
 |***YES***|SSH Tunnel Connection|Steven|establish ssh connection|
-|***NO***|PHP code|Steven|for rendering webpages based on templates|
-|***NO***|HTML templates|Brian|provide all webpage templates|
+|*on-going*|PHP code|Steven|for rendering webpages based on templates|
+|*on-going*|HTML templates|Brian|provide all webpage templates|
 |***NO***|CSS styling|Brian|css styling for webpages|
 |***NO***|Zombie Problem|冠廷|*no need to implement for now*|
 |***NO***|Other functionality|冠廷|If any?|
