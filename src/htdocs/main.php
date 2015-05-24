@@ -41,14 +41,25 @@ function print_body() {
 	echo "<p>Hello, ".$_SESSION['Username']."<hr>";
 	print_menu();
 	echo "<hr>";
-	print_settings_form();
-	echo "<hr>";
-	global $machine_list;
-	if(count($machine_list) == 0) { // this user has no machines that are setup.
-		echo "<p>Sorry, You don't have any machines to be moniotored!</p>";
-		echo "<p>Please go to the settings section to create one</p>";
-	} else {
-		print_process();
+	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
+	if($_SESSION['view'] == "status") {
+		print_settings_form();
+		echo "<hr>";
+		global $machine_list;
+		if(count($machine_list) == 0) { // this user has no machines that are setup.
+			echo "<p>Sorry, You don't have any machines to be moniotored!</p>";
+			echo "<p>Please go to the settings section to create one</p>";
+		} else {
+			print_process();
+		}
+	} else if($_SESSION['view'] == "log") {
+		echo "<p>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
+	} else if($_SESSION['view'] == "settings") {
+		echo "<p>A Ha! You're now viewing SETTINGS, but it's not allowed for now :P</p>";
+	} else if($_SESSION['view'] == "logout") {
+		echo "<p>A Ha! You wanna logout? No~~~~ WAY~~~~~</p>";
+	} else { // if you're here, ...., you're dying...
+		echo "<p>hi baby, there's something seriously wrong! Please contact me: b01902044@ntu.edu.tw</p>";
 	}
 	echo "</body></html>";
 }
@@ -135,15 +146,19 @@ function print_process() {
 if($_GET) {
 	if(isset($_GET['changeview'])) { // the user is changing view
 		if($_GET['changeview'] == "Status") { // display process information
-			;
+			$_SESSION['view'] = "status";
 		} else if($_GET['changeview'] == "Log") { // display killed processes
-			;
+			$_SESSION['view'] = "log";
 		} else if($_GET['changeview'] == "Settings") { // change account settings
-			;
-		} else { // the user wants to log out
-			;
+			$_SESSION['view'] = "settings";
+		} else if($_GET['changeview'] == "Logout"){ // the user wants to log out
+			$_SESSION['view'] = "logout";
+		} else {
+			echo "Shouldn't Be HERE!";
 		}
-	} else if(isset($_GET['machine'])) { // the user is under the STATUS view and change the settings
+		print_header();
+		print_body();
+	} else if(isset($_GET['proc_type'])) { // the user is under the STATUS view and change the settings
 		$_SESSION['current_machine'] = $_GET['machine'];
 		$_SESSION['current_proc_type'] = $_GET['proc_type'];
 		$_SESSION['current_sortedby'] = $_GET['sortedby'];
