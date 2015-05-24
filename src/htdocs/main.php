@@ -57,7 +57,8 @@ function print_body() {
 	} else if($_SESSION['view'] == "settings") {
 		echo "<p>A Ha! You're now viewing SETTINGS, but it's not allowed for now :P</p>";
 	} else if($_SESSION['view'] == "logout") {
-		echo "<p>A Ha! You wanna logout? No~~~~ WAY~~~~~</p>";
+		session_destroy();
+		header("location: welcome.php");
 	} else { // if you're here, ...., you're dying...
 		echo "<p>hi baby, there's something seriously wrong! Please contact me: b01902044@ntu.edu.tw</p>";
 	}
