@@ -44,6 +44,7 @@ function print_body() {
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
 	if(!isset($_SESSION['view']) || $_SESSION['view'] == "status") {
 		print_filter_form();
+		echo "<hr>";
 		print_killer_form();
 		echo "<hr>";
 		if(isset($_GET['kill_process'])) { // the user wants to kill a process
@@ -52,9 +53,9 @@ function print_body() {
 			$pid = $_GET['pid'];
 			$tmp = kill_process($pid);
 			if($tmp == 0) { // failed to kill the process $pid
-				;
+				echo "<p>Error: process not killed. (pid=$pid)</p>";
 			} else if($tmp == 1) { // succeeded killing the process $pid
-				;
+				echo "<p>The process has been killed successfully. (pid=$pid)</p>";
 			} else { // shoudn't be here!
 				;
 			}
@@ -224,7 +225,7 @@ function print_killer_form() {
 	echo "</form>";
 }
 
-/* kill a certain process with given pid */
+/* kill a certain process with given pid. Return 0 if fail; return 1 if success. */
 function kill_process($pid) {
 	// get the variables needed for CGI request
 	global $db;
@@ -240,7 +241,11 @@ function kill_process($pid) {
 	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_kill.cgi?";
 	$cgi_request .= "Host=$mh&&Username=$mu&&Password=$mp&&Pid=$pid";
 	$data = file_get_contents($cgi_request, 0);
-	echo "$data";
+	for($i = 0; $i < strlen($data)-2; $i = $i + 1) {
+		if($data[$i] == "S" && $data[$i+1] == "u" && $data[$i+2] == "c")
+			return 1;
+	}
+	return 0;
 }
 
 /* print process info according to the settings */
