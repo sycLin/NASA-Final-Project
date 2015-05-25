@@ -57,8 +57,27 @@ function print_body() {
 	} else if($_SESSION['view'] == "settings") {
 		if(isset($_GET['change_password'])) { // user wants to change his/her password
 			echo "You want to change password?";
+			// ----- print change password form ----- //
+			print_change_password_form();
 		} else if(isset($_GET['edit_machine'])) { // user wants to update machines
 			echo "You want to change machines?";
+			// ----- print change machine form ----- //
+			$cmd = $_GET['edit_machine'];
+			if($cmd[0] == 'U') { // you wanna update information of a certain machine
+				;
+			} else if($cmd[0] == 'A') { // you wanna add a machine
+				;
+			}
+		} else if(isset($_SESSION['changepassword'])) { // user just tried to change his/her password
+			if($_SESSION['changepassword'] == 0) { // he/she failed
+				echo "<p>Failed to change your password.</p>";
+			} else if($_SESSION['changepassword'] == 1) { // he/she succeeded
+				echo "<p>Password Updated Successfully.</p>";
+			}
+			print_profile_settings();
+			echo "<hr>";
+			print_machine_settings();
+			$_SESSION['changepassword'] = NULL;
 		} else { // user is under normal SETTINGS view
 			print_profile_settings();
 			echo "<hr>";
@@ -219,9 +238,60 @@ function print_machine_settings() {
 	echo "</form>";
 }
 
+/* print the form for users to change their password */
+function print_change_password_form() {
+	echo "<h2>Change ".$_SESSION['Username']."'s Password</h2>";
+	echo "<form action='' method='POST'>";
+	echo "<label for=''>Old Password</label><input type='password' name='old_password'><br />";
+	echo "<label for=''>New Password</label><input type='password' name='new_password'><br />";
+	echo "<input type='submit' name='change_password_submit' value='Confirm'>";
+	echo "</form>";
+}
+
+/* update user's password in DB. Return 0 if fail; return 1 if success */
+function change_password() {
+	global $db;
+	unset($_GET['change_password']);
+	$u = $_SESSION['Username'];
+	$op = $_POST['old_password'];
+	$np = $_POST['new_password'];
+	$op = mysqli_real_escape_string($db, $op);
+	$np = mysqli_real_escape_string($db, $np);
+	// first we check the correctness of $op
+	$query = "SELECT * FROM acct WHERE username='$u'";
+	$result = mysqli_query($db, $query);
+	$count = mysqli_num_rows($result);
+	if($count != 1) // FAIL: no such user? or username not unique?
+		return 0;
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	if($row['password'] != $op) // FAIL: old password not correct
+		return 0;
+	// now we can update the user's password
+	$query = "UPDATE webMS.acct SET password='$np' WHERE acct.username='$u'";
+	$dummy = mysqli_query($db, $query);
+	return 1;
+}
+
 
 /* when the settings are changed */
-if($_GET) {
+if($_POST) {
+	if(isset($_POST['change_password_submit'])) {
+		$tmp = change_password();
+		if($tmp == 1) { // changed successfully.
+			$_SESSION['view'] = "settings";
+			$_SESSION['changepassword'] = 1;
+			print_header();
+			print_body();
+		} else if($tmp == 0) { // fail to change password.
+			$_SESSION['view'] = "settings";
+			$_SESSION['changepassword'] = 0;
+			print_header();
+			print_body();
+		} else { // shouldn't be here!
+			;
+		}
+	}
+} else if($_GET) {
 	if(isset($_GET['changeview'])) { // the user is changing view
 		if($_GET['changeview'] == "Status") { // display process information
 			$_SESSION['view'] = "status";
@@ -258,3 +328,4 @@ if($_GET) {
 }
 
 ?>
+
