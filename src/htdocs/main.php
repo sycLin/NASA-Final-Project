@@ -84,6 +84,16 @@ function print_body() {
 			echo "<hr>";
 			print_machine_settings();
 			$_SESSION['changepassword'] = NULL;
+		} else if(isset($_SESSION['updatemachine'])) { //user just tried to update a machine
+			if($_SESSION['updatemachine'] == 0) { // he/she failed
+				echo "<p>Failed to update the machine.</p>";
+			} else if($_SESSION['updatemachine'] == 1) { // he/she succeeded
+				echo "<p>Machine Updated Successfully.</p>";
+			}
+			print_profile_settings();
+			echo "<hr>";
+			print_machine_settings();
+			$_SESSION['updatemachine'] = NULL;
 		} else if(isset($_SESSION['addmachine'])) { // user just tried to add a machine
 			if($_SESSION['addmachine'] == 0) { // he/she failed
 				echo "<p>Failed to add a machine.</p>";
@@ -308,7 +318,7 @@ function print_update_machine_form() {
 	$mn = $tmp;
 	echo "<h2>Update ".$mn."'s Settings</h2>";
 	echo "<form action='' method='POST'>";
-	echo "<label for=''>Machine Name</label><input type='text' name='mname'><br />";
+	echo "<input type='hidden' name='mname' value='$mn'>";
 	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
@@ -340,6 +350,22 @@ function print_delete_machine_form() {
 	echo "<input type='hidden' name='mname' value='$mn'>";
 	echo "<input type='submit' name='delete_machine' value='Confirm'>";
 	echo "</form>";
+}
+
+/* update a machine in DB. Return 0 if fail; return 1 if success. */
+function update_machine() {
+	unset($_GET['edit_machine']);
+	global $db;
+	$u = $_SESSION['Username'];
+	$mn = mysqli_real_escape_string($db, $_POST['mname']);
+	$mh = mysqli_real_escape_string($db, $_POST['mhost']);
+	$mu = mysqli_real_escape_string($db, $_POST['musername']);
+	$mp = mysqli_real_escape_string($db, $_POST['mpassword']);
+	$query = "UPDATE webMS.machines SET mhost='$mh', musername='$mu', mpassword='$mp' WHERE machines.username='$u' and machines.mname='$mn'";
+	$dummy = mysqli_query($db, $query);
+	if($dummy == False)
+		return 0;
+	return 1;
 }
 
 /* add a machine into DB. Return 0 if fail; return 1 if success. */
@@ -390,10 +416,23 @@ if($_POST) {
 			;
 		}
 	} else if(isset($_POST['update_machine'])) {
-		;
+		$tmp = update_machine();
+		if($tmp == 1) { // updated successfully
+			$_SESSION['view'] = "settings";
+			$_SESSION['updatemachine'] = 1;
+			print_header();
+			print_body();
+		} else if($tmp == 0) { // fail to update machine
+			$_SESSION['view'] = "settings";
+			$_SESSION['updatemachine'] = 0;
+			print_header();
+			print_body();
+		} else { // shouldn't be here!
+			;
+		}
 	} else if(isset($_POST['add_machine'])) {
 		$tmp = add_machine();
-		if($tmp == 1) { // changed successfully
+		if($tmp == 1) { // added successfully
 			$_SESSION['view'] = "settings";
 			$_SESSION['addmachine'] = 1;
 			print_header();
@@ -403,7 +442,7 @@ if($_POST) {
 			$_SESSION['addmachine'] = "0";
 			print_header();
 			print_body();
-		} else  { // shouldn't be here!
+		} else { // shouldn't be here!
 			;
 		}
 	} else if(isset($_POST['delete_machine'])) {
@@ -418,6 +457,8 @@ if($_POST) {
 			$_SESSION['deletemachine'] = 0;
 			print_header();
 			print_body();
+		} else  { // shoudn't be here!
+			;
 		}
 	}
 } else if($_GET) {
