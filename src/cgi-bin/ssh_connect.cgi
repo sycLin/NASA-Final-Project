@@ -16,7 +16,11 @@ class ProcInfo:
 		self.state = init_list[7] # R(running), S(sleeping), Z(zombie)
 		self.cpu = float(init_list[8]) # percentage of cpu use
 		self.memory = float(init_list[9]) # percentage of memory use
-		self.time = init_list[10] # total active time
+		# self.time needs calculation
+		tmp = init_list[10]
+		tmp_list = tmp.split(":")
+		self.time = float(float(tmp_list[0])*60 + float(tmp_list[1]))
+		# done calculating total cpu time
 		self.command = init_list[11]
 
 # cgi script requirements
@@ -107,7 +111,11 @@ for i in range(7):
 	lines.pop(0)
 for i in lines:
 	newProc = ProcInfo(i.split())
-	proc_list.append(newProc)
+	# deal with proc_type filter
+	if SettingsProcType == "all":
+		proc_list.append(newProc)
+	elif newProc.state == SettingsProcType:
+		proc_list.append(newProc)
 # sort by the desired method
 if SettingsSortedBy == "cpu":
 	proc_list.sort(key = lambda x: x.cpu, reverse=True)
