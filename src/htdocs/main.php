@@ -60,13 +60,15 @@ function print_body() {
 			// ----- print change password form ----- //
 			print_change_password_form();
 		} else if(isset($_GET['edit_machine'])) { // user wants to update machines
-			echo "You want to change machines?";
-			// ----- print change machine form ----- //
 			$cmd = $_GET['edit_machine'];
 			if($cmd[0] == 'U') { // you wanna update information of a certain machine
-				;
+				echo "You want to update the machine?";
+				// ----- print update machine form ----- //
+				print_update_machine_form();
 			} else if($cmd[0] == 'A') { // you wanna add a machine
-				;
+				echo "You want to add a machine?";
+				// ----- print add machine form ----- //
+				print_add_machine_form();
 			}
 		} else if(isset($_SESSION['changepassword'])) { // user just tried to change his/her password
 			if($_SESSION['changepassword'] == 0) { // he/she failed
@@ -78,6 +80,16 @@ function print_body() {
 			echo "<hr>";
 			print_machine_settings();
 			$_SESSION['changepassword'] = NULL;
+		} else if(isset($_SESSION['addmachine'])) { // user just tried to add a machine
+			if($_SESSION['addmachine'] == 0) { // he/she failed
+				echo "<p>Failed to add a machine.</p>";
+			} else if($_SESSION['addmachine'] == 1) { // he/she succeeded
+				echo "<p>New Machine Added Successfully.</p>";
+			}
+			print_profile_settings();
+			echo "<hr>";
+			print_machine_settings();
+			$_SESSION['addmachine'] = NULL;
 		} else { // user is under normal SETTINGS view
 			print_profile_settings();
 			echo "<hr>";
@@ -220,14 +232,14 @@ function print_machine_settings() {
 	// print machine info: name, host, username, password, update-button.
 	echo "<h2>My Machines</h2>";
 	echo "<table border=1>";
-	echo "<td>Name</td><td>Host</td><td>Username</td><td>Password</td><td>Edit</td>";
+	echo "<td>Name</td><td>Host</td><td>Username</td><td>Edit</td>";
 	echo "<tr>";
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$mn = $row['mname'];
 		$mh = $row['mhost'];
 		$mu = $row['musername'];
 		$mp = $row['mpassword'];
-		echo "<td>".$mn."</td><td>".$mh."</td><td>".$mu."</td><td>".$mp."</td>";
+		echo "<td>".$mn."</td><td>".$mh."</td><td>".$mu."</td>";
 		echo "<td><form action='' method='get'><input type='submit' name='edit_machine' value='Update $mn'></form>";
 		echo "<tr>";
 	}
@@ -272,6 +284,51 @@ function change_password() {
 	return 1;
 }
 
+/* print the form for users to update one of their machines */
+function print_update_machine_form() {
+	// get machine name from $_GET['edit_machine']
+	$str = $_GET['edit_machine'];
+	$tmp = strtok($str, " ");
+	$tmp = strtok(" ");
+	$mn = $tmp;
+	echo "<h2>Update ".$mn."'s Settings</h2>";
+	echo "<form action='' method='POST'>";
+	echo "<label for=''>Machine Name</label><input type='text' name='mname'><br />";
+	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
+	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
+	echo "<input type='submit' name='update_machine' value='Update'>";
+	echo "</form>";
+}
+
+/* print the form for users to add a new machine */
+function print_add_machine_form() {
+	echo "<h2>Add a new machine</h2>";
+	echo "<form action='' method='POST'>";
+	echo "<label for=''>Machine Name</label><input type='text' name='mname'><br />";
+	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
+	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
+	echo "<input type='submit' name='add_machine' value='Add'>";
+	echo "</form>";
+}
+
+/* add a machine into DB. Return 0 if fail; return 1 if success. */
+function add_machine() {
+	unset($_GET['edit_machine']);
+	global $db;
+	$u = $_SESSION['Username'];
+	$mn = mysqli_real_escape_string($db, $_POST['mname']);
+	$mh = mysqli_real_escape_string($db, $_POST['mhost']);
+	$mu = mysqli_real_escape_string($db, $_POST['musername']);
+	$mp = mysqli_real_escape_string($db, $_POST['mpassword']);
+	$query = "INSERT into machines (mname, mhost, musername, mpassword, username) VALUES ('$mn', '$mh', '$mu', '$mp', '$u')";
+	$dummy = mysqli_query($db, $query);
+	if($dummy == False)
+		return 0;
+	return 1;
+}
+
 
 /* when the settings are changed */
 if($_POST) {
@@ -288,6 +345,23 @@ if($_POST) {
 			print_header();
 			print_body();
 		} else { // shouldn't be here!
+			;
+		}
+	} else if(isset($_POST['update_machine'])) {
+		;
+	} else if(isset($_POST['add_machine'])) {
+		$tmp = add_machine();
+		if($tmp == 1) { // changed successfully
+			$_SESSION['view'] = "settings";
+			$_SESSION['addmachine'] = 1;
+			print_header();
+			print_body();
+		} else if($tmp == 0) { // fail to add machine
+			$_SESSION['view'] = "settings";
+			$_SESSION['addmachine'] = "0";
+			print_header();
+			print_body();
+		} else  { // shouldn't be here!
 			;
 		}
 	}
