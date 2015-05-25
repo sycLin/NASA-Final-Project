@@ -69,6 +69,10 @@ function print_body() {
 				echo "You want to add a machine?";
 				// ----- print add machine form ----- //
 				print_add_machine_form();
+			} else if($cmd[0] == 'D') { // you wanna delete a machine
+				echo "You want to delete a machine?";
+				// ----- print delete machine form ----- //
+				print_delete_machine_form();
 			}
 		} else if(isset($_SESSION['changepassword'])) { // user just tried to change his/her password
 			if($_SESSION['changepassword'] == 0) { // he/she failed
@@ -90,6 +94,16 @@ function print_body() {
 			echo "<hr>";
 			print_machine_settings();
 			$_SESSION['addmachine'] = NULL;
+		} else if(isset($_SESSION['deletemachine'])) { // user just deleted a machine
+			if($_SESSION['deletemachine'] == 0) { // he/she failed
+				echo "<p>Failed to delete the machine.</p>";
+			} else if($_SESSION['deletemachine'] == 1) { // he/she succeeded
+				echo "<p>Machine deleted successfully.</p>";
+			}
+			print_profile_settings();
+			echo "<hr>";
+			print_machine_settings();
+			$_SESSION['deletemachine'] = NULL;
 		} else { // user is under normal SETTINGS view
 			print_profile_settings();
 			echo "<hr>";
@@ -232,7 +246,7 @@ function print_machine_settings() {
 	// print machine info: name, host, username, password, update-button.
 	echo "<h2>My Machines</h2>";
 	echo "<table border=1>";
-	echo "<td>Name</td><td>Host</td><td>Username</td><td>Edit</td>";
+	echo "<td>Name</td><td>Host</td><td>Username</td><td>Edit</td><td>Delete</td>";
 	echo "<tr>";
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$mn = $row['mname'];
@@ -241,6 +255,7 @@ function print_machine_settings() {
 		$mp = $row['mpassword'];
 		echo "<td>".$mn."</td><td>".$mh."</td><td>".$mu."</td>";
 		echo "<td><form action='' method='get'><input type='submit' name='edit_machine' value='Update $mn'></form>";
+		echo "<td><form action='' method='get'><input type='submit' name='edit_machine' value='Delete $mn'></form>";
 		echo "<tr>";
 	}
 	echo "</table>";
@@ -313,6 +328,20 @@ function print_add_machine_form() {
 	echo "</form>";
 }
 
+/* print the form for users to confirm deleting a machine */
+function print_delete_machine_form() {
+	// get machine name from $_GET['edit_machine']
+	$str = $_GET['edit_machine'];
+	$tmp = strtok($str, " ");
+	$tmp = strtok(" ");
+	$mn = $tmp;
+	echo "<h2>Delete this machine: $mn?</h2>";
+	echo "<form action='' method='POST'>";
+	echo "<input type='hidden' name='mname' value='$mn'>";
+	echo "<input type='submit' name='delete_machine' value='Confirm'>";
+	echo "</form>";
+}
+
 /* add a machine into DB. Return 0 if fail; return 1 if success. */
 function add_machine() {
 	unset($_GET['edit_machine']);
@@ -323,6 +352,19 @@ function add_machine() {
 	$mu = mysqli_real_escape_string($db, $_POST['musername']);
 	$mp = mysqli_real_escape_string($db, $_POST['mpassword']);
 	$query = "INSERT into machines (mname, mhost, musername, mpassword, username) VALUES ('$mn', '$mh', '$mu', '$mp', '$u')";
+	$dummy = mysqli_query($db, $query);
+	if($dummy == False)
+		return 0;
+	return 1;
+}
+
+/* delete a machine from DB. Return 0 if fail; return 1 if success. */
+function delete_machine() {
+	unset($_GET['edit_machine']);
+	global $db;
+	$u = $_SESSION['Username'];
+	$mn = $_POST['mname'];
+	$query = "DELETE FROM machines WHERE username='$u' and mname='$mn'";
 	$dummy = mysqli_query($db, $query);
 	if($dummy == False)
 		return 0;
@@ -363,6 +405,19 @@ if($_POST) {
 			print_body();
 		} else  { // shouldn't be here!
 			;
+		}
+	} else if(isset($_POST['delete_machine'])) {
+		$tmp = delete_machine();
+		if($tmp == 1) { // deleted successfully
+			$_SESSION['view'] = "settings";
+			$_SESSION['deletemachine'] = 1;
+			print_header();
+			print_body();
+		} else if($tmp == 0) { // fail to delete machine
+			$_SESSION['view'] = "settings";
+			$_SESSION['deletemachine'] = 0;
+			print_header();
+			print_body();
 		}
 	}
 } else if($_GET) {
