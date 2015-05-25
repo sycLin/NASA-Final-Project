@@ -44,7 +44,23 @@ function print_body() {
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
 	if(!isset($_SESSION['view']) || $_SESSION['view'] == "status") {
 		print_filter_form();
+		print_killer_form();
 		echo "<hr>";
+		if(isset($_GET['kill_process'])) { // the user wants to kill a process
+			echo "aha! you wanna kill ".$_GET['pid']."?";
+			// kill the process
+			$pid = $_GET['pid'];
+			$tmp = kill_process($pid);
+			if($tmp == 0) { // failed to kill the process $pid
+				;
+			} else if($tmp == 1) { // succeeded killing the process $pid
+				;
+			} else { // shoudn't be here!
+				;
+			}
+			echo "<hr>";
+			unset($_GET['kill_process']);
+		}
 		global $machine_list;
 		if(count($machine_list) == 0) { // this user has no machines that are setup.
 			echo "<p>Sorry, You don't have any machines to be moniotored!</p>";
@@ -199,10 +215,38 @@ function print_filter_form() {
 	echo "</form>";
 }
 
+/* under "status" view, for users to kill processes */
+function print_killer_form() {
+	echo "<p>Killer</p>";
+	echo "<form action='' method='get'>";
+	echo "<label for=''>PID:</label><input type='text' name='pid'>";
+	echo "<input type='submit' name='kill_process' value='Kill It!'>";
+	echo "</form>";
+}
+
+/* kill a certain process with given pid */
+function kill_process($pid) {
+	// get the variables needed for CGI request
+	global $db;
+	$u = $_SESSION['Username'];
+	$mn = $_SESSION['current_machine'];
+	$query = "SELECT * FROM machines WHERE username='$u' and mname='$mn'";
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	$mh = $row['mhost'];
+	$mu = $row['musername'];
+	$mp = $row['mpassword'];
+	// form CGI request
+	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_kill.cgi?";
+	$cgi_request .= "Host=$mh&&Username=$mu&&Password=$mp&&Pid=$pid";
+	$data = file_get_contents($cgi_request, 0);
+	echo "$data";
+}
+
 /* print process info according to the settings */
 function print_process() {
 	// lets test the variables
-	echo "hello current => ".$_SESSION['current_machine']." ".$_SESSION['current_proc_type']." ".$_SESSION['current_sortedby']." ".$_SESSION['current_count'];
+	// echo "hello current => ".$_SESSION['current_machine']." ".$_SESSION['current_proc_type']." ".$_SESSION['current_sortedby']." ".$_SESSION['current_count'];
 	// get machine information from DB
 	global $db;
 	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."' and mname='".$_SESSION['current_machine']."'";
@@ -240,7 +284,7 @@ function print_profile_settings() {
 	echo "<h2>My Profile</h2>";
 	echo "<table border=1>";
 	echo "<td>Username</td><td>".$u."</td><tr>";
-	echo "<td>Password</td><td>you think I'm gonna display it here? you think I'm an idiot?</td><tr>";
+	echo "<td>Password</td><td>my password is ... you think I'm an idiot?</td><tr>";
 	echo "<td>Email</td><td>".$em."</td><tr>";
 	echo "</table>";
 	// print button for changing password
@@ -489,6 +533,10 @@ if($_POST) {
 		print_body();
 	} else if(isset($_GET['edit_machine'])) { // the user is under the SETTINGS view and wanna update machine
 		$_SESSION['view'] = "settings";
+		print_header();
+		print_body();
+	} else if(isset($_GET['kill_process'])) { // the user is under the STATUS view and wanna kill a process
+		$_SESSION['view'] = "status";
 		print_header();
 		print_body();
 	}
