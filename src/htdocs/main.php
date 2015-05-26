@@ -31,7 +31,10 @@ $_SESSION['current_sortedby'] = $sortedby_list[0];
 $_SESSION['current_count'] = $count_list[0];
 
 function print_header() {
-	echo "<html><head><title>webMS: Welcome Back!</title></head>";
+	echo "<html><head>";
+	echo "<title>webMS: Welcome Back!</title>";
+	echo "<link rel=stylesheet type='text/css' href='main.css'>";
+	echo "</head>";
 }
 
 function print_body() {

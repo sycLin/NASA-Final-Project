@@ -6,7 +6,10 @@ session_start();
 
 /* print the header of the html page */
 function print_header() {
-	echo "<html><head><title>webMS: Welcome!</title></head>";
+	echo "<html><head>";
+	echo "<title>webMS: Welcome!</title>";
+	echo "<link rel=stylesheet type='text/css' href='welcome.css'>";
+	echo "</head>";
 }
 
 /* print the body of the html page */
