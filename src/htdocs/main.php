@@ -297,9 +297,9 @@ function print_profile_settings() {
 	echo "<div id='profile'>";
 	echo "<h2>My Profile</h2>";
 	echo "<table border=1>";
-	echo "<td>Username</td><td>".$u."</td><tr>";
-	echo "<td>Password</td><td>my password is ... you think I'm an idiot?</td><tr>";
-	echo "<td>Email</td><td>".$em."</td><tr>";
+	echo "<td class='title'>Username</td><td class='content'>".$u."</td><tr>";
+	echo "<td class='title'>Password</td><td class='content'>my password is ... you think I'm an idiot?</td><tr>";
+	echo "<td class='title'>Email</td><td class='content'>".$em."</td><tr>";
 	echo "</table>";
 	// print button for changing password
 	echo "<form action='' method='get'><input type='submit' class='button' name='change_password' value='Change Password'></form>";
@@ -316,16 +316,16 @@ function print_machine_settings() {
 	echo "<div id='machines'>";
 	echo "<h2>My Machines</h2>";
 	echo "<table border=1>";
-	echo "<td>Name</td><td>Host</td><td>Username</td><td>Edit</td><td>Delete</td>";
+	echo "<td class='title'>Name</td><td class='title'>Host</td><td class='title'>Username</td><td class='title'>Edit</td><td class='title'>Delete</td>";
 	echo "<tr>";
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$mn = $row['mname'];
 		$mh = $row['mhost'];
 		$mu = $row['musername'];
 		$mp = $row['mpassword'];
-		echo "<td>".$mn."</td><td>".$mh."</td><td>".$mu."</td>";
-		echo "<td><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Update $mn'></form>";
-		echo "<td><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Delete $mn'></form>";
+		echo "<td class='content'>".$mn."</td><td class='content'>".$mh."</td><td class='content'>".$mu."</td>";
+		echo "<td class='content'><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Update $mn'></form></td>";
+		echo "<td class='contnet'><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Delete $mn'></form></td>";
 		echo "<tr>";
 	}
 	echo "</table>";
