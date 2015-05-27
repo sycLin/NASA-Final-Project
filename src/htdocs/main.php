@@ -39,7 +39,7 @@ function print_header() {
 
 function print_body() {
 	echo "<body>";
-	echo "<h1>webMS</h1><hr>";
+	echo "<h1 id='header'><span>webMS</span></h1><hr>";
 	// echo "<p>Login Succeeded!</p>";
 	echo "<p>Hello, ".$_SESSION['Username']."</p><hr>";
 	print_menu();
@@ -51,14 +51,13 @@ function print_body() {
 		print_killer_form();
 		echo "<hr>";
 		if(isset($_GET['kill_process'])) { // the user wants to kill a process
-			echo "aha! you wanna kill ".$_GET['pid']."?";
 			// kill the process
 			$pid = $_GET['pid'];
 			$tmp = kill_process($pid);
 			if($tmp == 0) { // failed to kill the process $pid
-				echo "<p>Error: process not killed. (pid=$pid)</p>";
+				echo "<p class='warning'>Error: process not killed. (pid=$pid)</p>";
 			} else if($tmp == 1) { // succeeded killing the process $pid
-				echo "<p>The process has been killed successfully. (pid=$pid)</p>";
+				echo "<p class='warning'>The process has been killed successfully. (pid=$pid)</p>";
 			} else { // shoudn't be here!
 				;
 			}
@@ -73,32 +72,32 @@ function print_body() {
 			print_process();
 		}
 	} else if($_SESSION['view'] == "log") {
-		echo "<p>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
+		echo "<p class='warning'>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
 		if(isset($_GET['change_password'])) { // user wants to change his/her password
-			echo "You want to change password?";
+			echo "<p class='warning'>You want to change password?</p>";
 			// ----- print change password form ----- //
 			print_change_password_form();
 		} else if(isset($_GET['edit_machine'])) { // user wants to update machines
 			$cmd = $_GET['edit_machine'];
 			if($cmd[0] == 'U') { // you wanna update information of a certain machine
-				echo "You want to update the machine?";
+				echo "<p class='warning'>You want to update the machine?</p>";
 				// ----- print update machine form ----- //
 				print_update_machine_form();
 			} else if($cmd[0] == 'A') { // you wanna add a machine
-				echo "You want to add a machine?";
+				echo "<p class='warning'>You want to add a machine?</p>";
 				// ----- print add machine form ----- //
 				print_add_machine_form();
 			} else if($cmd[0] == 'D') { // you wanna delete a machine
-				echo "You want to delete a machine?";
+				echo "<p class='warning'>You want to delete a machine?</p>";
 				// ----- print delete machine form ----- //
 				print_delete_machine_form();
 			}
 		} else if(isset($_SESSION['changepassword'])) { // user just tried to change his/her password
 			if($_SESSION['changepassword'] == 0) { // he/she failed
-				echo "<p>Failed to change your password.</p>";
+				echo "<p class='warning'>Failed to change your password.</p>";
 			} else if($_SESSION['changepassword'] == 1) { // he/she succeeded
-				echo "<p>Password Updated Successfully.</p>";
+				echo "<p class='warning'>Password Updated Successfully.</p>";
 			}
 			print_profile_settings();
 			echo "<hr>";
@@ -106,9 +105,9 @@ function print_body() {
 			$_SESSION['changepassword'] = NULL;
 		} else if(isset($_SESSION['updatemachine'])) { //user just tried to update a machine
 			if($_SESSION['updatemachine'] == 0) { // he/she failed
-				echo "<p>Failed to update the machine.</p>";
+				echo "<p class='warning'>Failed to update the machine.</p>";
 			} else if($_SESSION['updatemachine'] == 1) { // he/she succeeded
-				echo "<p>Machine Updated Successfully.</p>";
+				echo "<p class='warning'>Machine Updated Successfully.</p>";
 			}
 			print_profile_settings();
 			echo "<hr>";
@@ -116,9 +115,9 @@ function print_body() {
 			$_SESSION['updatemachine'] = NULL;
 		} else if(isset($_SESSION['addmachine'])) { // user just tried to add a machine
 			if($_SESSION['addmachine'] == 0) { // he/she failed
-				echo "<p>Failed to add a machine.</p>";
+				echo "<p class='warning'>Failed to add a machine.</p>";
 			} else if($_SESSION['addmachine'] == 1) { // he/she succeeded
-				echo "<p>New Machine Added Successfully.</p>";
+				echo "<p class='warning'>New Machine Added Successfully.</p>";
 			}
 			print_profile_settings();
 			echo "<hr>";
@@ -126,9 +125,9 @@ function print_body() {
 			$_SESSION['addmachine'] = NULL;
 		} else if(isset($_SESSION['deletemachine'])) { // user just deleted a machine
 			if($_SESSION['deletemachine'] == 0) { // he/she failed
-				echo "<p>Failed to delete the machine.</p>";
+				echo "<p class='warning'>Failed to delete the machine.</p>";
 			} else if($_SESSION['deletemachine'] == 1) { // he/she succeeded
-				echo "<p>Machine deleted successfully.</p>";
+				echo "<p class='warning'>Machine deleted successfully.</p>";
 			}
 			print_profile_settings();
 			echo "<hr>";
@@ -143,23 +142,26 @@ function print_body() {
 		session_destroy();
 		header("location: welcome.php");
 	} else { // if you're here, ...., you're dying...
-		echo "<p>hi baby, there's something seriously wrong! Please contact me: b01902044@ntu.edu.tw</p>";
+		echo "<p class='warning'>hi baby, there's something seriously wrong! Please contact me: b01902044@ntu.edu.tw</p>";
 	}
 	echo "</body></html>";
 }
 
 /* VIEW: "status", "log", "settings", "logout" */
 function print_menu() {
+	echo "<div id='menu'>";
 	echo "<form action='' method='get'>";
-	echo "<input type='submit' name='changeview' value='Status'>";
-	echo "<input type='submit' name='changeview' value='Log'>";
-	echo "<input type='submit' name='changeview' value='Settings'>";
-	echo "<input type='submit' name='changeview' value='Logout'>";
+	echo "<input type='submit' class='button' name='changeview' value='Status'>";
+	echo "<input type='submit' class='button' name='changeview' value='Log'>";
+	echo "<input type='submit' class='button' name='changeview' value='Settings'>";
+	echo "<input type='submit' class='button' name='changeview' value='Logout'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* settings: which machines? process type? sortedby? count? */
 function print_filter_form() {
+	echo "<div id='filter'>";
 	echo "<p>Filter Settings</p>";
 	echo "<form action='' method='get' id='settings'>";
 	// ----- print machine options ----- //
@@ -215,17 +217,20 @@ function print_filter_form() {
 	}
 	echo "</select>";
 	// ----- end of settings list, now let's have a submit button ----- //
-	echo "<input type='submit' value='Go!'>";
+	echo "<input type='submit' class='button' value='Go!'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* under "status" view, for users to kill processes */
 function print_killer_form() {
+	echo "<div id='killer'>";
 	echo "<p>Killer</p>";
 	echo "<form action='' method='get'>";
 	echo "<label for=''>PID:</label><input type='text' name='pid'>";
-	echo "<input type='submit' name='kill_process' value='Kill It!'>";
+	echo "<input type='submit' class='button' name='kill_process' value='Kill It!'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* kill a certain process with given pid. Return 0 if fail; return 1 if success. */
@@ -289,6 +294,7 @@ function print_profile_settings() {
 	$p = $row['password'];
 	$em = $row['email'];
 	// print profile: username, password, email.
+	echo "<div id='profile'>";
 	echo "<h2>My Profile</h2>";
 	echo "<table border=1>";
 	echo "<td>Username</td><td>".$u."</td><tr>";
@@ -296,7 +302,8 @@ function print_profile_settings() {
 	echo "<td>Email</td><td>".$em."</td><tr>";
 	echo "</table>";
 	// print button for changing password
-	echo "<form action='' method='get'><input type='submit' name='change_password' value='Change Password'></form>";
+	echo "<form action='' method='get'><input type='submit' class='button' name='change_password' value='Change Password'></form>";
+	echo "</div>";
 }
 
 /* for "settings" VIEW */
@@ -306,6 +313,7 @@ function print_machine_settings() {
 	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."'";
 	$result = mysqli_query($db, $query);
 	// print machine info: name, host, username, password, update-button.
+	echo "<div id='machines'>";
 	echo "<h2>My Machines</h2>";
 	echo "<table border=1>";
 	echo "<td>Name</td><td>Host</td><td>Username</td><td>Edit</td><td>Delete</td>";
@@ -316,25 +324,28 @@ function print_machine_settings() {
 		$mu = $row['musername'];
 		$mp = $row['mpassword'];
 		echo "<td>".$mn."</td><td>".$mh."</td><td>".$mu."</td>";
-		echo "<td><form action='' method='get'><input type='submit' name='edit_machine' value='Update $mn'></form>";
-		echo "<td><form action='' method='get'><input type='submit' name='edit_machine' value='Delete $mn'></form>";
+		echo "<td><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Update $mn'></form>";
+		echo "<td><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Delete $mn'></form>";
 		echo "<tr>";
 	}
 	echo "</table>";
 	// print button for adding machines
 	echo "<form action='' method='get'>";
-	echo "<input type='submit' name='edit_machine' value='Add Machine'>";
+	echo "<input type='submit' class='button' name='edit_machine' value='Add Machine'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* print the form for users to change their password */
 function print_change_password_form() {
+	echo "<div>";
 	echo "<h2>Change ".$_SESSION['Username']."'s Password</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<label for=''>Old Password</label><input type='password' name='old_password'><br />";
 	echo "<label for=''>New Password</label><input type='password' name='new_password'><br />";
-	echo "<input type='submit' name='change_password_submit' value='Confirm'>";
+	echo "<input type='submit' class='button' name='change_password_submit' value='Confirm'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* update user's password in DB. Return 0 if fail; return 1 if success */
@@ -368,26 +379,30 @@ function print_update_machine_form() {
 	$tmp = strtok($str, " ");
 	$tmp = strtok(" ");
 	$mn = $tmp;
+	echo "<div>";
 	echo "<h2>Update ".$mn."'s Settings</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
 	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
-	echo "<input type='submit' name='update_machine' value='Update'>";
+	echo "<input type='submit' class='button' name='update_machine' value='Update'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* print the form for users to add a new machine */
 function print_add_machine_form() {
+	echo "<div>";
 	echo "<h2>Add a new machine</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<label for=''>Machine Name</label><input type='text' name='mname'><br />";
 	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
-	echo "<input type='submit' name='add_machine' value='Add'>";
+	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* print the form for users to confirm deleting a machine */
@@ -397,11 +412,13 @@ function print_delete_machine_form() {
 	$tmp = strtok($str, " ");
 	$tmp = strtok(" ");
 	$mn = $tmp;
+	echo "<div>";
 	echo "<h2>Delete this machine: $mn?</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
-	echo "<input type='submit' name='delete_machine' value='Confirm'>";
+	echo "<input type='submit' class='button' name='delete_machine' value='Confirm'>";
 	echo "</form>";
+	echo "</div>";
 }
 
 /* update a machine in DB. Return 0 if fail; return 1 if success. */
