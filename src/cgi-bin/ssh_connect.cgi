@@ -25,7 +25,7 @@ class ProcInfo:
 
 # cgi script requirements
 print "Content-type:text/html\n\n"
-print "<html><head><title>Python CGI, YES!</title></head><body>"
+# print "<html><head><title>Python CGI, YES!</title></head><body>"
 
 # get username and password from HTML form
 form = cgi.FieldStorage()
@@ -129,16 +129,22 @@ else:
 if SettingsCount == "all":
 	SettingsCount = 500
 print "<table border=1>"
-print "<td>PID</td><td>User</td><td>State</td><td>CPU</td><td>MEM</td><td>TIME</td><td>Command</td>"
+print "<td class='title'>PID</td>"
+print "<td class='title'>User</td>"
+print "<td class='title'>State</td>"
+print "<td class='title'>CPU</td>"
+print "<td class='title'>MEM</td>"
+print "<td class='title'>TIME</td>"
+print "<td class='title'>Command</td>"
 print "<tr>"
 for i in range(int(SettingsCount)):
-	print "<td>"+str(proc_list[i].pid)+"</td>",
-	print "<td>"+proc_list[i].user+"</td>",
-	print "<td>"+proc_list[i].state+"</td>",
-	print "<td>"+str(proc_list[i].cpu)+"</td>",
-	print "<td>"+str(proc_list[i].memory)+"</td>",
-	print "<td>"+str(proc_list[i].time)+"</td>",
-	print "<td>"+proc_list[i].command+"</td>",
+	print "<td class='content'>"+str(proc_list[i].pid)+"</td>",
+	print "<td class='content'>"+proc_list[i].user+"</td>",
+	print "<td class='content'>"+proc_list[i].state+"</td>",
+	print "<td class='content'>"+str(proc_list[i].cpu)+"</td>",
+	print "<td class='content'>"+str(proc_list[i].memory)+"</td>",
+	print "<td class='content'>"+str(proc_list[i].time)+"</td>",
+	print "<td class='content'>"+proc_list[i].command+"</td>",
 	print "<tr>"
 print "</table>"
 # Don't print the whole thing out b/c it's html
@@ -163,5 +169,5 @@ if tmp != "":
 ssh.Disconnect()
 
 # cgi script requirements
-print "</body></html>"
+# print "</body></html>"
 

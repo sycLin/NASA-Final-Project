@@ -19,9 +19,9 @@ function print_body($LRflag, $Errflag) {
 	echo "<body><h1 id='header'><span>webMS</span></h1><hr>";
 	if($Errflag == 1) {
 		if($LRflag == 0) { // login error
-			echo "<p>Invalid Username and/or Password!</p>";
+			echo "<p class='warning'>Invalid Username and/or Password!</p>";
 		} else { // registration error
-			echo "<p>This username is not available, please choose another one.</p>";
+			echo "<p class='warning'>This username is not available, please choose another one.</p>";
 		}
 	}
 	if($LRflag == 0) { // login page
@@ -38,10 +38,11 @@ function print_login_form() {
 	echo "<form action='' method='POST'>";
 	echo "<label>Username:</label><input type='text' name='username' placeholder='Your Username'><br />";
 	echo "<label>Password:</label><input type='password' name='password' placeholder='Your Password'><br />";	
-	echo "<input type='submit' class='button' value='Login'>";
+	echo "<label></label><input type='submit' class='button' value='Login'>";
 	echo "</form><hr>";
-	echo "<p>Not a member yet?</p>";
-	echo "<form action='' method='GET'><input type='submit' class='button' name='entrance' value='Register Here'></form>";
+	echo "<span>Not a member yet?&nbsp;";
+	echo "<form class='complementary' action='' method='GET'><input type='submit' class='button' name='entrance' value='Register Here'></form>";
+	echo "</span>";
 	echo "</div>";
 }
 
@@ -51,10 +52,11 @@ function print_register_form() {
 	echo "<form action='' method='POST'>";
 	echo "<label>Username:</label><input type='text' name='username' placeholder='Pick a username!'><br />";
 	echo "<label>E-mail:</label><input type='text' name='email' placeholder='Must enter a valid email!'><br />";
-	echo "<input type='submit' class='button' value='Register'>";
+	echo "<label></label><input type='submit' class='button' value='Register'>";
 	echo "</form><hr>";
-	echo "<p>Already a member?</p>";
-	echo "<form action='' method='GET'><input type='submit' class='button' name='entrance' value='LogIn Here'></form>";
+	echo "<span>Already a member?&nbsp;";
+	echo "<form class='complementary' action='' method='GET'><input type='submit' class='button' name='entrance' value='Login Here'></form>";
+	echo "</span>";
 	echo "</div>";
 }
 
