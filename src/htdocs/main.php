@@ -25,11 +25,19 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	array_push($machine_list, $row['mname']);
 }
 
+
 /* set up some variables for settings */
+// for (proc) filter
 $_SESSION['current_machine'] = $machine_list[0];
 $_SESSION['current_proc_type'] = $proc_type_list[0];
 $_SESSION['current_sortedby'] = $sortedby_list[0];
 $_SESSION['current_count'] = $count_list[0];
+// for user filter
+$_SESSION['current_showip'] = "1";
+$_SESSION['current_showlogintime'] = "1";
+$_SESSION['current_showidletime'] = "1";
+$_SESSION['current_showcommand'] = "1";
+
 
 function print_header() {
 	echo "<html><head>";
@@ -74,6 +82,9 @@ function print_body() {
 		}
 	} else if($_SESSION['view'] == "userlist") {
 		echo "<p class='warning'>This part is still under construction. Please refer to Hank!</p>";
+		print_user_filter_form();
+		echo "<hr>";
+		print_user_list();
 	} else if($_SESSION['view'] == "log") {
 		echo "<p class='warning'>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
@@ -277,6 +288,95 @@ function print_process() {
 	$cgi_request .= "&&settings_proc_type=".$_SESSION['current_proc_type'];
 	$cgi_request .= "&&settings_sortedby=".$_SESSION['current_sortedby'];
 	$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	$data = file_get_contents($cgi_request, 0);
+	echo $data;
+}
+
+/* filter for displaying online user info */
+function print_user_filter_form() {
+	echo "<div id='filter'>";
+	echo "<p>Filter Settings</p>";
+	echo "<form action='' method='get' id='settings'>";
+	// ----- print machine options ----- //
+	echo "<label for=''>Machines:</label>";
+	echo "<select name='machine' form_id='settings'>";
+	global $machine_list;
+	for($i = 0; $i < count($machine_list); $i = $i + 1) {
+		$tmp = $machine_list[$i];
+		if($tmp == $_SESSION['current_machine']) {
+			echo "<option value='$tmp' selected='selected'>$tmp</option>";
+		} else {
+			echo "<option value='$tmp'>$tmp</option>";
+		}
+	}
+	echo "</select>";
+	// ----- print ip options ----- //
+	echo "<label for=''>Show IP?</label>";
+	echo "<select name='showip' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print login (login time) options ----- //
+	echo "<label for=''>Show LoginTime?</label>";
+	echo "<select name='showlogintime' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print idle (idle time) options ----- //
+	echo "<label for=''>Show IdleTime?</label>";
+	echo "<select name='showidletime' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print what (command) options ----- //
+	echo "<label for=''>Show Command?</label>";
+	echo "<select name='showcommand' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print count options ----- //
+	echo "<label for=''>Count:</label>";
+	echo "<select name='count' form_id='settings'>";
+	global $count_list;
+	for($i = 0; $i < count($count_list); $i = $i + 1) {
+		$tmp = $count_list[$i];
+		if($tmp == $_SESSION['current_count']) {
+			echo "<option value='$tmp' selected='selected'>$tmp</option>";
+		} else {
+			echo "<option value='$tmp'>$tmp</option>'";
+		}
+	}
+	echo "</select>";
+	// ----- end of settings list, now let's have a submit button ----- //
+	echo "<input type='submit' class='button' value='Go!'>";
+	echo "</form>";
+	echo "</div>";
+}
+
+/* print the online user list */
+function print_user_list() {
+	// lets test the variables
+	// echo "hello current => ".$_SESSION['current_machine']." ".$_SESSION['current_proc_type']." ".$_SESSION['current_sortedby']." ".$_SESSION['current_count'];
+	// get machine information from DB
+	global $db;
+	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."' and mname='".$_SESSION['current_machine']."'";
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// get machine: host, u, p
+	$mh = $row['mhost'];
+	$mu = $row['musername'];
+	$mp = $row['mpassword'];
+	// form the CGI request
+	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_userlist.cgi?";
+	$cgi_request .= "Host=".$mh;
+	$cgi_request .= "&&Username=".$mu;
+	$cgi_request .= "&&Password=".$mp;
+	$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	$cgi_request .= "&&settings_ip=".$_SESSION['current_showip'];
+	$cgi_request .= "&&settings_login=".$_SESSION['current_showlogintime'];
+	$cgi_request .= "&&settings_idle=".$_SESSION['current_showidletime'];
+	$cgi_request .= "&&settings_what=".$_SESSION['current_showcommand'];
+	echo "<p class='warning'>You are requesting: $cgi_request </p>";
 	$data = file_get_contents($cgi_request, 0);
 	echo $data;
 }
@@ -552,6 +652,16 @@ if($_POST) {
 		$_SESSION['current_proc_type'] = $_GET['proc_type'];
 		$_SESSION['current_sortedby'] = $_GET['sortedby'];
 		$_SESSION['current_count'] = $_GET['count'];
+		print_header();
+		print_body();
+	} else if(isset($_GET['showip'])) { // the user is under the USERLIST view and change the settings
+		$_SESSION['current_machine'] = $_GET['machine'];
+		$_SESSION['current_showip'] = $_GET['showip'];
+		$_SESSION['current_showlogintime'] = $_GET['showlogintime'];
+		$_SESSION['current_showidletime'] = $_GET['showidletime'];
+		$_SESSION['current_showcommand'] = $_GET['showcommand'];
+		$_SESSION['current_count'] = $_GET['count'];
+		$_SESSION['view'] = "userlist";
 		print_header();
 		print_body();
 	} else if(isset($_GET['change_password'])) { // the user is under the SETTINGS view and wanna update password
