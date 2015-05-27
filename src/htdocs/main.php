@@ -73,7 +73,7 @@ function print_body() {
 			print_process();
 		}
 	} else if($_SESSION['view'] == "userlist") {
-		echo "<p class=='warning'>This part is still under construction. Please refer to Hank!</p>";
+		echo "<p class='warning'>This part is still under construction. Please refer to Hank!</p>";
 	} else if($_SESSION['view'] == "log") {
 		echo "<p class='warning'>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
