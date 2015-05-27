@@ -7,15 +7,23 @@ html {
 hr {
 	padding: 0;
 	margin: 0;
+	margin-bottom: 10px;
 }
 
 body {
-	font: 30px georgia, sans-serif;
+	font: 25px georgia, sans-serif;
 	line-height: 1.88889;
 	color: #555753; 
 	/* background: #fff url(blossoms.jpg) no-repeat bottom right; */
 	margin: 0;
 	padding: 0;
+}
+
+label {
+	display: inline-block;
+	text-align: right;
+	
+	width: 180px;
 }
 
 span {
@@ -27,12 +35,19 @@ span {
 div {
 	padding: 10px;
 	width: 35%;
-	height: 50%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 100px;
 	border-style:solid;
 	border-width:1px;
+}
+
+div span {
+	font-size: 15px;
+}
+
+.complementary {
+	display:inline-block;
 }
 
 #header {
@@ -51,9 +66,19 @@ div {
 	letter-spacing: 0.02em;
 }
 
+span .button {
+	background: #6688CC;
+    padding: 5px 13px 5px 13px;
+    color: #FFF;
+    font-size: 10px;
+    box-shadow: 1px 1px 5px #888;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #4488CC;
+    cursor: pointer;
+}
+
 .button {
 	background: #6688CC;
-    
     padding: 10px 25px 10px 25px;
     color: #FFF;
     font-size: 15px;
@@ -64,10 +89,10 @@ div {
 }
 
 .button:hover {
-	transition: all 0.5s ease;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
 	background-color: #E27575; 
 	box-shadow: 0px 0px 0px;
 	/* background-color: #5588CC; */
@@ -77,11 +102,13 @@ input[type='text'], input[type='password']{
 	border: 1px solid #DADADA;
     color: #888;
     height: 35px;
+    /* 
     margin-bottom: 16px;
     margin-right: 6px;
     margin-top: 2px;
+    */
     outline: 0 none;
-    padding: 3px 3px 3px 5px;
+    padding: 3px 3px 3px 5px; 
     width: 50%;
     font-size: 12px;
     line-height:15px;
