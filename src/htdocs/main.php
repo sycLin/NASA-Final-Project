@@ -379,9 +379,9 @@ function print_update_machine_form() {
 	echo "<h2>Update ".$mn."'s Settings</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
-	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
-	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
-	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
+	echo "<label for=''>Host:</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
+	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='submit' class='button' name='update_machine' value='Update'>";
 	echo "</form>";
 	echo "</div>";
@@ -392,10 +392,10 @@ function print_add_machine_form() {
 	echo "<div id='addmc'>";
 	echo "<h2>Add a new machine</h2>";
 	echo "<form action='' method='POST'>";
-	echo "<label for=''>Machine Name</label><input type='text' name='mname'><br />";
-	echo "<label for=''>Host</label><input type='text' name='mhost'><br />";
-	echo "<label for=''>Username</label><input type='text' name='musername'><br />";
-	echo "<label for=''>Password</label><input type='password' name='mpassword'><br />";
+	echo "<label for=''>Machine Name:</label><input type='text' name='mname'><br />";
+	echo "<label for=''>Host:</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
+	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
 	echo "</form>";
 	echo "</div>";
