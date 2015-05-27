@@ -534,7 +534,7 @@ if($_POST) {
 	if(isset($_GET['changeview'])) { // the user is changing view
 		if($_GET['changeview'] == "Status") { // display process information
 			$_SESSION['view'] = "status";
-		} else if($_GET['changeview'] == "userlist") { // display online user list
+		} else if($_GET['changeview'] == "User List") { // display online user list
 			$_SESSION['view'] = "userlist";
 		} else if($_GET['changeview'] == "Log") { // display killed processes
 			$_SESSION['view'] = "log";
