@@ -75,21 +75,17 @@ function print_body() {
 		echo "<p class='warning'>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
 		if(isset($_GET['change_password'])) { // user wants to change his/her password
-			echo "<p class='warning'>You want to change password?</p>";
 			// ----- print change password form ----- //
 			print_change_password_form();
 		} else if(isset($_GET['edit_machine'])) { // user wants to update machines
 			$cmd = $_GET['edit_machine'];
 			if($cmd[0] == 'U') { // you wanna update information of a certain machine
-				echo "<p class='warning'>You want to update the machine?</p>";
 				// ----- print update machine form ----- //
 				print_update_machine_form();
 			} else if($cmd[0] == 'A') { // you wanna add a machine
-				echo "<p class='warning'>You want to add a machine?</p>";
 				// ----- print add machine form ----- //
 				print_add_machine_form();
 			} else if($cmd[0] == 'D') { // you wanna delete a machine
-				echo "<p class='warning'>You want to delete a machine?</p>";
 				// ----- print delete machine form ----- //
 				print_delete_machine_form();
 			}
