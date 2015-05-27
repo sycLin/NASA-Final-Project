@@ -338,7 +338,7 @@ function print_machine_settings() {
 
 /* print the form for users to change their password */
 function print_change_password_form() {
-	echo "<div>";
+	echo "<div id='chpw'>";
 	echo "<h2>Change ".$_SESSION['Username']."'s Password</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<label for=''>Old Password</label><input type='password' name='old_password'><br />";
@@ -379,7 +379,7 @@ function print_update_machine_form() {
 	$tmp = strtok($str, " ");
 	$tmp = strtok(" ");
 	$mn = $tmp;
-	echo "<div>";
+	echo "<div id='chmc'>";
 	echo "<h2>Update ".$mn."'s Settings</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
@@ -393,7 +393,7 @@ function print_update_machine_form() {
 
 /* print the form for users to add a new machine */
 function print_add_machine_form() {
-	echo "<div>";
+	echo "<div id='addmc'>";
 	echo "<h2>Add a new machine</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<label for=''>Machine Name</label><input type='text' name='mname'><br />";
@@ -412,7 +412,7 @@ function print_delete_machine_form() {
 	$tmp = strtok($str, " ");
 	$tmp = strtok(" ");
 	$mn = $tmp;
-	echo "<div>";
+	echo "<div id='demc'>";
 	echo "<h2>Delete this machine: $mn?</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
