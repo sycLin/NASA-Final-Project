@@ -25,11 +25,19 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	array_push($machine_list, $row['mname']);
 }
 
+
 /* set up some variables for settings */
+// for (proc) filter
 $_SESSION['current_machine'] = $machine_list[0];
 $_SESSION['current_proc_type'] = $proc_type_list[0];
 $_SESSION['current_sortedby'] = $sortedby_list[0];
 $_SESSION['current_count'] = $count_list[0];
+// for user filter
+$_SESSION['current_showip'] = "1";
+$_SESSION['current_showlogintime'] = "1";
+$_SESSION['current_showidletime'] = "1";
+$_SESSION['current_showcommand'] = "1";
+
 
 function print_header() {
 	echo "<html><head>";
@@ -326,6 +334,19 @@ function print_user_filter_form() {
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	// ----- print count options ----- //
+	echo "<label for=''>Count:</label>";
+	echo "<select name='count' form_id='settings'>";
+	global $count_list;
+	for($i = 0; $i < count($count_list); $i = $i + 1) {
+		$tmp = $count_list[$i];
+		if($tmp == $_SESSION['current_count']) {
+			echo "<option value='$tmp' selected='selected'>$tmp</option>";
+		} else {
+			echo "<option value='$tmp'>$tmp</option>'";
+		}
+	}
+	echo "</select>";
 	// ----- end of settings list, now let's have a submit button ----- //
 	echo "<input type='submit' class='button' value='Go!'>";
 	echo "</form>";
@@ -607,6 +628,15 @@ if($_POST) {
 		$_SESSION['current_machine'] = $_GET['machine'];
 		$_SESSION['current_proc_type'] = $_GET['proc_type'];
 		$_SESSION['current_sortedby'] = $_GET['sortedby'];
+		$_SESSION['current_count'] = $_GET['count'];
+		print_header();
+		print_body();
+	} else if(isset($_GET['showip'])) { // the user is under the USERLIST view and change the settings
+		$_SESSION['current_machine'] = $_GET['machine'];
+		$_SESSION['current_showip'] = $_GET['showip'];
+		$_SESSION['current_showlogintime'] = $_GET['showlogintime'];
+		$_SESSION['current_showidletime'] = $_GET['showidletime'];
+		$_SESSION['current_showcommand'] = $_GET['showcommand'];
 		$_SESSION['current_count'] = $_GET['count'];
 		print_header();
 		print_body();
