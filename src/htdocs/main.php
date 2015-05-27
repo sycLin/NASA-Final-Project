@@ -317,25 +317,25 @@ function print_user_filter_form() {
 	echo "</select>";
 	// ----- print ip options ----- //
 	echo "<label for=''>Show IP?</label>";
-	echo "select name='showip' form_id='settings'>";
+	echo "<select name='showip' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
 	// ----- print login (login time) options ----- //
 	echo "<label for=''>Show LoginTime?</label>";
-	echo "select name='showlogintime' form_id='settings'>";
+	echo "<select name='showlogintime' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
 	// ----- print idle (idle time) options ----- //
 	echo "<label for=''>Show IdleTime?</label>";
-	echo "select name='showidletime' form_id='settings'>";
+	echo "<select name='showidletime' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
 	// ----- print what (command) options ----- //
 	echo "<label for=''>Show Command?</label>";
-	echo "select name='showcommand' form_id='settings'>";
+	echo "<select name='showcommand' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
