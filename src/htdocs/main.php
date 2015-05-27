@@ -367,7 +367,7 @@ function print_user_list() {
 	$mu = $row['musername'];
 	$mp = $row['mpassword'];
 	// form the CGI request
-	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_userlist.cgi?";
+	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_userlist2.cgi?";
 	$cgi_request .= "Host=".$mh;
 	$cgi_request .= "&&Username=".$mu;
 	$cgi_request .= "&&Password=".$mp;
