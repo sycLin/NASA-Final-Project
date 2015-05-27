@@ -22,11 +22,10 @@ Host = form.getvalue('Host')
 Username = form.getvalue('Username')
 Password = form.getvalue('Password')
 SettingsCount =  form.getvalue('settings_count')
-ShowIP = form.getvalue('setting_ip')
-ShowLogin = form.getvalue('setting_login')
-ShowIdle = form.getvalue('setting_idle')
-ShowWhat = form.getvalue('setting_what')
-Pid = form.getvalue('Pid')
+ShowIP = form.getvalue('settings_ip')
+ShowLogin = form.getvalue('settings_login')
+ShowIdle = form.getvalue('settings_idle')
+ShowWhat = form.getvalue('settings_what')
 Port = 22
 
 ssh = chilkat.CkSsh()
@@ -86,7 +85,7 @@ lines = cmdOutput.splitlines()
 for i in lines:
 	newUser = UserInfo(i.split())
 	user_list.append(newUser)
-print "<table border=1>"
+
 Showlist = "<td>User</td>"
 if ShowIP == "1"
 	Showlist += "<td>IP</td>"
@@ -96,8 +95,8 @@ if ShowIdle == "1"
 	Showlist += "<td>Idle time</td>"
 if ShowWhat == "1"
 	Showlist += "<td>What</td>"
+print "<table border=1>"
 print Showlist
-print "<td>User</td><td>IP</td>"
 print "<tr>"
 
 for i in range(int(SettingsCount)):
