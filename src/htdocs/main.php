@@ -355,7 +355,30 @@ function print_user_filter_form() {
 
 /* print the online user list */
 function print_user_list() {
-	;
+	// lets test the variables
+	// echo "hello current => ".$_SESSION['current_machine']." ".$_SESSION['current_proc_type']." ".$_SESSION['current_sortedby']." ".$_SESSION['current_count'];
+	// get machine information from DB
+	global $db;
+	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."' and mname='".$_SESSION['current_machine']."'";
+	$result = mysqli_query($db, $query);
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// get machine: host, u, p
+	$mh = $row['mhost'];
+	$mu = $row['musername'];
+	$mp = $row['mpassword'];
+	// form the CGI request
+	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_userlist.cgi?";
+	$cgi_request .= "Host=".$mh;
+	$cgi_request .= "&&Username=".$mu;
+	$cgi_request .= "&&Password=".$mp;
+	$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	$cgi_request .= "&&settings_ip=".$_SESSION['current_showip'];
+	$cgi_request .= "&&settings_login=".$_SESSION['current_showlogintime'];
+	$cgi_request .= "&&settings_idle=".$_SESSION['current_showidletime'];
+	$cgi_request .= "&&settings_what=".$_SESSION['current_showcommand'];
+	echo "<p class='warning'>You are requesting: $cgi_request </p>";
+	$data = file_get_contents($cgi_request, 0);
+	echo $data;
 }
 
 /* for "settings" VIEW */
