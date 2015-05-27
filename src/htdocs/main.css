@@ -16,6 +16,10 @@ p {
 	font-family: Verdana;
 }
 
+p.warning {
+	color:red;
+}
+
 
 #header {
 	margin: 0;
@@ -81,7 +85,9 @@ p {
 }
 
 select {
-	background: #FFF url('down-arrow.png') no-repeat right;
+
+	overflow: hidden;
+	/* background: url('down_arrow.png') no-repeat right #ddd; */
     appearance:none;
     -webkit-appearance:none; 
     -moz-appearance: none;
@@ -176,7 +182,7 @@ label[for=count] {
 table {
 	border-collapse: collapse;
 	border: solid;
-    border-collapse: collapse;
+	border-bottom: 5px;
     border-spacing: 0;
     font: normal 20px Arial, sans-serif;
     width: 40%;
@@ -187,11 +193,11 @@ td {
 	padding: 10px;
 }
 
-tr:first-child {
+tr td.title {
 	background-color: #CCEEEE;
 }
 
-tr:first-child:hover {
+tr td.title {
 	background-color: #CCEEEE;
 }
 
@@ -201,6 +207,17 @@ tr:hover {
 
 /*********************/
 
+
+
+/**** settings.html ****/
+
+
+
+
+
+
+
+/***********************/
 
 
 
