@@ -212,14 +212,54 @@ tr:hover {
 /**** settings.html ****/
 
 
-
-
-
-
-
 /***********************/
 
 
+
+
+
+/**** change_password.html ****/
+input[type='text'], input[type='password']{
+	border: 2px solid #DADADA;
+    color: #888;
+    height: 35px;
+    position: relative;
+    top: -5px;
+    filter:alpha(opacity=80);  
+    -moz-opacity: 0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;
+    /* 
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    */
+    outline: 0 none;
+    padding: 5px 1px 3px 5px; 
+    width: 15%;
+    font: 12px Arial, sans-serif;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+
+#chpw h2 {
+	margin-left: 30px;
+}
+
+#chpw label {
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+}
+
+#chpw input[type='submit'] {
+	display: inline-block;
+	margin-left: 150px;
+}
+
+/*****************************/
 
 
 
