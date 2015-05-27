@@ -337,8 +337,8 @@ function print_change_password_form() {
 	echo "<div id='chpw'>";
 	echo "<h2>Change ".$_SESSION['Username']."'s Password</h2>";
 	echo "<form action='' method='POST'>";
-	echo "<label for=''>Old Password</label><input type='password' name='old_password'><br />";
-	echo "<label for=''>New Password</label><input type='password' name='new_password'><br />";
+	echo "<label for=''>Old Password:</label><input type='password' name='old_password'><br />";
+	echo "<label for=''>New Password:</label><input type='password' name='new_password'><br />";
 	echo "<input type='submit' class='button' name='change_password_submit' value='Confirm'>";
 	echo "</form>";
 	echo "</div>";
