@@ -74,6 +74,9 @@ function print_body() {
 		}
 	} else if($_SESSION['view'] == "userlist") {
 		echo "<p class='warning'>This part is still under construction. Please refer to Hank!</p>";
+		print_user_filter_form();
+		echo "<hr>";
+		print_user_list();
 	} else if($_SESSION['view'] == "log") {
 		echo "<p class='warning'>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
@@ -279,6 +282,72 @@ function print_process() {
 	$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
 	$data = file_get_contents($cgi_request, 0);
 	echo $data;
+}
+
+/* filter for displaying online user info */
+function print_user_filter_form() {
+	echo "<div id='filter'>";
+	echo "<p>Filter Settings</p>";
+	echo "<form action='' method='get' id='settings'>";
+	// ----- print machine options ----- //
+	echo "<label for=''>Machines:</label>";
+	echo "<select name='machine' form_id='settings'>";
+	global $machine_list;
+	for($i = 0; $i < count($machine_list); $i = $i + 1) {
+		$tmp = $machine_list[$i];
+		if($tmp == $_SESSION['current_machine']) {
+			echo "<option value='$tmp' selected='selected'>$tmp</option>";
+		} else {
+			echo "<option value='$tmp'>$tmp</option>";
+		}
+	}
+	echo "</select>";
+	// ----- print process type options ----- //
+	echo "<label for=''>Process Type:</label>";
+	echo "<select name='proc_type' form_id='settings'>";
+	global $proc_type_list;
+	for($i = 0; $i < count($proc_type_list); $i = $i + 1) {
+		$tmp = $proc_type_list[$i];
+		if($tmp == $_SESSION['current_proc_type']) {
+			echo "<option value='$tmp' selected='selected'>$tmp</option>";
+		} else {
+			echo "<option value='$tmp'>$tmp</option>";
+		}
+	}
+	echo "</select>";
+	// ----- print ip options ----- //
+	echo "<label for=''>Show IP?</label>";
+	echo "select name='showip' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print login (login time) options ----- //
+	echo "<label for=''>Show LoginTime?</label>";
+	echo "select name='showlogintime' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print idle (idle time) options ----- //
+	echo "<label for=''>Show IdleTime?</label>";
+	echo "select name='showidletime' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- print what (command) options ----- //
+	echo "<label for=''>Show Command?</label>";
+	echo "select name='showcommand' form_id='settings'>";
+	echo "<option value='1' selected='selected'>Yes</option>";
+	echo "<option value='0'>No</option>";
+	echo "</select>";
+	// ----- end of settings list, now let's have a submit button ----- //
+	echo "<input type='submit' class='button' value='Go!'>";
+	echo "</form>";
+	echo "</div>";
+}
+
+/* print the online user list */
+function print_user_list() {
+	;
 }
 
 /* for "settings" VIEW */
