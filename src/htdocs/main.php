@@ -638,6 +638,7 @@ if($_POST) {
 		$_SESSION['current_showidletime'] = $_GET['showidletime'];
 		$_SESSION['current_showcommand'] = $_GET['showcommand'];
 		$_SESSION['current_count'] = $_GET['count'];
+		$_SESSION['view'] = "userlist";
 		print_header();
 		print_body();
 	} else if(isset($_GET['change_password'])) { // the user is under the SETTINGS view and wanna update password
