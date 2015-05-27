@@ -5,45 +5,78 @@ html {
 }
 
 hr {
-	padding: 0;
-	margin: 0;
-	margin-bottom: 10px;
+    padding: 0;
+    margin: 0;
+    border-style: none;
+    border-width: 1px;
+}
+
+div hr {
+    padding: 0;
+    margin: 0;
+    margin: 15px;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
 }
 
 body {
-	font: 25px georgia, sans-serif;
+    background-image: url("img/Foggy_Forest.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: cover;
+    background-position: -10px -30px;
+
+	font: 25px Monaco, sans-serif;
 	line-height: 1.88889;
 	color: #555753; 
-	/* background: #fff url(blossoms.jpg) no-repeat bottom right; */
+
 	margin: 0;
 	padding: 0;
 }
 
 label {
+    color: #333;
 	display: inline-block;
 	text-align: right;
-	
 	width: 180px;
 }
 
 span {
-	display: inline-block;
+    display: inline-block;
 	vertical-align: middle;
 	line-height: 150%;
 }
 
 div {
-	padding: 10px;
+    color: #444;
+	padding: 22px;
 	width: 35%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 100px;
-	border-style:solid;
-	border-width:1px;
+    margin-left: auto;
+    margin-right: auto;
+	margin-top: 130px;
+	border-style: solid;
+	border-width: 2px;
+    opacity: 0.85;
 }
 
 div span {
+    color: #333;
+    position: relative;
+    top: 10px;
+	left: 15px;
 	font-size: 15px;
+    line-height: 100%;
+}
+
+.warning {
+    font: 25px Monaco, serif; 
+    font-weight: 10;
+    color: #FF0000;
+    text-align: center;
 }
 
 .complementary {
@@ -51,37 +84,49 @@ div span {
 }
 
 #header {
+    filter:alpha(opacity=60);  
+    -moz-opacity: 0.6;  
+    -khtml-opacity: 0.6;  
+    opacity: 0.6;
 	margin: 0;
 	padding: 0;
 	text-align: center;
 	width: 100%;
-	height: 13%;
-	font: 60px Arial, Verdana, serif; 
-
+	height: auto;
+	font: 60px Cambria, Verdana, serif; 
 
 	font-weight: 100;
-	color: #FFFFFF;
-	background-color: #AAAAAA; 
-	
+	color: #FFF;
+    background-color: #000;
+
 	letter-spacing: 0.02em;
 }
 
+#header:hover {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #AAA;
+}
+
 span .button {
+    color: #FFF;
+    font: 10px Monaco, sans-serif;
 	background: #6688CC;
     padding: 5px 13px 5px 13px;
-    color: #FFF;
-    font-size: 10px;
-    box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
+    margin-left: -2px;
+    margin-top: -1px;
+    box-shadow: 1px 1px 5px #888;
     text-shadow: 1px 1px 1px #4488CC;
     cursor: pointer;
 }
 
 .button {
 	background: #6688CC;
-    padding: 10px 25px 10px 25px;
+    padding: 6px 25px 6px 25px;
     color: #FFF;
-    font-size: 15px;
+    font: 17px Monaco, sans-serif;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
     text-shadow: 1px 1px 1px #4488CC;
@@ -95,27 +140,37 @@ span .button {
 	-o-transition: all 0.3s ease;
 	background-color: #E27575; 
 	box-shadow: 0px 0px 0px;
+    position: relative;
+    top: 1px;
+    left: 1px;
 	/* background-color: #5588CC; */
 }
 
 input[type='text'], input[type='password']{
-	border: 1px solid #DADADA;
+	border: 2px solid #DADADA;
     color: #888;
     height: 35px;
+    position: relative;
+    top: -5px;
+    filter:alpha(opacity=80);  
+    -moz-opacity: 0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;
     /* 
     margin-bottom: 16px;
     margin-right: 6px;
     margin-top: 2px;
     */
     outline: 0 none;
-    padding: 3px 3px 3px 5px; 
+    padding: 5px 1px 3px 5px; 
     width: 50%;
-    font-size: 12px;
+    font: 12px Arial, sans-serif;
     line-height:15px;
     box-shadow: inset 0px 1px 4px #ECECEC;
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
     -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }
+
 
 /* Basic Grey 
 .basic-grey {
