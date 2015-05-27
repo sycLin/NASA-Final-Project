@@ -5,6 +5,7 @@ session_start();
 
 /* "VIEW" variable -> default to be "status". */
 /* status: display process information (default) */
+/* userlist: dispaly online user information */
 /* log: display the killed processes */
 /* settings: display settings */
 /* logout: the user wants to logout */
@@ -71,6 +72,8 @@ function print_body() {
 		} else {
 			print_process();
 		}
+	} else if($_SESSION['view'] == "userlist") {
+		echo "<p class=='warning'>This part is still under construction. Please refer to Hank!</p>";
 	} else if($_SESSION['view'] == "log") {
 		echo "<p class='warning'>A Ha! You're now viewing LOG, but there's nothing to show you currently :P</p>";
 	} else if($_SESSION['view'] == "settings") {
@@ -148,6 +151,7 @@ function print_menu() {
 	echo "<div id='menu'>";
 	echo "<form action='' method='get'>";
 	echo "<input type='submit' class='button' name='changeview' value='Status'>";
+	echo "<input type='submit' class='button' name='changeview' value='User List'>";
 	echo "<input type='submit' class='button' name='changeview' value='Log'>";
 	echo "<input type='submit' class='button' name='changeview' value='Settings'>";
 	echo "<input type='submit' class='button' name='changeview' value='Logout'>";
