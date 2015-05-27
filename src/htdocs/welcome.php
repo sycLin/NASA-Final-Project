@@ -38,10 +38,11 @@ function print_login_form() {
 	echo "<form action='' method='POST'>";
 	echo "<label>Username:</label><input type='text' name='username' placeholder='Your Username'><br />";
 	echo "<label>Password:</label><input type='password' name='password' placeholder='Your Password'><br />";	
-	echo "<input type='submit' class='button' value='Login'>";
+	echo "<label></label><input type='submit' class='button' value='Login'>";
 	echo "</form><hr>";
-	echo "<p>Not a member yet?</p>";
-	echo "<form action='' method='GET'><input type='submit' class='button' name='entrance' value='Register Here'></form>";
+	echo "<span>Not a member yet?&nbsp;";
+	echo "<form class='complementary' action='' method='GET'><input type='submit' class='button' name='entrance' value='Register Here'></form>";
+	echo "</span>";
 	echo "</div>";
 }
 
