@@ -39,7 +39,7 @@ body {
 }
 
 label {
-    color: #333;
+    color: #444;
 	display: inline-block;
 	text-align: right;
 	width: 180px;
@@ -52,19 +52,23 @@ span {
 }
 
 div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 230px;
+    margin-top: -115px;
+    margin-left: -225px;
     color: #444;
 	padding: 22px;
-	width: 35%;
-    margin-left: auto;
-    margin-right: auto;
-	margin-top: 130px;
 	border-style: solid;
 	border-width: 2px;
-    opacity: 0.85;
+    background: rgba(255, 255, 255, 0.4);
+    _position: absolute;
 }
 
 div span {
-    color: #333;
+    color: #444;
     position: relative;
     top: 10px;
 	left: 15px;
@@ -73,10 +77,25 @@ div span {
 }
 
 .warning {
-    font: 25px Monaco, serif; 
-    font-weight: 10;
-    color: #FF0000;
     text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 30px;
+    margin-top: -155px;
+    margin-left: -225px;
+    color: #EE0000;
+    font: 20px Monaco, serif; 
+    font-weight: 10;
+    border-color: #444;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-top: 0px;
+    border-style: solid;
+    border-width: 2px;
+    background: rgba(255, 255, 255, 0.4);
+    _position: absolute;
 }
 
 .complementary {
@@ -112,7 +131,7 @@ div span {
 span .button {
     color: #FFF;
     font: 10px Monaco, sans-serif;
-	background: #6688CC;
+	background: #5050DD;
     padding: 5px 13px 5px 13px;
     border-radius: 5px;
     margin-left: -2px;
@@ -123,7 +142,7 @@ span .button {
 }
 
 .button {
-	background: #6688CC;
+	background: #5050DD;
     padding: 6px 25px 6px 25px;
     color: #FFF;
     font: 17px Monaco, sans-serif;
@@ -138,7 +157,7 @@ span .button {
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
-	background-color: #E27575; 
+	background-color: #E26565; 
 	box-shadow: 0px 0px 0px;
     position: relative;
     top: 1px;
@@ -147,15 +166,12 @@ span .button {
 }
 
 input[type='text'], input[type='password']{
-	border: 2px solid #DADADA;
-    color: #888;
+	border: 2px solid #888888;
+    color: #777;
     height: 35px;
     position: relative;
     top: -5px;
-    filter:alpha(opacity=80);  
-    -moz-opacity: 0.8;  
-    -khtml-opacity: 0.8;  
-    opacity: 0.8;
+    left: 1px;
     /* 
     margin-bottom: 16px;
     margin-right: 6px;
@@ -164,13 +180,12 @@ input[type='text'], input[type='password']{
     outline: 0 none;
     padding: 5px 1px 3px 5px; 
     width: 50%;
-    font: 12px Arial, sans-serif;
-    line-height:15px;
+    font: 13px Arial, sans-serif;
+    line-height: 15px;
     box-shadow: inset 0px 1px 4px #ECECEC;
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
     -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }
-
 
 /* Basic Grey 
 .basic-grey {
