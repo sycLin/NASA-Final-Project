@@ -52,10 +52,11 @@ function print_register_form() {
 	echo "<form action='' method='POST'>";
 	echo "<label>Username:</label><input type='text' name='username' placeholder='Pick a username!'><br />";
 	echo "<label>E-mail:</label><input type='text' name='email' placeholder='Must enter a valid email!'><br />";
-	echo "<input type='submit' class='button' value='Register'>";
+	echo "<label></label><input type='submit' class='button' value='Register'>";
 	echo "</form><hr>";
-	echo "<p>Already a member?</p>";
-	echo "<form action='' method='GET'><input type='submit' class='button' name='entrance' value='LogIn Here'></form>";
+	echo "<span>Already a member?&nbsp;";
+	echo "<form class='complementary' action='' method='GET'><input type='submit' class='button' name='entrance' value='Login Here'></form>";
+	echo "</span>";
 	echo "</div>";
 }
 
