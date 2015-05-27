@@ -19,9 +19,9 @@ function print_body($LRflag, $Errflag) {
 	echo "<body><h1 id='header'><span>webMS</span></h1><hr>";
 	if($Errflag == 1) {
 		if($LRflag == 0) { // login error
-			echo "<p>Invalid Username and/or Password!</p>";
+			echo "<p class='warning'>Invalid Username and/or Password!</p>";
 		} else { // registration error
-			echo "<p>This username is not available, please choose another one.</p>";
+			echo "<p class='warning'>This username is not available, please choose another one.</p>";
 		}
 	}
 	if($LRflag == 0) { // login page
