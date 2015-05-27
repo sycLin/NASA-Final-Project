@@ -16,7 +16,7 @@ function print_header() {
 /* LRflag: 0 => L, 1 => R */
 /* Errflag: 0 => none, 1 => Err */
 function print_body($LRflag, $Errflag) {
-	echo "<body><h1>webMS</h1><hr>";
+	echo "<body><h1 id='header'><span>webMS</span></h1><hr>";
 	if($Errflag == 1) {
 		if($LRflag == 0) { // login error
 			echo "<p>Invalid Username and/or Password!</p>";
@@ -34,24 +34,28 @@ function print_body($LRflag, $Errflag) {
 
 /* print the login form */
 function print_login_form() {
+	echo "<div>";
 	echo "<form action='' method='POST'>";
-	echo "<label>Username:</label><input type='text' name='username'><br />";
-	echo "<label>Password:</label><input type='password' name='password'><br />";	
-	echo "<input type='submit' value='LogIn'>";
+	echo "<label>Username:</label><input type='text' name='username' placeholder='Your Username'><br />";
+	echo "<label>Password:</label><input type='password' name='password' placeholder='Your Password'><br />";	
+	echo "<input type='submit' class='button' value='Login'>";
 	echo "</form><hr>";
 	echo "<p>Not a member yet?</p>";
-	echo "<form action='' method='GET'><input type='submit' name='entrance' value='Register Here'></form>";
+	echo "<form action='' method='GET'><input type='submit' class='button' name='entrance' value='Register Here'></form>";
+	echo "</div>";
 }
 
 /* print the register form */
 function print_register_form() {
+	echo "<div>";
 	echo "<form action='' method='POST'>";
-	echo "<label>Username:</label><input type='text' name='username'><br />";
-	echo "<label>E-mail:</label><input type='text' name='email'><br />";
-	echo "<input type='submit' value='Register'>";
+	echo "<label>Username:</label><input type='text' name='username' placeholder='Pick a username!'><br />";
+	echo "<label>E-mail:</label><input type='text' name='email' placeholder='Must enter a valid email!'><br />";
+	echo "<input type='submit' class='button' value='Register'>";
 	echo "</form><hr>";
 	echo "<p>Already a member?</p>";
-	echo "<form action='' method='GET'><input type='submit' name='entrance' value='LogIn Here'></form>";
+	echo "<form action='' method='GET'><input type='submit' class='button' name='entrance' value='LogIn Here'></form>";
+	echo "</div>";
 }
 
 /* check login information, returns 1 on success; return 0 when fails. */
