@@ -17,7 +17,6 @@ print "Content-type:text/html\n\n"
 print "<html><head><title>Python CGI, YES!</title></head><body>"
 
 # get variables from HTML form
-"""
 form = cgi.FieldStorage()
 Host = form.getvalue('Host')
 Username = form.getvalue('Username')
@@ -27,15 +26,6 @@ ShowIP = form.getvalue('settings_ip')
 ShowLogin = form.getvalue('settings_login')
 ShowIdle = form.getvalue('settings_idle')
 ShowWhat = form.getvalue('settings_what')
-"""
-Host = "linux15.csie.org"
-Username = "b01902044"
-Password = "@yourwill"
-SettingsCount = "10"
-ShowIP = "1"
-ShowLogin = "1"
-ShowIdle = "1"
-ShowWhat = "1"
 Port = 22
 
 ssh = chilkat.CkSsh()
