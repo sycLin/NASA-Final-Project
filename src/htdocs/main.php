@@ -302,19 +302,6 @@ function print_user_filter_form() {
 		}
 	}
 	echo "</select>";
-	// ----- print process type options ----- //
-	echo "<label for=''>Process Type:</label>";
-	echo "<select name='proc_type' form_id='settings'>";
-	global $proc_type_list;
-	for($i = 0; $i < count($proc_type_list); $i = $i + 1) {
-		$tmp = $proc_type_list[$i];
-		if($tmp == $_SESSION['current_proc_type']) {
-			echo "<option value='$tmp' selected='selected'>$tmp</option>";
-		} else {
-			echo "<option value='$tmp'>$tmp</option>";
-		}
-	}
-	echo "</select>";
 	// ----- print ip options ----- //
 	echo "<label for=''>Show IP?</label>";
 	echo "<select name='showip' form_id='settings'>";
