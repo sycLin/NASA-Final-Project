@@ -59,7 +59,7 @@ if channelNum < 0:
 	sys.exit()
 
 # send the command
-command = "w -h | tr -s ' ' | cut -d ' ' -f 1,3"
+command = "w -h | tr -s ' ' | cut -d ' ' -f 1,3,4,5,8"
 success = ssh.SendReqExec(channelNum, command)
 if success != True:
 	print ssh.lastErrorText()
