@@ -376,7 +376,6 @@ function print_user_list() {
 	$cgi_request .= "&&settings_login=".$_SESSION['current_showlogintime'];
 	$cgi_request .= "&&settings_idle=".$_SESSION['current_showidletime'];
 	$cgi_request .= "&&settings_what=".$_SESSION['current_showcommand'];
-	echo "<p class='warning'>You are requesting: $cgi_request </p>";
 	$data = file_get_contents($cgi_request, 0);
 	echo $data;
 }
