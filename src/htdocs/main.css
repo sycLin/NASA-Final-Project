@@ -1,3 +1,4 @@
+@import "compass/css3";
 /**** For all main htmls ****/
 
 body {
@@ -142,7 +143,7 @@ hr {
 }
 
 #menu .button {
-    width: 22%;
+    width: 22.5%;
     background: #68C;
     text-align: center;
     font: 23px Courier, Candara, Cambria, Verdana, serif; 
@@ -956,6 +957,131 @@ label[for=count] {
 /*******************************/
 /** End of change_passwd.html **/
 /*******************************/
+
+/***************/
+/** back.html **/
+/***************/
+
+#userfilter {
+    filter:alpha(opacity=80);  
+    -moz-opacity: 0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;
+    position: absolute;
+    _position: absolute;
+    text-align: center;
+    top: 363px;
+    left: 50%;
+    height: 300px;
+    width: 100%;
+    margin-left: -50%;
+    border-style: none;
+    color: #D61E49;
+    background: rgba(224, 224, 172, 0.15);
+    /*border: solid;
+    border-width: 2px;*/
+}
+
+#userfilter p {
+    position: relative;
+    _position: relative;
+    top: 2px;
+    font-size: 40px;
+    font: Cambria, Courier, serif, Arial;
+    color: #111;
+}
+
+#userfilter label {
+    width: 8%;
+    position: relative;
+    _position: relative;
+    top: -20px;
+    margin-left: 10px;
+    font: 21px Courier, Candara, Cambria, Verdana, serif;  
+}
+
+#userfilter select {
+    background: url('./img/down_arrow.png') no-repeat right #ddd;
+    background-size: 27px;
+    width: 8%;
+    position: relative;
+    _position: relative;
+    top: -20px;
+    font: 18px Courier, Candara, Cambria, Verdana, serif; 
+    margin-left: -5px;
+    height: 22px;
+    overflow: hidden;
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+
+#userfilter input[type='checkbox'] {
+    width: 23px;
+    height: 23px;
+    position: relative;
+    _position: relative;
+    top: -12px;
+    font: 15px Courier, Candara, Cambria, Verdana, serif; 
+    margin-left: 12px;
+    margin-right: -12px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #666;
+    background-color: #BBB;
+    opacity: 0.7;
+    overflow: hidden;
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+
+#userfilter input[type='checkbox']:hover {
+    background: url('./img/check.png') no-repeat center;
+    background-size: 20px;
+}
+
+#userfilter input[type='checkbox']:checked {
+    background: url('./img/check3.png') no-repeat center;
+    background-size: 18px;
+}
+
+#userfilter .button {
+    width: 5%;
+    position: relative;
+    _position: relative;
+    text-align: center;
+    top: -4px;
+    left: 50%;
+    margin-left: -100%;
+    font: 17px Courier, Candara, Cambria, Verdana, serif; 
+    background: #57C;
+    padding: 2px 5px 2px 0px;
+    color: #EEE;
+    box-shadow: 1px 1px 5px #888;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #4488CC;
+    cursor: pointer;
+}
+
+#userfilter .button:hover {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    background: #000;
+    color: #DABC27;
+    text-shadow: 0px 0px 0px #DABC27;
+}
+
+/**********************/
+/** End of back.html **/
+/**********************/
 
 /*************************/
 /***** The Animation *****/
