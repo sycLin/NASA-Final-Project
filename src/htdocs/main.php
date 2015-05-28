@@ -50,9 +50,9 @@ function print_body() {
 	echo "<body>";
 	echo "<h1 id='header'><span>webMS</span></h1><hr>";
 	// echo "<p>Login Succeeded!</p>";
-	echo "<p>Hello, ".$_SESSION['Username']."</p><hr>";
+	echo "<p id='User'>Hello, ".$_SESSION['Username']."</p><hr>";
 	print_menu();
-	echo "<hr>";
+	echo "<hr id='HR'>";
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
 	if(!isset($_SESSION['view']) || $_SESSION['view'] == "status") {
 		print_filter_form();
