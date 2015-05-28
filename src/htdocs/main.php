@@ -161,23 +161,23 @@ function print_body() {
 function print_menu() {
 	echo "<div id='menu'>";
 	echo "<form action='' method='get'>";
-	echo "<input type='submit' class='button' ";
+	echo "<input type='submit' class='button";
 	if($_SESSION['view'] == "status")
-		echo "class='active' ";
-	echo "name='changeview' value='Status'>";
-	echo "<input type='submit' class='button' ";
+		echo " active";
+	echo "' name='changeview' value='Status'>";
+	echo "<input type='submit' class='button";
 	if($_SESSION['view'] == "userlist")
-		echo "class='active' ";
-	echo "name='changeview' value='User List'>";
+		echo " active";
+	echo "' name='changeview' value='User List'>";
 //	echo "<input type='submit' class='button' name='changeview' value='Log'>";
-	echo "<input type='submit' class='button' ";
+	echo "<input type='submit' class='button";
 	if($_SESSION['view'] == "settings")
-		echo "class='active' ";
-	echo "name='changeview' value='Settings'>";
-	echo "<input type='submit' class='button' ";
+		echo " active";
+	echo "' name='changeview' value='Settings'>";
+	echo "<input type='submit' class='button";
 	if($_SESSION['view'] == "logout")
-		echo "class='active' ";
-	echo "name='changeview' value='Logout'>";
+		echo " active";
+	echo "' name='changeview' value='Logout'>";
 	echo "</form>";
 	echo "</div>";
 }

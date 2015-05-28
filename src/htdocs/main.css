@@ -10,7 +10,7 @@ body {
     background-size: cover;
 }
 
-#menu .active {
+.active {
     background-color: #E26565;
 }
 
