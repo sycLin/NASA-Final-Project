@@ -6,7 +6,7 @@ session_start();
 /* "VIEW" variable -> default to be "status". */
 /* status: display process information (default) */
 /* userlist: dispaly online user information */
-/* log: display the killed processes */
+/* log: display the killed processes (IGNORED! FOR NOW!) */
 /* settings: display settings */
 /* logout: the user wants to logout */
 $_SESSION['view'] = NULL;
@@ -50,9 +50,9 @@ function print_body() {
 	echo "<body>";
 	echo "<h1 id='header'><span>webMS</span></h1><hr>";
 	// echo "<p>Login Succeeded!</p>";
-	echo "<p>Hello, ".$_SESSION['Username']."</p><hr>";
+	echo "<p id='User'>Hello, ".$_SESSION['Username']."</p><hr>";
 	print_menu();
-	echo "<hr>";
+	echo "<hr id='HR'>";
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
 	if(!isset($_SESSION['view']) || $_SESSION['view'] == "status") {
 		print_filter_form();
@@ -81,7 +81,7 @@ function print_body() {
 			print_process();
 		}
 	} else if($_SESSION['view'] == "userlist") {
-		echo "<p class='warning'>This part is still under construction. Please refer to Hank!</p>";
+		echo "<p class='warning'>This part is still under construction. Hank!!</p>";
 		print_user_filter_form();
 		echo "<hr>";
 		print_user_list();
@@ -157,15 +157,39 @@ function print_body() {
 	echo "</body></html>";
 }
 
-/* VIEW: "status", "log", "settings", "logout" */
+/* VIEW: "status", "userlist", "log", "settings", "logout" */
 function print_menu() {
 	echo "<div id='menu'>";
 	echo "<form action='' method='get'>";
-	echo "<input type='submit' class='button' name='changeview' value='Status'>";
-	echo "<input type='submit' class='button' name='changeview' value='User List'>";
-	echo "<input type='submit' class='button' name='changeview' value='Log'>";
-	echo "<input type='submit' class='button' name='changeview' value='Settings'>";
-	echo "<input type='submit' class='button' name='changeview' value='Logout'>";
+	// print status button
+	echo "<input type='submit' ";
+	if($_SESSION['view'] == "status")
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='Status'>";
+	// print userlist button
+	echo "<input type='submit' ";
+	if($_SESSION['view'] == "userlist")
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='User List'>";
+/*	echo "<input type='submit' class='button' name='changeview' value='Log'>"; */
+	// print settings button
+	echo "<input type='submit' ";
+	if($_SESSION['view'] == "settings")
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='Settings'>";
+	// print logout button
+	echo "<input type='submit' ";
+	if($_SESSION['view'] == "logout")
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='Logout'>";
 	echo "</form>";
 	echo "</div>";
 }
@@ -238,6 +262,7 @@ function print_killer_form() {
 	echo "<div id='killer'>";
 	echo "<p>Killer</p>";
 	echo "<form action='' method='get'>";
+	echo "<input type='hidden' name='machine' value='".$_SESSION['current_machine']."'>";
 	echo "<label for=''>PID:</label><input type='text' name='pid'>";
 	echo "<input type='submit' class='button' name='kill_process' value='Kill It!'>";
 	echo "</form>";
@@ -294,7 +319,7 @@ function print_process() {
 
 /* filter for displaying online user info */
 function print_user_filter_form() {
-	echo "<div id='filter'>";
+	echo "<div id='userfilter'>";
 	echo "<p>Filter Settings</p>";
 	echo "<form action='' method='get' id='settings'>";
 	// ----- print machine options ----- //
@@ -311,29 +336,45 @@ function print_user_filter_form() {
 	}
 	echo "</select>";
 	// ----- print ip options ----- //
+	/*
 	echo "<label for=''>Show IP?</label>";
 	echo "<select name='showip' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showip' value='1'>";
+	echo "<label for=''>Show IP. </label>";
 	// ----- print login (login time) options ----- //
+	/*
 	echo "<label for=''>Show LoginTime?</label>";
 	echo "<select name='showlogintime' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showlogintime' value='1'>";
+	echo "<label for=''>Show Login Time. </label>";
 	// ----- print idle (idle time) options ----- //
+	/*
 	echo "<label for=''>Show IdleTime?</label>";
 	echo "<select name='showidletime' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showidletime' value='1'>";
+	echo "<label for=''>Show Idle Time. </label>";
 	// ----- print what (command) options ----- //
+	/*
 	echo "<label for=''>Show Command?</label>";
 	echo "<select name='showcommand' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showcommand' value='1'>";
+	echo "<label for=''>Show Command. </label>";
 	// ----- print count options ----- //
 	echo "<label for=''>Count:</label>";
 	echo "<select name='count' form_id='settings'>";
@@ -367,7 +408,7 @@ function print_user_list() {
 	$mu = $row['musername'];
 	$mp = $row['mpassword'];
 	// form the CGI request
-	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_userlist.cgi?";
+	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_userlist2.cgi?";
 	$cgi_request .= "Host=".$mh;
 	$cgi_request .= "&&Username=".$mu;
 	$cgi_request .= "&&Password=".$mp;
@@ -376,7 +417,6 @@ function print_user_list() {
 	$cgi_request .= "&&settings_login=".$_SESSION['current_showlogintime'];
 	$cgi_request .= "&&settings_idle=".$_SESSION['current_showidletime'];
 	$cgi_request .= "&&settings_what=".$_SESSION['current_showcommand'];
-	echo "<p class='warning'>You are requesting: $cgi_request </p>";
 	$data = file_get_contents($cgi_request, 0);
 	echo $data;
 }
@@ -483,7 +523,7 @@ function print_update_machine_form() {
 	echo "<h2>Update ".$mn."'s Settings</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
-	echo "<label for=''>Host:</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='submit' class='button' name='update_machine' value='Update'>";
@@ -497,7 +537,7 @@ function print_add_machine_form() {
 	echo "<h2>Add a new machine</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<label for=''>Machine Name:</label><input type='text' name='mname'><br />";
-	echo "<label for=''>Host:</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
@@ -674,6 +714,7 @@ if($_POST) {
 		print_body();
 	} else if(isset($_GET['kill_process'])) { // the user is under the STATUS view and wanna kill a process
 		$_SESSION['view'] = "status";
+		$_SESSION['current_machine'] = $_GET['machine'];
 		print_header();
 		print_body();
 	}
