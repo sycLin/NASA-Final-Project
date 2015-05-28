@@ -4,22 +4,6 @@ html {
 	padding: 0;
 }
 
-hr {
-    padding: 0;
-    margin: 0;
-    border-style: none;
-    border-width: 1px;
-}
-
-div hr {
-    padding: 0;
-    margin: 0;
-    margin: 15px;
-    border-style: solid;
-    border-width: 1px;
-    opacity: 0.7;
-}
-
 body {
     background-image: url("img/Foggy_Forest.png");
     background-repeat: no-repeat;
@@ -38,6 +22,39 @@ body {
 	padding: 0;
 }
 
+#header {
+    filter:alpha(opacity=60);  
+    -moz-opacity: 0.6;  
+    -khtml-opacity: 0.6;  
+    opacity: 0.6;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    font: 60px Cambria, Verdana, serif; 
+
+    font-weight: 100;
+    color: #FFF;
+    background-color: #000;
+
+    letter-spacing: 0.02em;
+}
+
+#header:hover {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #AAA;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+    border-style: none;
+    border-width: 1px;
+}
+
 label {
     color: #444;
 	display: inline-block;
@@ -52,19 +69,19 @@ span {
 }
 
 div {
-    position: fixed;
+    position: absolute;
+    _position: absolute;
     top: 50%;
     left: 50%;
     width: 450px;
-    height: 230px;
+    height: 225px;
     margin-top: -115px;
     margin-left: -225px;
     color: #444;
 	padding: 22px;
 	border-style: solid;
 	border-width: 2px;
-    background: rgba(255, 255, 255, 0.4);
-    _position: absolute;
+    background: rgba(255, 255, 255, 0.25);
 }
 
 div span {
@@ -76,73 +93,44 @@ div span {
     line-height: 100%;
 }
 
+div hr {
+    padding: 0;
+    margin: 0;
+    margin: 11px;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.7;
+}
+
 .warning {
     text-align: center;
     position: fixed;
+    _position: absolute;
     top: 50%;
     left: 50%;
     width: 450px;
     height: 30px;
     margin-top: -155px;
     margin-left: -225px;
-    color: #EE0000;
+    color: #D61E49;
     font: 20px Monaco, serif; 
     font-weight: 10;
     border-color: #444;
     padding-left: 22px;
     padding-right: 22px;
-    padding-top: 0px;
+    padding-top: 2px;
+    padding-bottom: 0px;
     border-style: solid;
     border-width: 2px;
     background: rgba(255, 255, 255, 0.4);
-    _position: absolute;
 }
 
 .complementary {
 	display:inline-block;
 }
 
-#header {
-    filter:alpha(opacity=60);  
-    -moz-opacity: 0.6;  
-    -khtml-opacity: 0.6;  
-    opacity: 0.6;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	width: 100%;
-	height: auto;
-	font: 60px Cambria, Verdana, serif; 
-
-	font-weight: 100;
-	color: #FFF;
-    background-color: #000;
-
-	letter-spacing: 0.02em;
-}
-
-#header:hover {
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #AAA;
-}
-
-span .button {
-    color: #FFF;
-    font: 10px Monaco, sans-serif;
-	background: #5050DD;
-    padding: 5px 13px 5px 13px;
-    border-radius: 5px;
-    margin-left: -2px;
-    margin-top: -1px;
-    box-shadow: 1px 1px 5px #888;
-    text-shadow: 1px 1px 1px #4488CC;
-    cursor: pointer;
-}
-
 .button {
-	background: #5050DD;
+	background: #6969DD;
     padding: 6px 25px 6px 25px;
     color: #FFF;
     font: 17px Monaco, sans-serif;
@@ -153,16 +141,29 @@ span .button {
 }
 
 .button:hover {
-	transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	background-color: #E26565; 
-	box-shadow: 0px 0px 0px;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    background-color: #E26565; 
+    box-shadow: 0px 0px 0px;
     position: relative;
     top: 1px;
     left: 1px;
-	/* background-color: #5588CC; */
+    /* background-color: #5588CC; */
+}
+
+span .button {
+    color: #FFF;
+    font: 10px Monaco, sans-serif;
+    background: #6969DD;
+    padding: 5px 13px 5px 13px;
+    border-radius: 5px;
+    margin-left: -2px;
+    margin-top: -1px;
+    box-shadow: 1px 1px 5px #888;
+    text-shadow: 1px 1px 1px #4488CC;
+    cursor: pointer;
 }
 
 input[type='text'], input[type='password']{
