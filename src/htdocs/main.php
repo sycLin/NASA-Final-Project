@@ -319,7 +319,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showip' value='1'>";
-	echo "<label for=''>Show IP?</label>";
+	echo "<label for=''>Show IP. </label>";
 	// ----- print login (login time) options ----- //
 	/*
 	echo "<label for=''>Show LoginTime?</label>";
@@ -329,7 +329,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showlogintime' value='1'>";
-	echo "<label for=''>Show Login Time?</label>";
+	echo "<label for=''>Show Login Time. </label>";
 	// ----- print idle (idle time) options ----- //
 	/*
 	echo "<label for=''>Show IdleTime?</label>";
@@ -339,7 +339,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showidletime' value='1'>";
-	echo "<label for=''>Show Idle Time?</label>";
+	echo "<label for=''>Show Idle Time. </label>";
 	// ----- print what (command) options ----- //
 	/*
 	echo "<label for=''>Show Command?</label>";
@@ -349,7 +349,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showcommand' value='1'>";
-	echo "<label for=''>Show Command?</label>";
+	echo "<label for=''>Show Command. </label>";
 	// ----- print count options ----- //
 	echo "<label for=''>Count:</label>";
 	echo "<select name='count' form_id='settings'>";
