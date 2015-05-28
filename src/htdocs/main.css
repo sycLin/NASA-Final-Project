@@ -10,6 +10,10 @@ body {
     background-size: cover;
 }
 
+#menu .active {
+    background-color: #E26565;
+}
+
 .title {
     background-color: #BBB;
 }
@@ -559,7 +563,7 @@ label[for=count] {
     width: 40%;
     margin-left: -20%;
     top: -5px;
-    text-align: center;
+    text-align: left;
 
     color: #252525;
     background: rgba(235, 236, 237, 0.44);
