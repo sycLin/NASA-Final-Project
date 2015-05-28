@@ -1,7 +1,7 @@
 /**** For all main htmls ****/
 
 body {
-	background-image: url("img/beach.jpg");
+	background-image: url("./img/beach.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     -moz-background-size: 100%;
@@ -207,7 +207,7 @@ hr {
 }
 
 #filter select {
-    background: url('down_arrow.png') no-repeat right #ddd;
+    background: url('./img/down_arrow.png') no-repeat right #ddd;
     background-size: 27px;
     width: 12%;
     position: relative;
@@ -216,13 +216,17 @@ hr {
     font: 21px Courier, Candara, Cambria, Verdana, serif; 
     margin-left: -1px;
     height: 27px;
-    overflow: auto;
+    overflow: hidden;
     appearance:none;
     -webkit-appearance:none; 
     -moz-appearance: none;
 
     text-indent: 0.01px;
     text-overflow: '';
+}
+
+#filter label[for='machine'] select {
+    width: 14%;
 }
 
 #filter .button {
@@ -347,6 +351,12 @@ hr {
 /*
     注意：table還沒測試完
 */
+
+tr:first-child {
+    background-color: #cbb;
+}
+
+
 table {
     filter:alpha(opacity=100);  
     -moz-opacity: 1;  
