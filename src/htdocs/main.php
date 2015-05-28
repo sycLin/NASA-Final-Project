@@ -294,7 +294,7 @@ function print_process() {
 
 /* filter for displaying online user info */
 function print_user_filter_form() {
-	echo "<div id='filter'>";
+	echo "<div id='userfilter'>";
 	echo "<p>Filter Settings</p>";
 	echo "<form action='' method='get' id='settings'>";
 	// ----- print machine options ----- //
@@ -311,29 +311,45 @@ function print_user_filter_form() {
 	}
 	echo "</select>";
 	// ----- print ip options ----- //
+	/*
 	echo "<label for=''>Show IP?</label>";
 	echo "<select name='showip' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showip' value='1'>";
+	echo "<label for=''>Show IP?</label>";
 	// ----- print login (login time) options ----- //
+	/*
 	echo "<label for=''>Show LoginTime?</label>";
 	echo "<select name='showlogintime' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showlogintime' value='1'>";
+	echo "<label for=''>Show Login Time?</label>";
 	// ----- print idle (idle time) options ----- //
+	/*
 	echo "<label for=''>Show IdleTime?</label>";
 	echo "<select name='showidletime' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showidletime' value='1'>";
+	echo "<label for=''>Show Idle Time?</label>";
 	// ----- print what (command) options ----- //
+	/*
 	echo "<label for=''>Show Command?</label>";
 	echo "<select name='showcommand' form_id='settings'>";
 	echo "<option value='1' selected='selected'>Yes</option>";
 	echo "<option value='0'>No</option>";
 	echo "</select>";
+	*/
+	echo "<input type='checkbox' name='showcommand' value='1'>";
+	echo "<label for=''>Show Command?</label>";
 	// ----- print count options ----- //
 	echo "<label for=''>Count:</label>";
 	echo "<select name='count' form_id='settings'>";
