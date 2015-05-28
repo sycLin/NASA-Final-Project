@@ -10,6 +10,14 @@ body {
     background-size: cover;
 }
 
+.title {
+    background-color: #;
+}
+
+.title:hover {
+    background-color: #;
+}
+
 hr {
     border-style: none;
     margin: 0;
@@ -33,17 +41,18 @@ hr {
 .warning {
     position: absolute;
     left: 50%;
-    width: 250px;
+    top: 310px;
+    width: 450px;
     height: 30px;
     margin-top: 33px;
-    margin-left: -143px;
+    margin-left: -225px;
     text-align: center;
     color: #D61E49;
     font: 20px Athelas, Monaco, serif; 
     font-weight: 10;
     border-color: #444;
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 5px;
     padding- bottom: 1px;
     border-style: solid;
@@ -73,6 +82,7 @@ hr {
 }
 
 #header {
+    display:block;
 	filter:alpha(opacity=60);  
     -moz-opacity: 0.6;  
     -khtml-opacity: 0.6;  
@@ -197,6 +207,8 @@ hr {
 }
 
 #filter select {
+    background: url('down_arrow.png') no-repeat right #ddd;
+    background-size: 27px;
     width: 12%;
     position: relative;
     _position: relative;
@@ -204,7 +216,7 @@ hr {
     font: 21px Courier, Candara, Cambria, Verdana, serif; 
     margin-left: -1px;
     height: 27px;
-    overflow: hidden;
+    overflow: auto;
     appearance:none;
     -webkit-appearance:none; 
     -moz-appearance: none;
@@ -336,10 +348,10 @@ hr {
     注意：table還沒測試完
 */
 table {
-    filter:alpha(opacity=80);  
-    -moz-opacity: 0.8;  
-    -khtml-opacity: 0.8;  
-    opacity: 0.8;
+    filter:alpha(opacity=100);  
+    -moz-opacity: 1;  
+    -khtml-opacity: 1;  
+    opacity: 1;
     position: absolute;
     _position: absolute;
 
@@ -792,7 +804,96 @@ label[for=count] {
 /******************************/
 /**** change_password.html ****/
 /******************************/
-input[type='text'], input[type='password']{
+
+/* id='chpw' */
+#chpw {
+    filter:alpha(opacity=80);  
+    -moz-opacity: 0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;
+    position: absolute;
+    _position: absolute;
+    top: 363px;
+    left: 50%;
+    height: 300px;
+    width: 100%;
+    margin-left: -50%;
+    text-align: center;
+    border-style: none;
+    color: #D61E49;
+    background: rgba(224, 224, 172, 0.15);
+    /*border: solid;
+    border-width: 2px;*/
+}
+
+#chpw h2 {
+    position: relative;
+    _position: relative;
+    top: 2px;
+    font-size: 40px;
+    font: Cambria, Courier, serif, Arial;
+    color: #111;
+}
+
+#chpw label {
+    width: 10%;
+    position: relative;
+    _position: relative;
+    top: -10px;
+    margin-left: 30px;
+    font: 25px Courier, Candara, Cambria, Verdana, serif;  
+}
+
+#chpw input {
+    width: 12%;
+    position: relative;
+    _position: relative;
+    top: -10px;
+    font: 24px Courier, Candara, Cambria, Verdana, serif; 
+    height: 27px;
+    margin-left: -1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #999;
+    color: #444;
+    overflow: hidden;
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+
+#chpw .button {
+    width: 7%;
+    position: relative;
+    _position: relative;
+    text-align: center;
+    top: -4px;
+    left: 51%;
+    margin-left: -100%;
+    font: 17px Courier, Candara, Cambria, Verdana, serif; 
+    background: #57C;
+    padding: 2px 5px 2px 0px;
+    color: #EEE;
+    box-shadow: 1px 1px 5px #888;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #4488CC;
+    cursor: pointer;
+}
+
+#chpw .button:hover {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    background: #000;
+    color: #DABC27;
+    text-shadow: 0px 0px 0px #DABC27;
+}
+
+
+/*input[type='text'], input[type='password']{
 	border: 2px solid #DADADA;
     color: #888;
     height: 35px;
@@ -802,11 +903,11 @@ input[type='text'], input[type='password']{
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-    /*
+    
     margin-bottom: 16px;
     margin-right: 6px;
     margin-top: 2px;
-    */
+
     outline: 0 none;
     padding: 5px 1px 3px 5px; 
     width: 15%;
@@ -830,7 +931,7 @@ input[type='text'], input[type='password']{
 #chpw input[type='submit'] {
 	display: inline-block;
 	margin-left: 150px;
-}
+}*/
 
 /*******************************/
 /** End of change_passwd.html **/
