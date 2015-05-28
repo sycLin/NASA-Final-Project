@@ -42,7 +42,7 @@ $_SESSION['current_showcommand'] = "1";
 function print_header() {
 	echo "<html><head>";
 	echo "<title>webMS: Welcome Back!</title>";
-	//echo "<link rel=stylesheet type='text/css' href='main.css'>";
+	echo "<link rel=stylesheet type='text/css' href='main.css'>";
 	echo "</head>";
 }
 
