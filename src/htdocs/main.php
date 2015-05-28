@@ -238,6 +238,7 @@ function print_killer_form() {
 	echo "<div id='killer'>";
 	echo "<p>Killer</p>";
 	echo "<form action='' method='get'>";
+	echo "<input type='hidden' name='machine' value='".$_SESSION['current_machine']."'>";
 	echo "<label for=''>PID:</label><input type='text' name='pid'>";
 	echo "<input type='submit' class='button' name='kill_process' value='Kill It!'>";
 	echo "</form>";
@@ -670,7 +671,7 @@ if($_POST) {
 		print_header();
 		print_body();
 	} else if(isset($_GET['showip'])) { // the user is under the USERLIST view and change the settings
-		//$_SESSION['current_machine'] = $_GET['machine'];
+		$_SESSION['current_machine'] = $_GET['machine'];
 		$_SESSION['current_showip'] = $_GET['showip'];
 		$_SESSION['current_showlogintime'] = $_GET['showlogintime'];
 		$_SESSION['current_showidletime'] = $_GET['showidletime'];
