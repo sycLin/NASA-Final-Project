@@ -529,7 +529,7 @@ label[for=count] {
     opacity: 0.8;
     position: absolute;
     _position: absolute;
-    top: 333px;
+    top: 363px;
     left: 50%;
     height: 300px;
     width: 100%;
@@ -717,46 +717,52 @@ label[for=count] {
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-    position: absolute;
-    _position: absolute;
-    text-align: center;
+    
     top: 383px;
     left: 50%;
     height: 300px;
-    width: 100%;
-    margin-left: -50%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     color: #D61E49;
     background: rgba(224, 224, 172, 0.15);
-    /*border: solid;
-    border-width: 2px;*/
+    /*
+    border: solid;
+    border-width: 2px;
+    */
 }
 
 #addmc h2 {
+    /*
     position: relative;
     _position: relative;
-    top: -13px;
+    top: -13px;*/
     text-align: center;
     font: 36px Constantia, Arial;
     color: #111;
 }
 
 #addmc label {
-    width: 10%;
+    width: 40%;
+    /*
     position: relative;
     _position: relative;
     top: -20px;
-    left: -50%;
-    text-align: left;
+    left: -50%;*/
+    display:inline-block;
+    text-align: right;
     margin-left: 30px;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
 }
 
 #addmc input {
-    width: 12%;
+    width: 30%;
+    /*
     position: relative;
     _position: relative;
     top: -20px;
-    left: -50%;
+    left: -50%;*/
+    display:inline-block;
     font: 21px Courier, Candara, Cambria, Verdana, serif; 
     height: 27px;
     border-style: solid;
@@ -774,8 +780,7 @@ label[for=count] {
 
 #addmc .button {
     width: 5%;
-    position: relative;
-    _position: relative;
+
     text-align: center;
     top: -22px;
     left: 51%;
@@ -798,6 +803,10 @@ label[for=count] {
     background: #000;
     color: #DABC27;
     text-shadow: 0px 0px 0px #DABC27;
+}
+
+#addmc form {
+    
 }
 
 
