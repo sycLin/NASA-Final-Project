@@ -42,7 +42,7 @@ $_SESSION['current_showcommand'] = "1";
 function print_header() {
 	echo "<html><head>";
 	echo "<title>webMS: Welcome Back!</title>";
-	echo "<link rel=stylesheet type='text/css' href='main.css'>";
+	//echo "<link rel=stylesheet type='text/css' href='main.css'>";
 	echo "</head>";
 }
 
@@ -269,6 +269,7 @@ function print_killer_form() {
 	echo "</div>";
 }
 
+/* need to be tuned for supporting Mac OSX. */
 /* kill a certain process with given pid. Return 0 if fail; return 1 if success. */
 function kill_process($pid) {
 	// get the variables needed for CGI request
@@ -301,22 +302,37 @@ function print_process() {
 	$query = "SELECT * FROM machines WHERE username='".$_SESSION['Username']."' and mname='".$_SESSION['current_machine']."'";
 	$result = mysqli_query($db, $query);
 	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-	// get machine: host, u, p
+	// get machine: host, u, p, and os.
 	$mh = $row['mhost'];
 	$mu = $row['musername'];
 	$mp = $row['mpassword'];
+	$mos = $row['mos'];
 	// form the CGI request
-	$cgi_request = "http://127.0.0.1/cgi-bin/ssh_connect.cgi?";
-	$cgi_request .= "Host=".$mh;
-	$cgi_request .= "&&Username=".$mu;
-	$cgi_request .= "&&Password=".$mp;
-	$cgi_request .= "&&settings_proc_type=".$_SESSION['current_proc_type'];
-	$cgi_request .= "&&settings_sortedby=".$_SESSION['current_sortedby'];
-	$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	if($mos == "Linux") {
+		$cgi_request = "http://127.0.0.1/cgi-bin/ssh_connect.cgi?";
+		$cgi_request .= "Host=".$mh;
+		$cgi_request .= "&&Username=".$mu;
+		$cgi_request .= "&&Password=".$mp;
+		$cgi_request .= "&&settings_proc_type=".$_SESSION['current_proc_type'];
+		$cgi_request .= "&&settings_sortedby=".$_SESSION['current_sortedby'];
+		$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	} else if($mos == "MacOSX") {
+		$cgi_request = "http://127.0.0.1/cgi-bin/ssh_maconnect.cgi?";
+		$cgi_request .= "Host=".$mh;
+		$cgi_request .= "&&Username=".$mu;
+		$cgi_request .= "&&Password=".$mp;
+		$cgi_request .= "&&settings_proc_type=".$_SESSION['current_proc_type'];
+		$cgi_request .= "&&settings_sortedby=".$_SESSION['current_sortedby'];
+		$cgi_request .= "&&settings_count=".$_SESSION['current_count'];
+	} else {
+		echo "<p class='warning'>Shouldn't be here!!!</p>";
+	}
+	echo "<p class='warning'>You're requesting: $cgi_request</p>";
 	$data = file_get_contents($cgi_request, 0);
 	echo $data;
 }
 
+/* hasn't been adjusted for supporting Mac OSX */
 /* filter for displaying online user info */
 function print_user_filter_form() {
 	echo "<div id='userfilter'>";
@@ -394,6 +410,7 @@ function print_user_filter_form() {
 	echo "</div>";
 }
 
+/* hasn't been adjusted for supporting Mac OSX */
 /* print the online user list */
 function print_user_list() {
 	// lets test the variables
@@ -456,14 +473,15 @@ function print_machine_settings() {
 	echo "<div id='machines'>";
 	echo "<h2>My Machines</h2>";
 	echo "<table border=1>";
-	echo "<td class='title'>Name</td><td class='title'>Host</td><td class='title'>Username</td><td class='title'>Edit</td><td class='title'>Delete</td>";
+	echo "<td class='title'>Name</td><td class='title'>Host</td><td class='title'>Username</td><td class='title'>OS</td><td class='title'>Edit</td><td class='title'>Delete</td>";
 	echo "<tr>";
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$mn = $row['mname'];
 		$mh = $row['mhost'];
 		$mu = $row['musername'];
 		$mp = $row['mpassword'];
-		echo "<td class='content'>".$mn."</td><td class='content'>".$mh."</td><td class='content'>".$mu."</td>";
+		$mos = $row['mos'];
+		echo "<td class='content'>".$mn."</td><td class='content'>".$mh."</td><td class='content'>".$mu."</td><td class='content'>".$mos."</td>";
 		echo "<td class='content'><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Update $mn'></form></td>";
 		echo "<td class='contnet'><form action='' method='get'><input type='submit' class='button' name='edit_machine' value='Delete $mn'></form></td>";
 		echo "<tr>";
@@ -526,6 +544,8 @@ function print_update_machine_form() {
 	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
+	echo "<input type='radio' name='mos' value='Linux'checked>Linux";
+	echo "<input type='radio' name='mos' value='MacOSX'>Mac OSX";
 	echo "<input type='submit' class='button' name='update_machine' value='Update'>";
 	echo "</form>";
 	echo "</div>";
@@ -540,6 +560,8 @@ function print_add_machine_form() {
 	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
+	echo "<input type='radio' name='mos' value='Linux' checked>Linux";
+	echo "<input type='radio' name='mos' value='MacOSX'>Mac OSX";
 	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
 	echo "</form>";
 	echo "</div>";
@@ -570,7 +592,8 @@ function update_machine() {
 	$mh = mysqli_real_escape_string($db, $_POST['mhost']);
 	$mu = mysqli_real_escape_string($db, $_POST['musername']);
 	$mp = mysqli_real_escape_string($db, $_POST['mpassword']);
-	$query = "UPDATE webMS.machines SET mhost='$mh', musername='$mu', mpassword='$mp' WHERE machines.username='$u' and machines.mname='$mn'";
+	$mos = mysqli_real_escape_string($db, $_POST['mos']);
+	$query = "UPDATE webMS.machines SET mhost='$mh', musername='$mu', mpassword='$mp', mos='$mos' WHERE machines.username='$u' and machines.mname='$mn'";
 	$dummy = mysqli_query($db, $query);
 	if($dummy == False)
 		return 0;
@@ -586,7 +609,8 @@ function add_machine() {
 	$mh = mysqli_real_escape_string($db, $_POST['mhost']);
 	$mu = mysqli_real_escape_string($db, $_POST['musername']);
 	$mp = mysqli_real_escape_string($db, $_POST['mpassword']);
-	$query = "INSERT into machines (mname, mhost, musername, mpassword, username) VALUES ('$mn', '$mh', '$mu', '$mp', '$u')";
+	$mos = mysqli_real_escape_string($db, $_POST['mos']);
+	$query = "INSERT into machines (mname, mhost, musername, mpassword, mos, username) VALUES ('$mn', '$mh', '$mu', '$mp', '$mos', '$u')";
 	$dummy = mysqli_query($db, $query);
 	if($dummy == False)
 		return 0;
