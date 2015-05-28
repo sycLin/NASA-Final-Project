@@ -86,29 +86,29 @@ for i in lines:
 	newUser = UserInfo(i.split())
 	user_list.append(newUser)
 
-Showlist = "<td>User</td>"
+Showlist = "<td class='title'>User</td>"
 if ShowIP == "1":
-	Showlist += "<td>IP</td>"
+	Showlist += "<td class='title'>IP</td>"
 if ShowLogin == "1":
-	Showlist += "<td>Login Time</td>"
+	Showlist += "<td class='title'>Login Time</td>"
 if ShowIdle == "1":
-	Showlist += "<td>Idle time</td>"
+	Showlist += "<td class='title'>Idle time</td>"
 if ShowWhat == "1":
-	Showlist += "<td>What</td>"
+	Showlist += "<td class='title'>What</td>"
 print "<table border=1>"
 print Showlist
 print "<tr>"
 
 for i in range(int(SettingsCount)):
-	print "<td>"+user_list[i].name+"</td>",
+	print "<td class='content'>"+user_list[i].name+"</td>",
 	if ShowIP == "1":
-		print "<td>"+user_list[i].ip+"</td>",
+		print "<td class='content'>"+user_list[i].ip+"</td>",
 	if ShowLogin == "1":
-		print "<td>"+user_list[i].login+"</td>",
+		print "<td class='content'>"+user_list[i].login+"</td>",
 	if ShowIdle == "1":
-		print "<td>"+user_list[i].idle+"</td>",
+		print "<td class='content'>"+user_list[i].idle+"</td>",
 	if ShowWhat == "1":
-		print "<td>"+user_list[i].what+"</td>"
+		print "<td class='content'>"+user_list[i].what+"</td>"
 	print "<tr>"
 print "</table>"
 
