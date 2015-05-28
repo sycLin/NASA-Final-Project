@@ -6,7 +6,7 @@ session_start();
 /* "VIEW" variable -> default to be "status". */
 /* status: display process information (default) */
 /* userlist: dispaly online user information */
-/* log: display the killed processes */
+/* log: display the killed processes (IGNORED! FOR NOW!) */
 /* settings: display settings */
 /* logout: the user wants to logout */
 $_SESSION['view'] = NULL;
@@ -163,7 +163,7 @@ function print_menu() {
 	echo "<form action='' method='get'>";
 	echo "<input type='submit' class='button' name='changeview' value='Status'>";
 	echo "<input type='submit' class='button' name='changeview' value='User List'>";
-	echo "<input type='submit' class='button' name='changeview' value='Log'>";
+//	echo "<input type='submit' class='button' name='changeview' value='Log'>";
 	echo "<input type='submit' class='button' name='changeview' value='Settings'>";
 	echo "<input type='submit' class='button' name='changeview' value='Logout'>";
 	echo "</form>";
