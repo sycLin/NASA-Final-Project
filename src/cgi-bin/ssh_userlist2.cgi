@@ -14,7 +14,7 @@ class UserInfo:
 		
 # cgi script requirements
 print "Content-type:text/html\n\n"
-print "<html><head><title>Python CGI, YES!</title></head><body>"
+# print "<html><head><title>Python CGI, YES!</title></head><body>"
 
 # get variables from HTML form
 form = cgi.FieldStorage()
@@ -119,5 +119,5 @@ print "</table>"
 # disconnect
 ssh.Disconnect()
 
-print "</body></html>"
+# print "</body></html>"
 
