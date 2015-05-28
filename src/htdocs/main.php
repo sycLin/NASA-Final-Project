@@ -81,7 +81,7 @@ function print_body() {
 			print_process();
 		}
 	} else if($_SESSION['view'] == "userlist") {
-		echo "<p class='warning'>This part is still under construction. Please refer to Hank!</p>";
+		echo "<p class='warning'>This part is still under construction. Hank!!</p>";
 		print_user_filter_form();
 		echo "<hr>";
 		print_user_list();
