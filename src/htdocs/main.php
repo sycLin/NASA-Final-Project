@@ -161,23 +161,35 @@ function print_body() {
 function print_menu() {
 	echo "<div id='menu'>";
 	echo "<form action='' method='get'>";
-	echo "<input type='submit' class='button";
+	// print status button
+	echo "<input type='submit' ";
 	if($_SESSION['view'] == "status")
-		echo " active";
-	echo "' name='changeview' value='Status'>";
-	echo "<input type='submit' class='button";
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='Status'>";
+	// print userlist button
+	echo "<input type='submit' ";
 	if($_SESSION['view'] == "userlist")
-		echo " active";
-	echo "' name='changeview' value='User List'>";
-//	echo "<input type='submit' class='button' name='changeview' value='Log'>";
-	echo "<input type='submit' class='button";
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='User List'>";
+/*	echo "<input type='submit' class='button' name='changeview' value='Log'>"; */
+	// print settings button
+	echo "<input type='submit' ";
 	if($_SESSION['view'] == "settings")
-		echo " active";
-	echo "' name='changeview' value='Settings'>";
-	echo "<input type='submit' class='button";
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='Settings'>";
+	// print logout button
+	echo "<input type='submit' ";
 	if($_SESSION['view'] == "logout")
-		echo " active";
-	echo "' name='changeview' value='Logout'>";
+		echo "class='active_button' ";
+	else
+		echo "class='button' ";
+	echo "name='changeview' value='Logout'>";
 	echo "</form>";
 	echo "</div>";
 }
