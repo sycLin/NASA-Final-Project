@@ -11,11 +11,11 @@ body {
 }
 
 .title {
-    background-color: #;
+    background-color: #BBB;
 }
 
 .title:hover {
-    background-color: #;
+    background-color: #BBB;
 }
 
 hr {
@@ -352,9 +352,6 @@ hr {
     注意：table還沒測試完
 */
 
-tr:first-child {
-    background-color: #cbb;
-}
 
 
 table {
