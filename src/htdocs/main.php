@@ -670,7 +670,7 @@ if($_POST) {
 		print_header();
 		print_body();
 	} else if(isset($_GET['showip'])) { // the user is under the USERLIST view and change the settings
-		$_SESSION['current_machine'] = $_GET['machine'];
+		//$_SESSION['current_machine'] = $_GET['machine'];
 		$_SESSION['current_showip'] = $_GET['showip'];
 		$_SESSION['current_showlogintime'] = $_GET['showlogintime'];
 		$_SESSION['current_showidletime'] = $_GET['showidletime'];
