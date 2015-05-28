@@ -238,6 +238,7 @@ function print_killer_form() {
 	echo "<div id='killer'>";
 	echo "<p>Killer</p>";
 	echo "<form action='' method='get'>";
+	echo "<input type='hidden' name='machine' value='".$_SESSION['current_machine']."'>";
 	echo "<label for=''>PID:</label><input type='text' name='pid'>";
 	echo "<input type='submit' class='button' name='kill_process' value='Kill It!'>";
 	echo "</form>";
@@ -498,7 +499,7 @@ function print_update_machine_form() {
 	echo "<h2>Update ".$mn."'s Settings</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<input type='hidden' name='mname' value='$mn'>";
-	echo "<label for=''>Host:</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='submit' class='button' name='update_machine' value='Update'>";
@@ -512,7 +513,7 @@ function print_add_machine_form() {
 	echo "<h2>Add a new machine</h2>";
 	echo "<form action='' method='POST'>";
 	echo "<label for=''>Machine Name:</label><input type='text' name='mname'><br />";
-	echo "<label for=''>Host:</label><input type='text' name='mhost'><br />";
+	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
@@ -689,6 +690,7 @@ if($_POST) {
 		print_body();
 	} else if(isset($_GET['kill_process'])) { // the user is under the STATUS view and wanna kill a process
 		$_SESSION['view'] = "status";
+		$_SESSION['current_machine'] = $_GET['machine'];
 		print_header();
 		print_body();
 	}
