@@ -327,7 +327,7 @@ function print_process() {
 	} else {
 		echo "<p class='warning'>Shouldn't be here!!!</p>";
 	}
-	echo "<p class='warning'>You're requesting: $cgi_request</p>";
+	// echo "<p class='warning'>You're requesting: $cgi_request</p>";
 	$data = file_get_contents($cgi_request, 0);
 	echo $data;
 }
