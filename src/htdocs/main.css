@@ -740,15 +740,16 @@ label[for=count] {
     top: 383px;
     left: 50%;
     height: 300px;
-    width: 50%;
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
+    font: 25px Courier, Candara, Cambria, Verdana, serif;
     color: #D61E49;
     background: rgba(224, 224, 172, 0.15);
-    /*
+    
     border: solid;
     border-width: 2px;
-    */
+    
 }
 
 #addmc h2 {
@@ -774,7 +775,7 @@ label[for=count] {
     font: 25px Courier, Candara, Cambria, Verdana, serif;
 }
 
-#addmc input {
+#addmc input[type='text'], #addmc input[type='password'] {
     width: 30%;
     /*
     position: relative;
@@ -798,12 +799,12 @@ label[for=count] {
 }
 
 #addmc .button {
-    width: 5%;
+    width: 10%;
 
     text-align: center;
     top: -22px;
     left: 51%;
-    margin-left: -100%;
+    /*margin-left: -100%;*/
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
     padding: 2px 5px 2px 0px;
@@ -824,10 +825,34 @@ label[for=count] {
     text-shadow: 0px 0px 0px #DABC27;
 }
 
-#addmc form {
-    
+#addmc input[type='radio'] {
+    font: 40px Courier, Candara, Cambria, Verdana, serif;
+    line-height: 28px;
 }
 
+input[type='radio']:nth-child(13) {
+    display: inline-block;
+
+
+    /*font: 25px Courier, Candara, Cambria, Verdana, serif;*/
+    color:black;
+
+    margin-left: 30%;
+}
+
+
+
+
+
+/*
+input[type='radio'] {
+  display      : inline-block;
+  margin-left  : -28px;
+  padding-left : 28px;
+  background   : url('checks.png') no-repeat 0 0;
+  line-height  : 24px;
+}
+*/
 
 /********************************/
 /*** End of add_machines.html ***/
