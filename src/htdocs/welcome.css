@@ -32,7 +32,7 @@ body {
     text-align: center;
     width: 100%;
     height: auto;
-    font: 60px Cambria, Verdana, serif; 
+    font: 60px Cambria, Constantia, Verdana, serif; 
 
     font-weight: 100;
     color: #FFF;
@@ -112,8 +112,8 @@ div hr {
     height: 30px;
     margin-top: -155px;
     margin-left: -225px;
-    color: #D61E49;
-    font: 20px Monaco, serif; 
+    color: #DE1E59;
+    font: 19px Monaco, Candara, serif, skia; 
     font-weight: 10;
     border-color: #444;
     padding-left: 22px;
