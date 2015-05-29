@@ -122,7 +122,7 @@ else:
 # output according to SettingsCount
 if SettingsCount == "all":
 	SettingsCount = 500
-print "<table border=1>"
+print "<table id='processlist' border=1>"
 print "<td class='title'>PID</td>"
 print "<td class='title'>User</td>"
 print "<td class='title'>State</td>"

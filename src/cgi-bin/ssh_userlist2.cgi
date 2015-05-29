@@ -95,7 +95,7 @@ if ShowIdle == "1":
 	Showlist += "<td class='title'>Idle time</td>"
 if ShowWhat == "1":
 	Showlist += "<td class='title'>What</td>"
-print "<table border=1>"
+print "<table id='userlist' border=1>"
 print Showlist
 print "<tr>"
 
