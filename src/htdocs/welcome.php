@@ -132,10 +132,13 @@ if($_POST) {
 			$content = "Hello dear $username\nYour password is initialized as: ".$password."\n";
 			$content .= "You can always change your password on our website anytime :)\n";
 			$content .= "Thank you! Thanks for your interests in our services!\n";
-			mail("$email", "$subject", "$content");
+			$tmp = mail("$email", "$subject", "$content");
 			// Step 5): notification and redirection.
 			print_header();
-			echo "<script language='javascript'>alert('Registration succeeded, and password is sent to your email.');</script>";
+			if($tmp)
+				echo "<script language='javascript'>alert('Registration succeeded, and password is sent to your email.');</script>";
+			else
+				echo "<script language='javascript'>alert('No! The email is not sent!!! QAQ');</script>";
 			print_body(0, 0);
 		} else {
 			// this username is used, must choose another one.
