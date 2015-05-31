@@ -3,6 +3,7 @@
 include("config.php");
 session_start();
 
+
 /* "VIEW" variable -> default to be "status". */
 /* status: display process information (default) */
 /* userlist: dispaly online user information */
@@ -55,10 +56,6 @@ function print_body() {
 	echo "<hr id='HR'>";
 	// print different things according to different views: STATUS, LOG, SETTINGS, LOGOUT
 	if(!isset($_SESSION['view']) || $_SESSION['view'] == "status") {
-		print_filter_form();
-		echo "<hr>";
-		print_killer_form();
-		echo "<hr>";
 		if(isset($_GET['kill_process'])) { // the user wants to kill a process
 			// kill the process
 			$pid = $_GET['pid'];
@@ -73,6 +70,10 @@ function print_body() {
 			echo "<hr>";
 			unset($_GET['kill_process']);
 		}
+		print_filter_form();
+		echo "<hr>";
+		print_killer_form();
+		echo "<hr>";
 		global $machine_list;
 		if(count($machine_list) == 0) { // this user has no machines that are setup.
 			echo "<p class='warning'>Sorry, You don't have any machines to be moniotored!</p>";
@@ -561,7 +562,7 @@ function print_add_machine_form() {
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
 	echo "<input type='radio' name='mos' value='Linux' checked>Linux";
-	echo "<input type='radio' name='mos' value='MacOSX'>Mac OSX";
+	echo "<input type='radio' name='mos' value='MacOSX'>Mac OSX<br />";
 	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
 	echo "</form>";
 	echo "</div>";
