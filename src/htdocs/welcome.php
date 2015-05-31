@@ -3,6 +3,8 @@
 include("config.php");
 session_start();
 
+/* for mailing function */
+require './PHPMailer-master/PHPMailerAutoload.php';
 
 /* print the header of the html page */
 function print_header() {
@@ -128,11 +130,31 @@ if($_POST) {
 			$query = "INSERT into acct (username, password, email) values ('$username', '$password', '$email')";
 			$dummy = mysqli_query($db, $query);
 			// Step 4): send an email
+			/*
 			$subject = "Welcome to webMS, $username";
 			$content = "Hello dear $username\nYour password is initialized as: ".$password."\n";
 			$content .= "You can always change your password on our website anytime :)\n";
 			$content .= "Thank you! Thanks for your interests in our services!\n";
 			$tmp = mail("$email", "$subject", "$content");
+			*/
+			$mail = new PHPMailer;
+			$mail->isSMTP();
+			$mail->Host = 'smtp.gmail.com';
+			$mail->SMTPAuth = true;
+			$mail->Username = 'supermonster8@gmail.com';
+			$mail->Password = 'bostonmit';
+			$mail->SMTPSecure = 'tls';
+			$mail->Port = 587;
+			$mail->setFrom('supermonster8@gmail.com', 'webMS');
+			$mail->addAddress("$email", "$username");
+			$mail->addReplyTo('no-reply@webMS.com', 'no-reply');
+			$mail->isHTML(true);
+			$mail->Subject = 'Welcome to webMS, '.$username;
+			$content = "Hello dear $username\nYour Password is initialized as: ".$password."\n";
+			$content .= "You can always change your password on our website anytime :)\n";
+			$content .= "Thank you! Thanks for your interests in our services!\n";
+			$mail->Body = $content;
+			$tmp = $mail->send();
 			// Step 5): notification and redirection.
 			print_header();
 			if($tmp)
