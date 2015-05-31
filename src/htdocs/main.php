@@ -545,8 +545,10 @@ function print_update_machine_form() {
 	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
+	echo "<label for=''>Operating System:</label>";
 	echo "<input type='radio' name='mos' value='Linux'checked>Linux";
 	echo "<input type='radio' name='mos' value='MacOSX'>Mac OSX";
+	echo "<br />";
 	echo "<input type='submit' class='button' name='update_machine' value='Update'>";
 	echo "</form>";
 	echo "</div>";
@@ -561,6 +563,7 @@ function print_add_machine_form() {
 	echo "<label for=''>Host Name:</label><input type='text' name='mhost'><br />";
 	echo "<label for=''>Username:</label><input type='text' name='musername'><br />";
 	echo "<label for=''>Password:</label><input type='password' name='mpassword'><br />";
+	echo "<label for=''>Operating System:</label>";
 	echo "<input type='radio' name='mos' value='Linux' checked>Linux";
 	echo "<input type='radio' name='mos' value='MacOSX'>Mac OSX<br />";
 	echo "<input type='submit' class='button' name='add_machine' value='Add'>";
