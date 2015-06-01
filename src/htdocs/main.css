@@ -88,10 +88,10 @@ hr {
     top: 90px;
     left: 50%;
     width: 350px;
-    height: 44px;
+    height: 45px;
     margin-left: -175px;
-    padding-top: 12px;
-    padding-bottom: 2px;
+    padding-top: 16px;
+    padding-bottom: 8px;
     padding-left: 12px;
     text-align: center;
 
@@ -100,7 +100,7 @@ hr {
     border-width: 2px;
     color: #D61E49;
     background: rgba(224, 224, 172, 0.15);
-	font: 31px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
+	font: 33px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
 }
 
 #header {
@@ -160,12 +160,12 @@ hr {
 }
 
 #menu .button {
-    width: 22.5%;
+    width: 22.7%;
     background: #68C;
     text-align: center;
     font: 23px Courier, Candara, Cambria, Verdana, serif; 
     margin-left: 10px;
-    padding: 2px 5px 2px 5px;
+    padding: 2px 6px 2px 6px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
@@ -200,14 +200,18 @@ hr {
     top: 330px;
     left: 50%;
     height: 145px;
-    width: 100%;
+    width: 1250px;
     /* margin-left: -50%; */
     text-align: center;
-    border-style: none;
     /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
-    /*border: solid;
-    border-width: 2px;*/
+    background: rgba(255, 255, 255, 0.55);
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
 }
 
 #filter p {
@@ -215,10 +219,10 @@ hr {
     position: relative;
     _position: relative;
     top: 0px;*/
-   
 
-    display:block;
+    display: block;
     text-align: center;
+    margin-top: 20px;
     margin-left: 10px;
     font-size: 40px;
     font: 40px Constantia, Arial;
@@ -232,7 +236,7 @@ hr {
     top: -19px;
     margin-left: 7px;
     margin-right: 2px;
-    font: 22px Arial, sans-serif; 
+    font: 22px Courier, Arial, sans-serif;
 }
 
 #filter select {
@@ -302,12 +306,21 @@ hr {
     width: 100%;
     margin-left: -50%;
     text-align: center;*/
-    border-style: none;
     /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
 
-    /*border: solid;
-    border-width: 2px;*/
+    height: 145px;
+    width: 450px;
+    /* margin-left: -50%; */
+    text-align: center;
+    /*color: #D61E49;*/
+    background: rgba(255, 255, 255, 0.55);
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
 }
 
 #killer p {
@@ -317,28 +330,28 @@ hr {
     top: 0px;
     text-align: left;
     margin-left: 10px;*/
-    display:block;
-
-    width: 30%;
-    margin-left: 45%;
-    font-size: 40px;
-    font: Cambria, Courier, serif, Arial;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    font: 40px Constantia, Arial;
     color: #111;
 }
 
 #killer label {
-    width: 10%;
     /*
     position: relative;
     _position: relative;
     top: -20px;
     left: -36.5%;
-    */
+    */ 
+    width: 10%;
     position: relative;
     _position: relative;
-    top: -20px;
-    margin-left:30%;
-    font: 25px Courier, Candara, Cambria, Verdana, serif;  
+    top: -19px;
+    margin-left: 7px;
+    margin-right: 2px;
+    font: 22px Courier, Arial, sans-serif;
 }
 
 #killer input {
@@ -775,20 +788,25 @@ label[for=count] {
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-    
-    top: 383px;
+    /*
+    position: absolute;
+    _position: absolute;
+    */
+    top: 330px;
     left: 50%;
-    height: 300px;
-    width: 800px;
+    height: 265px;
+    width: 650px;
+    /* margin-left: -50%; */
+    text-align: center;
+    /*color: #D61E49;*/
+    background: rgba(255, 255, 255, 0.55);
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    font: 25px Courier, Candara, Cambria, Verdana, serif;
-    /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
-    /*
-    border: solid;
-    border-width: 2px;*/
-    
+    padding-bottom: 5px;   
 }
 
 #addmc h2 {
@@ -810,7 +828,7 @@ label[for=count] {
     left: -50%;*/
     display:inline-block;
     text-align: right;
-    margin-left: 30px;
+    margin-left: -50px;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
 }
 
@@ -916,19 +934,22 @@ input[type='radio'] {
     /*
     position: absolute;
     _position: absolute;
-    top: 369px;
-    left: 50%;*/
-    display: block;
-    height: 300px;
-    width: 800px;
+    */
+    top: 330px;
+    left: 50%;
+    height: 215px;
+    width: 750px;
+    /* margin-left: -50%; */
+    text-align: center;
+    /*color: #D61E49;*/
+    background: rgba(255, 255, 255, 0.55);
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-    border-style: none;
-    /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
-    /*border: solid;
-    border-width: 2px;*/
+    padding-bottom: 5px;
 }
 
 #chpw h2 {
@@ -1049,22 +1070,28 @@ input[type='radio'] {
 
 
 #userfilter {
-    display:block;
     filter:alpha(opacity=80);  
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-    
-    margin-top: 100px;
-    
-    margin-left:auto;
-    margin-right:auto;
-
-    border-style: none;
+    /*
+    position: absolute;
+    _position: absolute;
+    */
+    left: 50%;
+    height: 190px;
+    width: 950px;
+    /* margin-left: -50%; */
+    text-align: center;
     /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
-    /*border: solid;
-    border-width: 2px;*/
+    background: rgba(255, 255, 255, 0.55);
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
 }
 
 #userfilter p {
@@ -1075,10 +1102,12 @@ input[type='radio'] {
     /*
     top: 2px;
     */
-    margin-top: 100px;
+
+    display: block;
     text-align: center;
-    /*font: 40px Cambria, Courier, serif, Arial;*/
-    font: 40px Constantia, Cambria, Courier, serif, Arial;
+    margin-top: 20px;
+    margin-left: 10px;
+    font: 40px Constantia, Arial;
     color: #111;
 }
 
@@ -1176,6 +1205,7 @@ input[type='radio'] {
     top: -2px;
     /* left: 50%; */
     /* margin-left: -100%; */
+    margin-top: 4px;
     margin-left: 10px;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
@@ -1279,13 +1309,32 @@ input[type='radio'] {
 /*** Delete Machine ***/
 /**********************/
 #demc {
-    width:50%;
+    filter:alpha(opacity=80);  
+    -moz-opacity: 0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;
+    /*
+    position: absolute;
+    _position: absolute;
+    */
+    left: 50%;
+    height: 160px;
+    width: 650px;
+    /* margin-left: -50%; */
+    text-align: center;
+    /*color: #D61E49;*/
+    background: rgba(255, 255, 255, 0.55);
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    border:2px;
-    /*border-style: solid;*/
-    text-align: center;
-    font: 20px Constantia, Cambria, Courier, serif, Arial;
+    padding-bottom: 5px;
+}
+
+#demc h2 {
+    font: 34px Constantia, Arial;
 }
 
 #demc .button {
@@ -1330,16 +1379,21 @@ input[type='radio'] {
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-    
-    top: 383px;
+
     left: 50%;
-    height: 300px;
-    width: 800px;
+    height: 270px;
+    width: 660px;
+    margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
     /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
+    background: rgba(255, 255, 255, 0.55);
+    border-color: #000;
+    border-width: 2px;
+    border-style: solid;
+    padding-top: 2px;
+    padding-bottom: 7px;
     /*
     border: solid;
     border-width: 2px;*/
