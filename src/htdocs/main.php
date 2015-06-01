@@ -352,6 +352,20 @@ function print_user_filter_form() {
 		}
 	}
 	echo "</select>";
+	// ----- print count options ----- //
+	echo "<label for=''>Count:</label>";
+	echo "<select name='count' form_id='settings'>";
+	global $count_list;
+	for($i = 0; $i < count($count_list); $i = $i + 1) {
+		$tmp = $count_list[$i];
+		if($tmp == $_SESSION['current_count']) {
+			echo "<option value='$tmp' selected='selected'>$tmp</option>";
+		} else {
+			echo "<option value='$tmp'>$tmp</option>'";
+		}
+	}
+	echo "</select>";
+	echo "<br />";
 	// ----- print ip options ----- //
 	/*
 	echo "<label for=''>Show IP?</label>";
@@ -392,20 +406,8 @@ function print_user_filter_form() {
 	*/
 	echo "<input type='checkbox' name='showcommand' value='1' checked>";
 	echo "<label for=''>Show Command. </label>";
-	// ----- print count options ----- //
-	echo "<label for=''>Count:</label>";
-	echo "<select name='count' form_id='settings'>";
-	global $count_list;
-	for($i = 0; $i < count($count_list); $i = $i + 1) {
-		$tmp = $count_list[$i];
-		if($tmp == $_SESSION['current_count']) {
-			echo "<option value='$tmp' selected='selected'>$tmp</option>";
-		} else {
-			echo "<option value='$tmp'>$tmp</option>'";
-		}
-	}
-	echo "</select>";
 	// ----- end of settings list, now let's have a submit button ----- //
+	echo "<br />";
 	echo "<input type='submit' class='button' value='Go!'>";
 	echo "</form>";
 	echo "</div>";
