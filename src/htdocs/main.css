@@ -54,15 +54,20 @@ hr {
 }
 
 .warning {
+    /*
     position: absolute;
     left: 50%;
     top: 310px;
     width: 400px;
     /* height: 30px; */
     overflow: scroll;
+    /*
     margin-top: 33px;
     margin-left: -200px;
-
+    */
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
     text-align: center;
     color: #D61E49;
     font: 20px Athelas, Monaco, serif; 
@@ -249,9 +254,6 @@ hr {
     text-overflow: '';
 }
 
-#filter select:active {
-    background-color: #f00;
-}
 
 #filter label[for='machine'] select {
     width: 14%;
@@ -335,7 +337,7 @@ hr {
 }
 
 #killer input {
-    width: 12%;
+    width: 180px;
     /*
     position: relative;
     _position: relative;
@@ -358,7 +360,7 @@ hr {
 }
 
 #killer .button {
-    width: 7%;
+    width: 100px;
     /*
     position: relative;
     _position: relative;
@@ -619,7 +621,7 @@ label[for=count] {
 }
 
 #profile .button {
-    width: 12.5%;
+    width: 250px;
     position: relative;
     _position: relative;
     top: -80px;
@@ -720,7 +722,7 @@ label[for=count] {
 }
 
 #machines .button {
-    width: 12%;
+    width: 250px;
     position: relative;
     _position: relative;
     top: -80px;
@@ -766,7 +768,7 @@ label[for=count] {
     top: 383px;
     left: 50%;
     height: 300px;
-    width: 40%;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
@@ -894,36 +896,41 @@ input[type='radio'] {
 /******************************/
 
 /* id='chpw' */
+
 #chpw {
     filter:alpha(opacity=80);  
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
+    /*
     position: absolute;
     _position: absolute;
     top: 369px;
-    left: 50%;
+    left: 50%;*/
+    display: block;
     height: 300px;
-    width: 100%;
-    margin-left: -50%;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     border-style: none;
-    color: #D61E49;
+    /*color: #D61E49;*/
     background: rgba(224, 224, 172, 0.15);
     /*border: solid;
     border-width: 2px;*/
 }
 
 #chpw h2 {
+    /*
     position: relative;
     _position: relative;
-    top: 2px;
+    top: 2px;*/
     font: 40px Constantia, Cambria, Courier, serif, Arial;
     color: #111;
 }
 
 #chpw label {
-    width: 10%;
+    width: 200px ;
     position: relative;
     _position: relative;
     top: -10px;
@@ -932,7 +939,7 @@ input[type='radio'] {
 }
 
 #chpw input {
-    width: 12%;
+    width: 250px;
     position: relative;
     _position: relative;
     top: -10px;
@@ -952,7 +959,7 @@ input[type='radio'] {
 }
 
 #chpw .button {
-    width: 7%;
+    width: 100px;
     position: relative;
     _position: relative;
     text-align: center;
@@ -1260,7 +1267,7 @@ input[type='radio'] {
 }
 
 #demc .button {
-    width: 22.5%;
+    width: 250px;
     background: #68C;
     text-align: center;
     font: 23px Courier, Candara, Cambria, Verdana, serif; 
@@ -1305,7 +1312,7 @@ input[type='radio'] {
     top: 383px;
     left: 50%;
     height: 300px;
-    width: 40%;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
@@ -1361,7 +1368,7 @@ input[type='radio'] {
 
 
 #chmc .button {
-    width: 10%;
+    width: 100px;
 
     text-align: center;
     top: -22px;
