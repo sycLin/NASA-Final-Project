@@ -214,7 +214,7 @@ function print_filter_form() {
 	}
 	echo "</select>";
 	// ----- print process type options ----- //
-	echo "<label for=''>Process Type:</label>";
+	echo "<label for=''>Type:</label>";
 	echo "<select name='proc_type' form_id='settings'>";
 	global $proc_type_list;
 	for($i = 0; $i < count($proc_type_list); $i = $i + 1) {
@@ -227,7 +227,7 @@ function print_filter_form() {
 	}
 	echo "</select>";
 	// ----- print sortedby options ----- //
-	echo "<label for=''>Sorted By:</label>";
+	echo "<label for=''>Sort:</label>";
 	echo "<select name='sortedby' form_id='settings'>";
 	global $sortedby_list;
 	for($i = 0; $i < count($sortedby_list); $i = $i + 1) {
