@@ -88,10 +88,10 @@ hr {
     top: 90px;
     left: 50%;
     width: 350px;
-    height: 44px;
+    height: 45px;
     margin-left: -175px;
-    padding-top: 12px;
-    padding-bottom: 2px;
+    padding-top: 16px;
+    padding-bottom: 8px;
     padding-left: 12px;
     text-align: center;
 
@@ -100,7 +100,7 @@ hr {
     border-width: 2px;
     color: #D61E49;
     background: rgba(224, 224, 172, 0.15);
-	font: 31px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
+	font: 30px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
 }
 
 #header {
@@ -1216,7 +1216,7 @@ input[type='radio'] {
     left: 50%;
     */
     height: 70%;
-    width: 40%;
+    width: 70%;
     /*margin-left: -25%;*/
     text-align: center;
 
@@ -1330,21 +1330,16 @@ input[type='radio'] {
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-
+    
+    top: 383px;
     left: 50%;
-    height: 270px;
-    width: 660px;
-    margin-top: 45px;
+    height: 300px;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.55);
-    border-color: #000;
-    border-width: 2px;
-    border-style: solid;
-    padding-top: 2px;
-    padding-bottom: 7px;
+    background: rgba(224, 224, 172, 0.15);
     /*
     border: solid;
     border-width: 2px;*/
@@ -1391,7 +1386,6 @@ input[type='radio'] {
     text-align: center;
     font: 36px Constantia, Arial;
     color: #111;
-    margin-bottom: 20px;
 }
 
 
@@ -1401,7 +1395,6 @@ input[type='radio'] {
     text-align: center;
     top: -22px;
     left: 51%;
-    margin-top: 2px;
     margin-left: 46%;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
