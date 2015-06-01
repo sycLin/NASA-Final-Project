@@ -9,9 +9,12 @@ class UserInfo:
 		bias = 0
 		self.name = init_list[0]
 		self.ip = init_list[1]
-		self.login = init_list[2]
+		self.login = init_list[2] 
 		if len(init_list[2]) <= 2:
-			self.login += '/'+init_list[3][0:(len(init_list[3])-2)]+'/'+init_list[3][(len(init_list[3])-2):]
+			dd = init_list[2]
+			mm = init_list[3][0:(len(init_list[3])-4)]
+			yy = init_list[3][(len(init_list[3])-2):]
+			self.login = dd+'/'+mm+'/'+yy
 			bias =1
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
