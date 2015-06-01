@@ -13,7 +13,7 @@ class UserInfo:
 		s = '月'
 		if init_list[3].find(s):
 			self.login += init_list[3]
-			bias += 1
+			bias = 1
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
