@@ -12,10 +12,12 @@ class UserInfo:
 		self.login = init_list[2]
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
+		s = init_list[3].decode("big5")
+		
 		#if not init_list[3].find(u'\u6708'):
 		#	self.idle = 'uuuuu'
 		#s = '月'
-		self.login = str(len(init_list[3]))
+		#self.login = str(len(init_list[3]))
 		#if init_list[3].list()
 		
 # cgi script requirements
