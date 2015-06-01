@@ -24,7 +24,7 @@ class UserInfo:
 		else:
 			week = self.login[0:3]
 			day = self.login[3:]
-			if week == '四':
+			if week == '\u56db':
 				self.login += 'H'
 			
 		self.idle = init_list[3+bias]
