@@ -6,15 +6,15 @@ import cgitb
 
 class UserInfo:
 	def __init__(self, init_list):
-		init_list.pop(1)
+		#init_list.pop(1)
 		bias = 0
 		self.name = init_list[0]
 		self.ip = init_list[1]
 		self.login = init_list[2]
-		s = '月'
-		if init_list[3].find(s):
-			self.login += init_list[3]
-			bias += 1
+		#s = '月'
+		#if init_list[3].find(s):
+		#	self.login += init_list[3]
+		#	bias += 1
 		self.idle = init_list[3+bias]
 		self.what = init_list[4+bias]
 # cgi script requirements
