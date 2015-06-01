@@ -54,6 +54,8 @@ function print_register_form() {
 	echo "<form action='' method='POST'>";
 	echo "<label>Username:</label><input type='text' name='username' placeholder='Pick a username!'><br />";
 	echo "<label>E-mail:</label><input type='text' name='email' placeholder='Must enter a valid email!'><br />";
+	/* since we're not gonna email the user his/her password, we have to let them enter their password */
+	echo "<label>Password:</label><input type='password' name='password' placeholder='Pick a password!'><br />";
 	echo "<label></label><input type='submit' class='button' value='Register'>";
 	echo "</form><hr>";
 	echo "<span>Already a member?&nbsp;";
@@ -121,46 +123,53 @@ if($_POST) {
 		// Step 1): check username validity: username must be unique.
 		if(check_username_validity($_POST['username']) == 0) {
 			// this username is available
-			// Step 2): create randomized password for the user
-			$rand_str = generateRandomString(8);
+			// Step 2): create randomized password for the user.
+			// NO! LET THEM ENTER THEIR PASSWORD!
+			// $rand_str = generateRandomString(8);
 			// Step 3): insert to DB
 			$username = $_POST['username'];
 			$email = $_POST['email'];
-			$password = $rand_str;
+			// $password = $rand_str;
+			$password = $_POST['password'];
 			$query = "INSERT into acct (username, password, email) values ('$username', '$password', '$email')";
 			$dummy = mysqli_query($db, $query);
 			// Step 4): send an email
-			/*
+			/* below is PHP built-in mail() function
 			$subject = "Welcome to webMS, $username";
 			$content = "Hello dear $username\nYour password is initialized as: ".$password."\n";
 			$content .= "You can always change your password on our website anytime :)\n";
 			$content .= "Thank you! Thanks for your interests in our services!\n";
 			$tmp = mail("$email", "$subject", "$content");
 			*/
-			$mail = new PHPMailer;
-			$mail->isSMTP();
+			/* below is PHPMailer
+			$mail = new PHPMailer();
+			$mail->IsSMTP();
 			$mail->Host = 'smtp.gmail.com';
 			$mail->SMTPAuth = true;
 			$mail->Username = 'supermonster8@gmail.com';
 			$mail->Password = 'bostonmit';
-			$mail->SMTPSecure = 'tls';
-			$mail->Port = 587;
-			$mail->setFrom('supermonster8@gmail.com', 'webMS');
-			$mail->addAddress("$email", "$username");
-			$mail->addReplyTo('no-reply@webMS.com', 'no-reply');
-			$mail->isHTML(true);
+			$mail->FromName = "webMS-service";
+			$mail->From = "supermonster8@gmail.com";
+			$mail->AddAddress("$email", "$username");
+			$mail->AddReplyTo('supermonster8@gmail.com', 'no-reply');
+			$mail->IsHTML(true);
+			$mail->WordWrap = 80;
 			$mail->Subject = 'Welcome to webMS, '.$username;
 			$content = "Hello dear $username\nYour Password is initialized as: ".$password."\n";
 			$content .= "You can always change your password on our website anytime :)\n";
 			$content .= "Thank you! Thanks for your interests in our services!\n";
 			$mail->Body = $content;
 			$tmp = $mail->send();
+			*/
 			// Step 5): notification and redirection.
 			print_header();
+			/*
 			if($tmp)
 				echo "<script language='javascript'>alert('Registration succeeded, and password is sent to your email.');</script>";
 			else
 				echo "<script language='javascript'>alert('No! The email is not sent!!! QAQ');</script>";
+			*/
+			echo "<script language='javascript'>alert('Registration Complete! Congrats!');</script>";
 			print_body(0, 0);
 		} else {
 			// this username is used, must choose another one.
