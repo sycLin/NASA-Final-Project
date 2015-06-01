@@ -87,7 +87,7 @@ user_list = []
 lines = cmdOutput.splitlines()
 
 for i in lines:
-	newUser = UserInfo(i.decode("big5").split())
+	newUser = UserInfo(i.split())
 	user_list.append(newUser)
 
 Showlist = "<td class='title'>User</td>"
