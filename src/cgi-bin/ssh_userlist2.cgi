@@ -25,8 +25,8 @@ class UserInfo:
 			week = self.login[0:3]
 			day = self.login[3:]
 			self.login = week + day
-			self.login += week - ss
-			if week.find('\u56db'.encode('utf-16')) > 0:
+			#self.login += 
+			if (week.decode("utf-8")).find('\u56db') > 0:
 				self.login += 'H'
 
 		self.idle = init_list[3+bias]
