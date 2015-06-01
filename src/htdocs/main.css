@@ -587,7 +587,7 @@ label[for=count] {
     opacity: 0.8;
     position: absolute;
     _position: absolute;
-    top: 363px;
+    /*top: 363px;*/
     left: 50%;
     height: 300px;
     width: 100%;
