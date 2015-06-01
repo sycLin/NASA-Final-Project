@@ -9,7 +9,9 @@ class UserInfo:
 		bias = 0
 		self.name = init_list[0]
 		self.ip = init_list[1]
-		self.login = str(len(init_list[3]))
+		self.login = init_list[2]
+		if init_list.find(u'月'):
+			self.login = 'H'
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
