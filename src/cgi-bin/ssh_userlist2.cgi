@@ -3,7 +3,7 @@ import sys
 import chilkat
 import cgi
 import cgitb
-
+ss = ''
 class UserInfo:
 	def __init__(self, init_list):
 		bias = 0
@@ -12,7 +12,7 @@ class UserInfo:
 		self.login = init_list[2] 
 		if len(init_list[2]) <= 2:
 			dd = init_list[2]
-
+			ss =init_list[3][(len(init_list[3])-5):(len(init_list[3])-2)]
 			mm = init_list[3][0:(len(init_list[3])-5)]
 			if len(mm) == 1:
 				mm = '0'+mm
@@ -25,9 +25,9 @@ class UserInfo:
 			week = self.login[0:3]
 			day = self.login[3:]
 			self.login = week + day
-			self.login += '\u56db'-week
+			self.login += week - ss
 			if week.find('\u56db'.encode('utf-16')) > 0:
-				self.login += type(week)
+				self.login += 'H'
 
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
