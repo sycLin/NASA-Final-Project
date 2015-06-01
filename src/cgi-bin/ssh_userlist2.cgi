@@ -22,10 +22,12 @@ class UserInfo:
 		elif self.login.find(':') > 0:
 			self.login += ' Today'
 		else:
-			week = self.login[0:3]
+			week = self.login[0:2]
 			day = self.login[3:]
+			self.login = week + day
 			if week.find('\u56db'.encode('utf-16')) > 0:
 				self.login += 'H'
+
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
