@@ -21,8 +21,10 @@ class UserInfo:
 			bias =1
 		elif self.login.find(':') > 0:
 			self.login += 'H'
-		elif self.login.find('\u56db') >0:
-			self.login += 'Thur'
+		else:
+			week = self.login[0:3]
+			day = self.login[3:]
+			self.login += str(type(week))
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
