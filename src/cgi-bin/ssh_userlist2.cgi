@@ -59,7 +59,7 @@ if channelNum < 0:
 	sys.exit()
 
 # send the command
-command = "w -h | tr -s ' ' | cut -d ' ' -f 1,3,4,5,8"
+command = "w -h | tr -s ' '"
 success = ssh.SendReqExec(channelNum, command)
 if success != True:
 	print ssh.lastErrorText()
@@ -81,7 +81,8 @@ if cmdOutput == None:
 # parsing user list 
 user_list = []
 lines = cmdOutput.splitlines()
-
+for i in lines:
+	i.pop(1)
 for i in lines:
 	newUser = UserInfo(i.split())
 	user_list.append(newUser)
