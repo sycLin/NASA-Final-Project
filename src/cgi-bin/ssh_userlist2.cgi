@@ -12,6 +12,10 @@ class UserInfo:
 		self.login = init_list[2]
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
+		if init_list[3].find(u'\u6708'):
+			self.idle = 'uuuuu'
+		#s = '月'
+		#if init_list[3].list()
 		
 # cgi script requirements
 print "Content-type:text/html\n\n"
