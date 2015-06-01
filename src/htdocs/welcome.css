@@ -74,7 +74,7 @@ div {
     top: 50%;
     left: 50%;
     width: 450px;
-    height: 225px;
+    height: auto;
     margin-top: -115px;
     margin-left: -225px;
     color: #444;
