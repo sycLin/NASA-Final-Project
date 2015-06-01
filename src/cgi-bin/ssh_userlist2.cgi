@@ -25,7 +25,7 @@ class UserInfo:
 			week = self.login[0:3]
 			day = self.login[3:]
 			self.login = week + day
-			self.login += type(week)
+			self.login += str(type(week))
 			if week.find('\u56db'.encode('utf-16')) > 0:
 				self.login += type(week)
 
