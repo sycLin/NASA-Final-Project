@@ -60,6 +60,7 @@ hr {
     top: 310px;
     width: 400px;
     /* height: 30px; */
+    width: 70%;
     overflow: scroll;
     /*
     margin-top: 33px;
@@ -88,10 +89,10 @@ hr {
     top: 90px;
     left: 50%;
     width: 350px;
-    height: 45px;
+    height: 44px;
     margin-left: -175px;
-    padding-top: 16px;
-    padding-bottom: 8px;
+    padding-top: 12px;
+    padding-bottom: 2px;
     padding-left: 12px;
     text-align: center;
 
@@ -100,7 +101,7 @@ hr {
     border-width: 2px;
     color: #D61E49;
     background: rgba(224, 224, 172, 0.15);
-	font: 30px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
+	font: 31px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
 }
 
 #header {
@@ -419,7 +420,7 @@ hr {
     top: 660px;
     left: 50%;
     height: 70%;*/
-    width: 40%;
+    width: 70%;
     /*margin-left: -25%;*/
     text-align: center;
 
