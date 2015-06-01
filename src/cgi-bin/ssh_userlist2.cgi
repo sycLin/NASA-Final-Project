@@ -11,7 +11,8 @@ class UserInfo:
 		self.ip = init_list[1]
 		self.login = init_list[2]
 		if len(init_list[2]) <= 2:
-			self.login = 'H'
+			self.login += init_list[3]
+			bias =1
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
