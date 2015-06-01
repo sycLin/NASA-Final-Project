@@ -21,7 +21,7 @@ class UserInfo:
 			bias =1
 		elif self.login.find(':') > 0:
 			self.login += ' Today'
-		else:
+		elif len(self.login) == 5:
 			week = self.login[0:3]
 			day = self.login[3:]+':00 '
 			#self.login = week + day
