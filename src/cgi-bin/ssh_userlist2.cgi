@@ -12,7 +12,7 @@ class UserInfo:
 		self.login = init_list[2] 
 		if len(init_list[2]) <= 2:
 			dd = init_list[2]
-			mm = init_list[3][0:(len(init_list[3])-4)]
+			mm = init_list[3][0:(len(init_list[3])-5)]
 			yy = init_list[3][(len(init_list[3])-2):]
 			self.login = dd+'/'+mm+'/'+yy
 			bias =1
