@@ -6,12 +6,17 @@ import cgitb
 
 class UserInfo:
 	def __init__(self, init_list):
+		init_list.pop(1)
+		bias = 0
 		self.name = init_list[0]
 		self.ip = init_list[1]
 		self.login = init_list[2]
-		self.idle = init_list[3]
-		self.what = init_list[4]
-		
+		s = '月'
+		if init_list[3].find(s):
+			self.login += init_list[3]
+			bias += 1
+		self.idle = init_list[3+bias]
+		self.what = init_list[4+bias]
 # cgi script requirements
 print "Content-type:text/html\n\n"
 # print "<html><head><title>Python CGI, YES!</title></head><body>"
@@ -81,8 +86,6 @@ if cmdOutput == None:
 # parsing user list 
 user_list = []
 lines = cmdOutput.splitlines()
-for i in lines:
-	i.pop(1)
 for i in lines:
 	newUser = UserInfo(i.split())
 	user_list.append(newUser)
