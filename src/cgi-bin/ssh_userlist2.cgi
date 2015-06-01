@@ -19,6 +19,8 @@ class UserInfo:
 			yy = '20'+init_list[3][(len(init_list[3])-2):]
 			self.login = dd+'/'+mm+'/'+yy
 			bias =1
+		elif self.login.find(':') > 0:
+			self.login += 'H'
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
