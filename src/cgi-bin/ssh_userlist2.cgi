@@ -8,9 +8,9 @@ class UserInfo:
 	def __init__(self, init_list):
 		self.name = init_list[0]
 		self.ip = init_list[1]
-		self.login = init_list[2]
-		self.idle = init_list[3]
-		self.what = init_list[4]
+		self.idle = init_list[2]
+		self.what = init_list[3]
+		#self.login = init_list[4]
 		
 # cgi script requirements
 print "Content-type:text/html\n\n"
@@ -59,7 +59,7 @@ if channelNum < 0:
 	sys.exit()
 
 # send the command
-command = "w -h | tr -s ' ' | cut -d ' ' -f 1,3,4,5,8"
+command = "w -h | tr -s ' ' | cut -d ' ' -f 1,3,5,8"
 success = ssh.SendReqExec(channelNum, command)
 if success != True:
 	print ssh.lastErrorText()
@@ -104,7 +104,8 @@ for i in range(int(SettingsCount)):
 	if ShowIP == "1":
 		print "<td class='content'>"+user_list[i].ip+"</td>",
 	if ShowLogin == "1":
-		print "<td class='content'>"+user_list[i].login+"</td>",
+		print "<td class='content'> adddd </td>",
+		#print "<td class='content'>"+user_list[i].login+"</td>",
 	if ShowIdle == "1":
 		print "<td class='content'>"+user_list[i].idle+"</td>",
 	if ShowWhat == "1":
