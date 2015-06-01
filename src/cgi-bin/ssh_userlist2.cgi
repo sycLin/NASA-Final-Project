@@ -20,11 +20,11 @@ class UserInfo:
 			self.login = dd+'/'+mm+'/'+yy
 			bias =1
 		elif self.login.find(':') > 0:
-			self.login += 'H'
+			self.login += ' Today'
 		else:
 			week = self.login[0:3]
 			day = self.login[3:]
-			if week.startswith('\u56db'):
+			if week.find('\u56db')>0:
 				self.login += 'H'
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
