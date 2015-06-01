@@ -76,8 +76,8 @@ function print_body() {
 		echo "<hr>";
 		global $machine_list;
 		if(count($machine_list) == 0) { // this user has no machines that are setup.
-			echo "<p class='warning'>Sorry, You don't have any machines to be moniotored!</p>";
-			echo "<p class='warning'>Please go to the settings section to create one</p>";
+			echo "<p class='warning'>Sorry, You don't have any machines to be moniotored!<br />";
+			echo "Please go to the settings section to create one</p>";
 		} else {
 			print_process();
 		}
