@@ -60,7 +60,7 @@ hr {
     top: 310px;
     width: 400px;
     /* height: 30px; */
-    width: 70%;
+    width: 65%;
     overflow: scroll;
     /*
     margin-top: 33px;
@@ -68,7 +68,6 @@ hr {
     */
     margin-left: auto;
     margin-right: auto;
-    width: 800px;
     text-align: center;
     color: #D61E49;
     font: 20px Athelas, Monaco, serif; 
