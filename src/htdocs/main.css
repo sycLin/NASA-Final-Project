@@ -88,19 +88,23 @@ hr {
     top: 90px;
     left: 50%;
     width: 350px;
-    height: 44px;
+    height: 45px;
     margin-left: -175px;
-    padding-top: 12px;
-    padding-bottom: 2px;
+    padding-top: 14px;
+    padding-bottom: 6px;
     padding-left: 12px;
     text-align: center;
-
     border-style: solid;
     border-color: #444;
     border-width: 2px;
     color: #D61E49;
     background: rgba(224, 224, 172, 0.15);
 	font: 31px Bradley Hand, Constantia, Chalkduster, Verdana, Cambria, serif;
+}
+
+#User span {
+    margin-top: -14px;
+    padding-bottom: -10px;
 }
 
 #header {
