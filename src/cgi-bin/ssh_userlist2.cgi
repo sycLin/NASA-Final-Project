@@ -23,11 +23,26 @@ class UserInfo:
 			self.login += ' Today'
 		else:
 			week = self.login[0:3]
-			day = self.login[3:]
-			self.login = week + day
+			day = self.login[3:]+':00 '
+			#self.login = week + day
 			#self.login += 
-			if (week.decode("utf-8")) == u'\u56db' > 0:
-				self.login += 'H'
+			#\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u65e5
+			if (week.decode("utf-8")) == u'\u4e00' > 0:
+				week = 'Mon.'	
+			elif (week.decode("utf-8")) == u'\u4e8c' > 0:
+				week = 'Tue.'
+			elif (week.decode("utf-8")) == u'\u4e09' > 0:
+				week = 'Wed.'
+			elif (week.decode("utf-8")) == u'\u56db' > 0:
+				week = 'Thu.'
+			elif (week.decode("utf-8")) == u'\u4e94' > 0:
+				week = 'Fri.'
+			elif (week.decode("utf-8")) == u'\u516d' > 0:
+				week = 'Sat.'
+			elif (week.decode("utf-8")) == u'\u65e5' > 0:
+				week = 'Sun.'
+
+			self.login = day + week
 
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
