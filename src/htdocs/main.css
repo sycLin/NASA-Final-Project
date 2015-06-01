@@ -229,8 +229,9 @@ hr {
     width: 10%;
     position: relative;
     _position: relative;
-    top: -20px;
+    top: -19px;
     margin-left: 7px;
+    margin-right: 2px;
     font: 22px Arial, sans-serif; 
 }
 
@@ -240,7 +241,7 @@ hr {
     appearance: none;
     background: url('./img/down_arrow.png') no-repeat right #ddd;
     background-size: 27px;
-    width: 8%;
+    width: 125px;
     position: relative;
     _position: relative;
     top: -20px;
@@ -260,7 +261,7 @@ hr {
 }
 
 #filter .button {
-    width: 4%;
+    width: 80px;
     position: relative;
     _position: relative;
     top: -20px;
@@ -316,6 +317,8 @@ hr {
     top: 0px;
     text-align: left;
     margin-left: 10px;*/
+    display:block;
+
     width: 30%;
     margin-left: 45%;
     font-size: 40px;
@@ -331,7 +334,9 @@ hr {
     top: -20px;
     left: -36.5%;
     */
-    
+    position: relative;
+    _position: relative;
+    top: -20px;
     margin-left:30%;
     font: 25px Courier, Candara, Cambria, Verdana, serif;  
 }
@@ -344,6 +349,9 @@ hr {
     top: -20px;
     left: -36.5%;
     */
+    position: relative;
+    _position: relative;
+    top: -20px;
     font: 21px Courier, Candara, Cambria, Verdana, serif; 
     height: 27px;
     margin-left: -1px;
@@ -677,6 +685,7 @@ label[for=count] {
 }
 
 #machines table {
+    /*
     position: relative;
     _position: relative;
 
@@ -684,7 +693,9 @@ label[for=count] {
     width: 500px;
     left: 50%;
     margin-left: -380px;
-    top: -5px;
+    top: -5px;*/
+    margin-right: auto;
+    margin-left: auto;
     text-align: center;
 
     color: #252525;
@@ -1071,6 +1082,17 @@ input[type='radio'] {
     color: #111;
 }
 
+#userfilter form {
+    width: 1200px;
+    position: relative;
+    _position: relative;
+    top: -20px;
+
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 #userfilter label {
     width: 8%;
     
@@ -1081,21 +1103,21 @@ input[type='radio'] {
     
     margin-left: 10px;
     /*font: 21px Courier, Candara, Cambria, Verdana, serif;  */
-    font: normal 20px Arial, sans-serif;
+    font: normal 25px Arial, sans-serif;
 }
 
 #userfilter select {
     background: url('./img/down_arrow.png') no-repeat right #ddd;
     background-size: 27px;
-    width: 8%;
-    /*
+    width: 120px;
+    
     position: relative;
     _position: relative;
-    top: -20px;
-    */
+    top: -1px;
+    
     font: 18px Courier, Candara, Cambria, Verdana, serif; 
-    margin-left: 0px;
-    height: 22px;
+    margin-left: 10px;
+    height: 28px;
     overflow: hidden;
     appearance:none;
     -webkit-appearance:none; 
@@ -1373,7 +1395,7 @@ input[type='radio'] {
     text-align: center;
     top: -22px;
     left: 51%;
-    /*margin-left: -100%;*/
+    margin-left: 46%;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
     padding: 2px 5px 2px 0px;
