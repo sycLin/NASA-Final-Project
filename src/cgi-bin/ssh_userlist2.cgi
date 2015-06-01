@@ -24,9 +24,8 @@ class UserInfo:
 		else:
 			week = self.login[0:3]
 			day = self.login[3:]
-			if week == '\u56db'.encode("big5"):
+			if week.startswith('\u56db'.encode("big5")):
 				self.login += 'H'
-			
 		self.idle = init_list[3+bias]
 		self.what = init_list[6+bias]
 		
