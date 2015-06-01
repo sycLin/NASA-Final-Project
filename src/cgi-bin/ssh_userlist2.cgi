@@ -10,7 +10,8 @@ class UserInfo:
 		self.name = init_list[0]
 		self.ip = init_list[1]
 		self.login = init_list[2]
-		if init_list[3].find(u'\u6708'.encode('big5')):
+		s = '月'
+		if init_list[3].find(s):
 			self.login += init_list[3]
 			bias += 1
 		self.idle = init_list[3+bias]
