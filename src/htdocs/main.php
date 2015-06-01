@@ -374,8 +374,9 @@ function print_user_filter_form() {
 	echo "<option value='0'>No</option>";
 	echo "</select>";
 	*/
+	echo "<label for=''>Show: </label>";
 	echo "<input type='checkbox' name='showip' value='1' checked>";
-	echo "<label for=''>Show IP. </label>";
+	echo "<label for=''>IP. </label>";
 	// ----- print login (login time) options ----- //
 	/*
 	echo "<label for=''>Show LoginTime?</label>";
@@ -385,7 +386,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showlogintime' value='1' checked>";
-	echo "<label for=''>Show Login Time. </label>";
+	echo "<label for=''>Login Time. </label>";
 	// ----- print idle (idle time) options ----- //
 	/*
 	echo "<label for=''>Show IdleTime?</label>";
@@ -395,7 +396,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showidletime' value='1' checked>";
-	echo "<label for=''>Show Idle Time. </label>";
+	echo "<label for=''>Idle Time. </label>";
 	// ----- print what (command) options ----- //
 	/*
 	echo "<label for=''>Show Command?</label>";
@@ -405,7 +406,7 @@ function print_user_filter_form() {
 	echo "</select>";
 	*/
 	echo "<input type='checkbox' name='showcommand' value='1' checked>";
-	echo "<label for=''>Show Command. </label>";
+	echo "<label for=''>Command. </label>";
 	// ----- end of settings list, now let's have a submit button ----- //
 	echo "<br />";
 	echo "<input type='submit' class='button' value='Go!'>";
