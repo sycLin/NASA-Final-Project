@@ -781,15 +781,15 @@ label[for=count] {
     */
     top: 330px;
     left: 50%;
-    height: 265px;
-    width: 600px;
+    height: auto;
+    width: 720px;
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.55);
+    /*background: rgba(255, 255, 255, 0.55);
     border-style: solid;
     border-color: #333;
-    border-width: 2px;
+    border-width: 2px;*/
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -931,10 +931,10 @@ input[type='radio'] {
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.55);
+    /*background: rgba(255, 255, 255, 0.55);
     border-style: solid;
     border-color: #333;
-    border-width: 2px;
+    border-width: 2px;*/
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -1074,10 +1074,10 @@ input[type='radio'] {
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.45);
+    /*background: rgba(255, 255, 255, 0.45);
     border-style: solid;
     border-color: #333;
-    border-width: 2px;
+    border-width: 2px;*/
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -1313,10 +1313,10 @@ input[type='radio'] {
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.55);
+    /*background: rgba(255, 255, 255, 0.55);
     border-style: solid;
     border-color: #333;
-    border-width: 2px;
+    border-width: 2px;*/
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -1369,7 +1369,6 @@ input[type='radio'] {
     -khtml-opacity: 0.8;  
     opacity: 0.8;
 
-    left: 50%;
     height: 280px;
     width: 660px;
     margin-top: 45px;
@@ -1377,10 +1376,10 @@ input[type='radio'] {
     margin-right: auto;
     font: 25px Courier, Candara, Cambria, Verdana, serif;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.55);
+    /*background: rgba(255, 255, 255, 0.55);
     border-color: #333;
     border-width: 2px;
-    border-style: solid;
+    border-style: solid;*/
     padding-top: 2px;
     padding-bottom: 7px;
     /*
@@ -1433,16 +1432,16 @@ input[type='radio'] {
 }
 
 #chmc .button {
-    width: 100px;
+    width: auto;
 
+    position: relative;
+    _position: relative;
     text-align: center;
-    top: -22px;
-    left: 51%;
     margin-top: 8px;
-    margin-left: 46%;
+    margin-left: 45%;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
-    padding: 2px 5px 2px 5px;
+    padding: 3px 7px 3px 7px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
