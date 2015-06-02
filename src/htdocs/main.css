@@ -13,16 +13,22 @@ body {
 
 .active_button {
     background-color: #E26565;
-    width: 22%;
+    width: 24%;
     text-align: center;
     font: 23px Courier, Candara, Cambria, Verdana, serif; 
     margin-left: 10px;
-    padding: 2px 5px 2px 5px;
+    padding: 2px 6px 2px 6px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
     text-shadow: 1px 1px 1px #4488CC;
     cursor: pointer;
+}
+
+.active_button:hover {
+    position: relative;
+    top: 1px;
+    left: 1px;
 }
 
 .title {
@@ -58,10 +64,9 @@ hr {
     position: absolute;
     left: 50%;
     top: 310px;
-    width: 400px;
-    /* height: 30px; */
-    width: 65%;
-    overflow: scroll;
+    width: 400px;*/
+    width: 50%;
+    overflow: auto;
     /*
     margin-top: 33px;
     margin-left: -200px;
@@ -69,16 +74,13 @@ hr {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    padding: 7px 15px 7px 15px;
     color: #D61E49;
-    font: 20px Athelas, Monaco, serif; 
+    font: 21px Constantia, Cambria, Athelas, Monaco, serif; 
     font-weight: 10;
-    border-color: #444;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding- bottom: 1px;
     border-style: solid;
     border-width: 2px;
+    border-color: #444;
     background: rgba(255, 255, 255, 0.4);
 }
 
@@ -205,7 +207,7 @@ hr {
     text-align: center;
     border-style: none;
     /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
+    /*background: rgba(224, 224, 172, 0.15);*/
     /*border: solid;
     border-width: 2px;*/
 }
@@ -215,13 +217,12 @@ hr {
     position: relative;
     _position: relative;
     top: 0px;*/
-   
 
     display:block;
     text-align: center;
     margin-left: 10px;
     font-size: 40px;
-    font: 40px Constantia, Arial;
+    font: 40px Constantia, Cambria, Arial;
     color: #111;
 }
 
@@ -239,7 +240,7 @@ hr {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url('./img/down_arrow.png') no-repeat right #ddd;
+    background: url('img/down_arrow.png') no-repeat right #ddd;
     background-size: 27px;
     width: 125px;
     position: relative;
@@ -248,6 +249,7 @@ hr {
     font: 19px Courier, Candara, Cambria, Verdana, serif; 
     margin-left: -1px;
     margin-right: 5px;
+    padding-left: 3px;
     height: 27px;
     overflow: hidden;
 
@@ -271,9 +273,9 @@ hr {
     margin-left: 11px;
     padding: 2px 5px 2px 5px;
     color: #EEE;
-    box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
-    text-shadow: 1px 1px 1px #4488CC;
+    box-shadow: 1px 1px 5px #888;
+    /*text-shadow: 1px 1px 1px #4488CC;*/
     cursor: pointer;
 }
 
@@ -282,8 +284,8 @@ hr {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    background: #DABC27;
-    color: #000;
+    background: #000;
+    color: #DABC27;
 }
 
 /*** for id='killer' ***/
@@ -304,7 +306,7 @@ hr {
     text-align: center;*/
     border-style: none;
     /*color: #D61E49;*/
-    background: rgba(224, 224, 172, 0.15);
+    /*background: rgba(224, 224, 172, 0.15);*/
 
     /*border: solid;
     border-width: 2px;*/
@@ -321,8 +323,7 @@ hr {
 
     width: 30%;
     margin-left: 45%;
-    font-size: 40px;
-    font: Cambria, Courier, serif, Arial;
+    font: 40px Constantia, Cambria, Arial;
     color: #111;
 }
 
@@ -338,7 +339,7 @@ hr {
     _position: relative;
     top: -20px;
     margin-left:30%;
-    font: 25px Courier, Candara, Cambria, Verdana, serif;  
+    font: 24px Courier, Candara, Cambria, Verdana, serif;  
 }
 
 #killer input {
@@ -381,8 +382,8 @@ hr {
     padding: 2px 5px 2px 5px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
+    /*text-shadow: 1px 1px 1px #4488CC;*/
     border-radius: 5px;
-    text-shadow: 1px 1px 1px #4488CC;
     cursor: pointer;
 }
 
@@ -391,8 +392,8 @@ hr {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    background: #DABC27;
-    color: #000;
+    background: #000;
+    color: #DABC27;
     box-shadow: #111;
     text-shadow: #333;
 }
@@ -425,7 +426,7 @@ hr {
     text-align: center;
 
     color: #252525;
-    background: rgba(235, 236, 237, 0.44);
+    /*background: rgba(235, 236, 237, 0.44);*/
 
     border-collapse: collapse;
     border: solid;
@@ -582,17 +583,16 @@ label[for=count] {
     -moz-opacity: 0.8;  
     -khtml-opacity: 0.8;  
     opacity: 0.8;
-    position: absolute;
-    _position: absolute;
     /*top: 363px;*/
     left: 50%;
     height: 300px;
-    width: 100%;
-    margin-left: -50%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     border-style: none;
     color: #D61E49;
-    background: rgba(224, 224, 172, 0.15);
+    /*background: rgba(224, 224, 172, 0.15);*/
     /*border: solid;
     border-width: 2px;*/
 }
@@ -662,17 +662,16 @@ label[for=count] {
     -moz-opacity: 0.9;  
     -khtml-opacity: 0.9;  
     opacity: 0.9;
-    position: absolute;
-    _position: absolute;
     top: 663px;
-    left: 50%;
     height: 300px;
     width: 100%;
-    margin-left: -50%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     border-style: none;
     color: #D61E49;
-    background: rgba(224, 224, 172, 0.15);
+    /*background: rgba(224, 224, 172, 0.15);*/
     /*border: solid;
     border-width: 2px;*/
 }
@@ -729,8 +728,8 @@ label[for=count] {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    background: #E26565;
-    color: #FFF;
+    background: #000;
+    color: #DABC27;
 }
 
 #machines .button {
@@ -783,13 +782,13 @@ label[for=count] {
     top: 330px;
     left: 50%;
     height: 265px;
-    width: 650px;
+    width: 600px;
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
     background: rgba(255, 255, 255, 0.55);
     border-style: solid;
-    border-color: #000;
+    border-color: #333;
     border-width: 2px;
     margin-top: 20px;
     margin-left: auto;
@@ -802,6 +801,7 @@ label[for=count] {
     position: relative;
     _position: relative;
     top: -13px;*/
+    margin-bottom: 18px;
     text-align: center;
     font: 36px Constantia, Arial;
     color: #111;
@@ -833,7 +833,7 @@ label[for=count] {
     border-style: solid;
     border-width: 1px;
     border-color: #999;
-    padding-left: 1px;
+    padding-left: 3px;
     color: #444;
     overflow: hidden;
     appearance:none;
@@ -849,11 +849,12 @@ label[for=count] {
     text-align: center;
     top: -22px;
     left: 51%;
-    /*margin-left: -100%;*/
-    margin-left: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
-    padding: 2px 5px 2px 0px;
+    padding: 2px 5px 2px 5px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
@@ -925,19 +926,19 @@ input[type='radio'] {
     */
     top: 330px;
     left: 50%;
-    height: 215px;
-    width: 750px;
+    height: 225px;
+    width: 700px;
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
     background: rgba(255, 255, 255, 0.55);
     border-style: solid;
-    border-color: #000;
+    border-color: #333;
     border-width: 2px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 #chpw h2 {
@@ -965,7 +966,8 @@ input[type='radio'] {
     top: -10px;
     font: 24px Courier, Candara, Cambria, Verdana, serif; 
     height: 27px;
-    margin-left: -1px;
+    margin-left: 2px;
+    padding-left: 3px;
     border-style: solid;
     border-width: 1px;
     border-color: #999;
@@ -985,10 +987,11 @@ input[type='radio'] {
     text-align: center;
     top: -4px;
     left: 51%;
+    margin-top: 7px;
     margin-left: -100%;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
-    padding: 2px 5px 2px 0px;
+    padding: 2px 5px 2px 5px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
@@ -1051,9 +1054,9 @@ input[type='radio'] {
 /** End of change_passwd.html **/
 /*******************************/
 
-/***************/
-/** back.html **/
-/***************/
+/********************/
+/** user_list.html **/
+/********************/
 
 
 
@@ -1066,20 +1069,20 @@ input[type='radio'] {
     position: absolute;
     _position: absolute;
     */
-    left: 50%;
     height: 190px;
     width: 950px;
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.45);
     border-style: solid;
-    border-color: #000;
+    border-color: #333;
     border-width: 2px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 5px;
+    padding: 7px;
+    padding-bottom: 19px;
 }
 
 #userfilter p {
@@ -1115,16 +1118,14 @@ input[type='radio'] {
     
     position: relative;
     _position: relative;
-    
-    
-    
+
     margin-left: 10px;
     /*font: 21px Courier, Candara, Cambria, Verdana, serif;  */
-    font: normal 25px Arial, sans-serif;
+    font: normal 23.5px Courier, Arial, sans-serif;
 }
 
 #userfilter select {
-    background: url('./img/down_arrow.png') no-repeat right #ddd;
+    background: url('img/down_arrow.png') no-repeat right #ddd;
     background-size: 27px;
     width: 120px;
     
@@ -1134,6 +1135,7 @@ input[type='radio'] {
     
     font: 18px Courier, Candara, Cambria, Verdana, serif; 
     margin-left: 10px;
+    padding-left: 3px;
     height: 28px;
     overflow: hidden;
     appearance:none;
@@ -1157,8 +1159,9 @@ input[type='radio'] {
     top: 6px;
     height: 20px;
     width: 20px;
-    font: 20px Courier, Candara, Cambria, Verdana, serif; 
-    margin-left: 15px;
+    font: 20px Courier, Candara, Cambria, Verdana, serif;
+    margin-top: 5px;
+    margin-left: 8px;
     margin-right: -10px;
     border-style: solid;
     border-width: 2px;
@@ -1175,12 +1178,12 @@ input[type='radio'] {
 
 #userfilter input[type='checkbox']:hover {
     background: url('./img/check.png') no-repeat center;
-    background-size: 20px;
+    background-size: 19px;
 }
 
 #userfilter input[type='checkbox']:checked {
     background: url('./img/check3.png') no-repeat center;
-    background-size: 18px;
+    background-size: 17px;
 }
 
 #userfilter .button {
@@ -1190,14 +1193,14 @@ input[type='radio'] {
     _position: relative;
     
     text-align: center;
-    top: -2px;
     /* left: 50%; */
     /* margin-left: -100%; */
-    margin-top: 4px;
-    margin-left: 10px;
+    margin-top: 9px;
+    margin-left: auto;
+    margin-right: auto;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
-    padding: 2px 5px 2px 0px;
+    padding: 2px 5px 2px 5px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
@@ -1288,9 +1291,9 @@ input[type='radio'] {
 }
 */
 
-/**********************/
-/** End of back.html **/
-/**********************/
+/*******************************/
+/**** End of user_list.html ****/
+/*******************************/
 
 /**********************/
 /*** Delete Machine ***/
@@ -1312,7 +1315,7 @@ input[type='radio'] {
     /*color: #D61E49;*/
     background: rgba(255, 255, 255, 0.55);
     border-style: solid;
-    border-color: #000;
+    border-color: #333;
     border-width: 2px;
     margin-top: 20px;
     margin-left: auto;
@@ -1334,9 +1337,8 @@ input[type='radio'] {
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;
-    text-shadow: 1px 1px 1px #4488CC;
+    /*text-shadow: 1px 1px 1px #4488CC;*/
     cursor: pointer;
-
 }
 
 #demc .button:hover {
@@ -1344,13 +1346,13 @@ input[type='radio'] {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    background: #E26565;
-
+    background: rgba(0, 0, 0, 0.9);
+    color: #DABC27;
 }
     
-/***************************/
-/***** Update Machine ******/
-/***************************/
+/*******************************/
+/***** Update Machine.html *****/
+/*******************************/
 
 #chmc {
     /*
@@ -1368,7 +1370,7 @@ input[type='radio'] {
     opacity: 0.8;
 
     left: 50%;
-    height: 270px;
+    height: 280px;
     width: 660px;
     margin-top: 45px;
     margin-left: auto;
@@ -1376,15 +1378,25 @@ input[type='radio'] {
     font: 25px Courier, Candara, Cambria, Verdana, serif;
     /*color: #D61E49;*/
     background: rgba(255, 255, 255, 0.55);
-    border-color: #000;
+    border-color: #333;
     border-width: 2px;
     border-style: solid;
     padding-top: 2px;
     padding-bottom: 7px;
     /*
     border: solid;
-    border-width: 2px;*/
-    
+    border-width: 2px;*/   
+}
+
+#chmc h2 {
+    /*
+    position: relative;
+    _position: relative;
+    top: -13px;*/
+    padding-bottom: -5px;
+    text-align: center;
+    font: 36px Constantia, Arial;
+    color: #111;
 }
 
 #chmc input[type='text'], #chmc input[type='password']{
@@ -1400,7 +1412,8 @@ input[type='radio'] {
     border-style: solid;
     border-width: 1px;
     border-color: #999;
-    padding-left: 1px;
+    padding-left: 3px;
+
     color: #444;
     overflow: hidden;
     appearance:none;
@@ -1419,27 +1432,17 @@ input[type='radio'] {
     font: 25px Courier, Candara, Cambria, Verdana, serif;
 }
 
-#chmc h2 {
-    /*
-    position: relative;
-    _position: relative;
-    top: -13px;*/
-    text-align: center;
-    font: 36px Constantia, Arial;
-    color: #111;
-}
-
-
 #chmc .button {
     width: 100px;
 
     text-align: center;
     top: -22px;
     left: 51%;
+    margin-top: 8px;
     margin-left: 46%;
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #57C;
-    padding: 2px 5px 2px 0px;
+    padding: 2px 5px 2px 5px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     border-radius: 5px;

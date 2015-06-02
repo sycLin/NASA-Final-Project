@@ -12,21 +12,17 @@ body {
     -webkit-background-size: 100%;
     -o-background-size: 100%;
     background-size: cover;
-    background-position: -10px -30px;
+    background-position: 0px -10px;
 
 	font: 25px Monaco, sans-serif;
 	line-height: 1.88889;
 	color: #555753; 
 
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
 
 #header {
-    filter:alpha(opacity=60);  
-    -moz-opacity: 0.6;  
-    -khtml-opacity: 0.6;  
-    opacity: 0.6;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -36,21 +32,23 @@ body {
 
     font-weight: 100;
     color: #FFF;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.6);
 
     letter-spacing: 0.02em;
 }
 
 #header:hover {
+    filter:alpha(opacity=55);  
+    -moz-opacity: 0.55;  
+    -khtml-opacity: 0.55;  
+    opacity: 0.55;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #000;
     background-color: #AAA;
 }
 
 hr {
-    padding: 0;
-    margin: 0;
     border-style: none;
     border-width: 1px;
 }
@@ -62,35 +60,24 @@ label {
 	width: 180px;
 }
 
-span {
-    display: inline-block;
-	vertical-align: middle;
-	line-height: 150%;
-}
-
 div {
-    position: absolute;
+    /*position: absolute;
     _position: absolute;
     top: 50%;
-    left: 50%;
+    left: 50%;*/
+    position: relative;
+    _position: relative;
+    top: 20%;
     width: 450px;
     height: auto;
-    margin-top: -115px;
-    margin-left: -225px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
     color: #444;
 	padding: 22px;
 	border-style: solid;
 	border-width: 2px;
     background: rgba(255, 255, 255, 0.25);
-}
-
-div span {
-    color: #444;
-    position: relative;
-    top: 10px;
-	left: 15px;
-	font-size: 15px;
-    line-height: 100%;
 }
 
 div hr {
@@ -129,8 +116,35 @@ div hr {
 	display:inline-block;
 }
 
+input[type='text'], input[type='password']{
+    border: 2px solid #888888;
+    color: #777;
+    height: 35px;
+    position: relative;
+    top: -5px;
+    left: 1px;
+    /* 
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    */
+    outline: 0 none;
+    padding: 5px 1px 3px 5px; 
+    width: 50%;
+    font: 13px Arial, sans-serif;
+    line-height: 15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+
 .button {
+    filter:alpha(opacity=93);  
+    -moz-opacity: 0.93;  
+    -khtml-opacity: 0.93;  
+    opacity: 0.93;
 	background: #6969DD;
+    margin-top: 13px;
     padding: 6px 25px 6px 25px;
     color: #FFF;
     font: 17px Monaco, sans-serif;
@@ -153,6 +167,22 @@ div hr {
     /* background-color: #5588CC; */
 }
 
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 150%;
+    margin-top: 3px;
+}
+
+div span {
+    color: #444;
+    position: relative;
+    top: 10px;
+    left: 15px;
+    font-size: 15px;
+    line-height: 100%;
+}
+
 span .button {
     color: #FFF;
     font: 10px Monaco, sans-serif;
@@ -164,28 +194,6 @@ span .button {
     box-shadow: 1px 1px 5px #888;
     text-shadow: 1px 1px 1px #4488CC;
     cursor: pointer;
-}
-
-input[type='text'], input[type='password']{
-	border: 2px solid #888888;
-    color: #777;
-    height: 35px;
-    position: relative;
-    top: -5px;
-    left: 1px;
-    /* 
-    margin-bottom: 16px;
-    margin-right: 6px;
-    margin-top: 2px;
-    */
-    outline: 0 none;
-    padding: 5px 1px 3px 5px; 
-    width: 50%;
-    font: 13px Arial, sans-serif;
-    line-height: 15px;
-    box-shadow: inset 0px 1px 4px #ECECEC;
-    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }
 
 /* Basic Grey 
