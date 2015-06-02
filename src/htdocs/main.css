@@ -308,8 +308,8 @@ hr {
     border-style: none;
     /*color: #D61E49;*/
     /*background: rgba(224, 224, 172, 0.15);*/
-    border: solid;
-    border-width: 2px;
+    /*border: solid;
+    border-width: 2px;*/
 }
 
 #killer p {
