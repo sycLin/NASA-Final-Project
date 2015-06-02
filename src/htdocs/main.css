@@ -203,6 +203,8 @@ hr {
     left: 50%;
     height: 145px;
     width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
     /* margin-left: -50%; */
     text-align: center;
     border-style: none;
@@ -297,49 +299,41 @@ hr {
     /*
     position: absolute;
     _position: absolute;
-    top: 470px;
+    */
     left: 50%;
     height: 145px;
-    
     width: 100%;
-    margin-left: -50%;
-    text-align: center;*/
+    /* margin-left: -50%; */
+    text-align: center;
     border-style: none;
     /*color: #D61E49;*/
     /*background: rgba(224, 224, 172, 0.15);*/
-
-    /*border: solid;
-    border-width: 2px;*/
+    border: solid;
+    border-width: 2px;
 }
 
 #killer p {
-    /*display:none;
+    /*
     position: relative;
     _position: relative;
-    top: 0px;
-    text-align: left;
-    margin-left: 10px;*/
-    display:block;
+    top: 0px;*/
 
-    width: 30%;
-    margin-left: 45%;
+    display:block;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 40px;
     font: 40px Constantia, Cambria, Arial;
     color: #111;
 }
 
 #killer label {
     width: 10%;
-    /*
     position: relative;
     _position: relative;
-    top: -20px;
-    left: -36.5%;
-    */
-    position: relative;
-    _position: relative;
-    top: -20px;
-    margin-left:30%;
-    font: 24px Courier, Candara, Cambria, Verdana, serif;  
+    top: -19px;
+    margin-left: 19px;
+    margin-right: 2px;
+    font: 22px Courier, Arial, sans-serif;  
 }
 
 #killer input {
@@ -369,7 +363,7 @@ hr {
 }
 
 #killer .button {
-    width: 100px;
+    width: auto;
     /*
     position: relative;
     _position: relative;
@@ -379,7 +373,7 @@ hr {
     font: 17px Courier, Candara, Cambria, Verdana, serif; 
     background: #68C;
     margin-left: 11px;
-    padding: 2px 5px 2px 5px;
+    padding: 3px 7px 3px 7px;
     color: #EEE;
     box-shadow: 1px 1px 5px #888;
     /*text-shadow: 1px 1px 1px #4488CC;*/
@@ -780,9 +774,9 @@ label[for=count] {
     _position: absolute;
     */
     top: 330px;
-    left: 50%;
+    font: 25px Courier, Candara, Cambria, Verdana, serif;
     height: auto;
-    width: 720px;
+    width: 820px;
     /* margin-left: -50%; */
     text-align: center;
     /*color: #D61E49;*/
@@ -872,6 +866,7 @@ label[for=count] {
     text-shadow: 0px 0px 0px #DABC27;
 }
 
+/*
 #addmc input[type='radio'] {
     font: 40px Courier, Candara, Cambria, Verdana, serif;
     line-height: 28px;
@@ -881,6 +876,20 @@ label[for=count] {
 #addmc input[type='radio']:nth-child(13) {
     display: inline-block;
 
+
+    font: 25px Courier, Candara, Cambria, Verdana, serif;
+    color:black;
+
+    margin-left: 30%;
+}*/
+
+#addmc input[type='radio'] {
+    font: 40px Courier, Candara, Cambria, Verdana, serif;
+    line-height: 28px;
+}
+
+#addmc input[type='radio']:nth-child(13) {
+    display: inline-block;
 
     /*font: 25px Courier, Candara, Cambria, Verdana, serif;*/
     color:black;
