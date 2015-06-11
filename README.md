@@ -12,6 +12,8 @@ Network Administration and System Administration, NTU CSIE.
 
 > 6/22 Final Project Presentation
 
+> [Demo Video](http://www.google.com/)
+
 ## Goals
 
 - [x] Construct two normal VMs, say VM1 and VM2.
